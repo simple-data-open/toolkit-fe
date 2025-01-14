@@ -1,0 +1,40 @@
+{
+  "name": "@simple-data-open/simple-cli",
+  "version": "0.0.1",
+  "description": "Command line tools for simple-data extensions development.",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "bin": {
+    "simple-cli": "lib/bin.js"
+  },
+  "files": [
+    "package.json",
+    "lib"
+  ],
+  "scripts": {
+    "build": "bunx tsc",
+    "check": "bunx tsc --noEmit --project tsconfig.json",
+    "dev": "bunx tsc --watch",
+    "lint": "bun run check && bun run lint:fix",
+    "lint:fix": "eslint --config ../../eslint.config.mjs ./src --cache --quiet --fix",
+    "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.1",
+    "@types/node": "^22.10.2",
+    "commander": "^12.1.0",
+    "fastify": "^5.1.0",
+    "fastify-socket.io": "^5.1.0",
+    "kleur": "^4.1.5",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@simple-data-open/types": "workspace:^",
+    "typescript": "5.7.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

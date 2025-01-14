@@ -1,0 +1,32 @@
+{
+  "name": "@simple-data-open/types",
+  "version": "0.0.1",
+  "description": "index.d.ts",
+  "license": "ISC",
+  "author": "xiaoYown <qzy09101018@sina.com>",
+  "exports": {
+    ".": {
+      "default": "./index.d.ts"
+    },
+    "./ext": {
+      "default": "./ext.d.ts"
+    },
+    "./window": {
+      "default": "./window.d.ts"
+    }
+  },
+  "types": "index.d.ts",
+  "files": [
+    "package.json",
+    "*.d.ts"
+  ],
+  "scripts": {
+    "check": "bunx tsc --noEmit --project tsconfig.json",
+    "lint": "bun run check && bun run lint:fix",
+    "lint:fix": "eslint --config ../../eslint.config.mjs . --cache --quiet --fix",
+    "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs . --fix"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

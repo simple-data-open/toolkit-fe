@@ -1,0 +1,243 @@
+import CompressionPlugin from 'compression-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import debounce from 'debounce';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { Socket, io } from 'socket.io-client';
+import webpack, { Configuration } from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import { merge } from 'webpack-merge';
+import WebpackBar from 'webpackbar';
+
+import {
+  getCustomWebpackConfig,
+  getEntries,
+  getExternals,
+  getManifest,
+  getOutputDir,
+  writeBundleManifest,
+} from './utils.js';
+
+export const formatWebpackConfig = async (): Promise<Configuration> => {
+  const isProd = process.env.NODE_ENV === 'production';
+  const manifest = await getManifest();
+  const entry = await getEntries();
+  const outputDir = await getOutputDir();
+  const externals = await getExternals();
+
+  const plugins = [
+    new MiniCssExtractPlugin(),
+    new CssMinimizerPlugin(),
+    new WebpackBar({
+      color: '#9ff552',
+    }),
+    new CompressionPlugin({
+      threshold: 12800, // 对大于 128kb 的文件进行压缩
+    }),
+  ];
+  return {
+    stats: {
+      all: false,
+      errors: true,
+      warnings: false,
+      modules: false,
+      assets: true,
+    },
+    mode: process.env.NODE_ENV as 'development' | 'production',
+    devtool: isProd ? false : 'eval-cheap-source-map',
+    entry,
+    output: {
+      filename: '[name].js',
+      path: outputDir,
+      libraryTarget: 'system',
+      clean: true,
+      publicPath: isProd ? undefined : `/${manifest.name}/${manifest.version}/`,
+    },
+    devServer: {
+      hot: false,
+      liveReload: false,
+      compress: false,
+      allowedHosts: 'all',
+      webSocketServer: false,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': '*',
+        // 'Access-Control-Allow-Headers':
+        //   'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild',
+      },
+    },
+    optimization: {
+      minimize: true,
+    },
+    plugins,
+    performance: {
+      maxEntrypointSize: 2000000,
+      maxAssetSize: 2000000,
+    },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.mjs', '.json'],
+    },
+    externals,
+    module: {
+      rules: [
+        {
+          test: /\.m?js$/,
+          resolve: {
+            fullySpecified: false, // 禁止对 ESM 模块强制要求完整路径
+          },
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                cacheDirectory: true,
+                cacheCompression: false,
+                compact: false,
+                presets: [
+                  [
+                    '@babel/preset-env',
+                    {
+                      targets: {
+                        safari: '12', // 指定最低支持的 Safari 版本
+                      },
+                      // useBuiltIns: 'entry', // 使用 polyfill
+                    },
+                  ],
+                ],
+              },
+            },
+            {
+              loader: 'source-map-loader',
+            },
+          ],
+        },
+        {
+          test: /\.ts?$/,
+          use: [
+            'babel-loader',
+            'ts-loader',
+            {
+              loader: 'source-map-loader',
+            },
+          ],
+          parser: {
+            system: false,
+          },
+        },
+        {
+          test: /\.(css)$/,
+          // sideEffects: true,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                url: false,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: ['postcss-preset-env'],
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
+  };
+};
+
+async function getWebpackConfig() {
+  const baseWebpackConfig = await formatWebpackConfig();
+  const customWebpackConfig = await getCustomWebpackConfig();
+
+  return merge(baseWebpackConfig, customWebpackConfig);
+}
+
+async function execTask(): Promise<string> {
+  const webpackConfig = await getWebpackConfig();
+
+  return new Promise((resolve, reject) => {
+    const compiler = webpack(webpackConfig);
+
+    compiler.run((error: any, stats: any) => {
+      if (error) {
+        reject(new Error(error.message));
+        return;
+      }
+      const info = stats.toJson();
+      if (stats?.hasErrors()) {
+        reject(info.errors);
+        return;
+      }
+      // if (stats.hasWarnings()) {
+      //   console.warn(info.warnings);
+      // }
+      // 导出 library.manifest 文件
+
+      compiler.close(closeErr => {
+        if (closeErr) {
+          reject(closeErr);
+        } else {
+          resolve('complete');
+        }
+      });
+    });
+  });
+}
+
+export async function debug() {
+  const webpackConfig = await getWebpackConfig();
+  const manifest = await getManifest();
+
+  return new Promise((resolve, reject) => {
+    const compiler = webpack(webpackConfig);
+    const port = manifest.debug?.port;
+    const server = new WebpackDevServer(
+      {
+        ...webpackConfig.devServer,
+        port,
+      },
+      compiler,
+    );
+
+    let ws: Socket | undefined;
+    let hasRegisted = false;
+
+    const reload = debounce(() => {
+      ws?.emit('extension-reload', { name: manifest.name });
+    }, 100);
+
+    compiler.watch({}, err => {
+      if (err) {
+        console.error('编译错误:', err);
+      } else if (!hasRegisted) {
+        hasRegisted = true;
+        ws = io(`${manifest.debug?.serve}`);
+        ws.emit('extension-connect', manifest);
+      } else {
+        reload();
+      }
+    });
+
+    try {
+      server.start();
+      resolve('watching');
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+export async function build() {
+  try {
+    await execTask();
+    await writeBundleManifest();
+
+    process.exit(0);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}

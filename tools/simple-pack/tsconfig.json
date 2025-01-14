@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "types": ["node", "@simple-data-open/types"],
+    "module": "ESNext",
+    "outDir": "lib",
+    "strict": true,
+    "allowJs": true,
+    "strictNullChecks": true,
+    "noImplicitThis": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "rootDir": "./src",
+    "newLine": "lf",
+    "declaration": true,
+    "declarationDir": "lib",
+    "incremental": false,
+    "target": "ES2020",
+    "useUnknownInCatchVariables": false,
+    "moduleResolution": "bundler"
+  },
+  "exclude": ["./node_modules"],
+  "include": ["src"]
+}

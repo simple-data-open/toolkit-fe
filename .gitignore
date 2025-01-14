@@ -1,0 +1,27 @@
+node_modules
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# cache
+.eslintcache
+tsconfig.tsbuildinfo
+.wireit
+
+# bunlder
+lib
+bin
+dist
+
+# config file
+app.config.yml
+app.config.json
+dock.config.json

@@ -1,0 +1,62 @@
+{
+  "name": "@simple-data-open/simple-pack",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "bin": {
+    "simple-pack": "./lib/bin.js"
+  },
+  "files": [
+    "package.json",
+    "lib"
+  ],
+  "scripts": {
+    "build": "bunx tsc",
+    "check": "bunx tsc --noEmit --project tsconfig.json",
+    "dev": "bunx tsc --watch",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "bun run check && bun run lint:fix",
+    "lint:fix": "eslint --config ../../eslint.config.mjs ./src --cache --quiet --fix",
+    "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
+  },
+  "dependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/plugin-transform-json-strings": "^7.25.9",
+    "@babel/preset-env": "^7.24.0",
+    "@simple-data-open/utils": "workspace:^",
+    "babel-loader": "^9.1.3",
+    "commander": "^12.0.0",
+    "compression-webpack-plugin": "^11.1.0",
+    "css-loader": "^6.10.0",
+    "css-minimizer-webpack-plugin": "^6.0.0",
+    "debounce": "^2.2.0",
+    "inquirer": "^12.2.0",
+    "kleur": "^4.1.5",
+    "mini-css-extract-plugin": "^2.8.1",
+    "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^9.5.0",
+    "socket.io-client": "^4.8.1",
+    "source-map-loader": "^5.0.0",
+    "thread-loader": "^4.0.4",
+    "ts-loader": "^9.5.1",
+    "typescript": "5.7.2",
+    "webpack": "^5.90.3",
+    "webpack-dev-server": "^5.2.0",
+    "webpack-merge": "^5.10.0",
+    "webpackbar": "^7.0.0"
+  },
+  "devDependencies": {
+    "@simple-data-open/types": "workspace:^",
+    "@types/node": "^20.17.10"
+  },
+  "packageManager": "pnpm@9.3.0",
+  "engines": {
+    "pnpm": ">=9.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
