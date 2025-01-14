@@ -7,6 +7,7 @@
   "author": "",
   "type": "module",
   "scripts": {
+    "build": "pnpm --filter './tools/**' --filter './packages/**' --filter './extensions/**' build",
     "bump": "changeset add",
     "bump:v": "changeset version",
     "commit": "git-cz",

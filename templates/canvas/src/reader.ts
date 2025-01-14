@@ -1,5 +1,6 @@
 import {
   ExtensionAdapterInterface,
+  ExtensionAdapterOptions,
   ExtensionAdatpter,
   Regist,
   RegistOptions,
@@ -9,7 +10,7 @@ export class WidgetExtension
   extends ExtensionAdatpter
   implements ExtensionAdapterInterface
 {
-  constructor(options) {
+  constructor(options: ExtensionAdapterOptions) {
     super(options);
   }
   public mount = () => {};

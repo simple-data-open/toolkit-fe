@@ -2,6 +2,7 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import debounce from 'debounce';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { createRequire } from 'module';
 import { Socket, io } from 'socket.io-client';
 import webpack, { Configuration } from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
@@ -16,6 +17,8 @@ import {
   getOutputDir,
   writeBundleManifest,
 } from './utils.js';
+
+const require = createRequire(import.meta.url);
 
 export const formatWebpackConfig = async (): Promise<Configuration> => {
   const isProd = process.env.NODE_ENV === 'production';
@@ -86,14 +89,14 @@ export const formatWebpackConfig = async (): Promise<Configuration> => {
           },
           use: [
             {
-              loader: 'babel-loader',
+              loader: require.resolve('babel-loader'),
               options: {
                 cacheDirectory: true,
                 cacheCompression: false,
                 compact: false,
                 presets: [
                   [
-                    '@babel/preset-env',
+                    require.resolve('@babel/preset-env'),
                     {
                       targets: {
                         safari: '12', // 指定最低支持的 Safari 版本
@@ -105,17 +108,17 @@ export const formatWebpackConfig = async (): Promise<Configuration> => {
               },
             },
             {
-              loader: 'source-map-loader',
+              loader: require.resolve('source-map-loader'),
             },
           ],
         },
         {
           test: /\.ts?$/,
           use: [
-            'babel-loader',
-            'ts-loader',
+            require.resolve('babel-loader'),
+            require.resolve('ts-loader'),
             {
-              loader: 'source-map-loader',
+              loader: require.resolve('source-map-loader'),
             },
           ],
           parser: {
@@ -128,16 +131,16 @@ export const formatWebpackConfig = async (): Promise<Configuration> => {
           use: [
             MiniCssExtractPlugin.loader,
             {
-              loader: 'css-loader',
+              loader: require.resolve('css-loader'),
               options: {
                 url: false,
               },
             },
             {
-              loader: 'postcss-loader',
+              loader: require.resolve('postcss-loader'),
               options: {
                 postcssOptions: {
-                  plugins: ['postcss-preset-env'],
+                  plugins: [require.resolve('postcss-preset-env')],
                 },
               },
             },

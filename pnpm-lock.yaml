@@ -156,21 +156,12 @@ importers:
       babel-preset-solid:
         specifier: ^1.9.3
         version: 1.9.3(@babel/core@7.26.0)
-      css-loader:
-        specifier: ^6.10.0
-        version: 6.11.0(webpack@5.97.1)
       eslint-plugin-solid:
         specifier: ^0.14.5
         version: 0.14.5(eslint@9.16.0(jiti@2.4.2))(typescript@5.7.2)
-      postcss-loader:
-        specifier: ^8.1.1
-        version: 8.1.1(postcss@8.5.0)(typescript@5.7.2)(webpack@5.97.1)
       source-map-loader:
         specifier: ^5.0.0
         version: 5.0.0(webpack@5.97.1)
-      thread-loader:
-        specifier: ^4.0.4
-        version: 4.0.4(webpack@5.97.1)
       ts-loader:
         specifier: ^9.5.1
         version: 9.5.2(typescript@5.7.2)(webpack@5.97.1)
