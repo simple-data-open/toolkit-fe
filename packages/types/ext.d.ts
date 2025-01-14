@@ -3,7 +3,7 @@ declare global {
     interface Manifest {
       name: string;
       version: string;
-      engins: {
+      engines: {
         connector: '0.0.0';
       };
       locales: {
