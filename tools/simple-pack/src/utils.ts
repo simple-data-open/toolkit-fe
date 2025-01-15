@@ -20,9 +20,18 @@ export const getManifest = async (): Promise<SimpleExtSpace.Manifest> => {
         encoding: 'utf8',
       }),
     );
-    manifest = pkg.simpleManifest as SimpleExtSpace.Manifest;
-    manifest.name = pkg.name;
-    manifest.version = pkg.version;
+    const manifestOriginal =
+      pkg.simpleManifest as SimpleExtSpace.ManifestOriginal;
+    const dependences = await getDepsRegistrationList({
+      // TODO: 需要修改为变量
+      baseUrl: 'http://192.168.50.41:94/dependences',
+      deps: manifestOriginal.dependences || {},
+    });
+    manifest = Object.assign({}, manifestOriginal, {
+      name: pkg.name,
+      version: pkg.version,
+      dependences,
+    });
 
     if (!/^[a-z-]+$/.test(pkg.name)) {
       manifest.name = pkg.name.toLowerCase().replace(/[^a-z-]+/g, '-');
@@ -44,14 +53,10 @@ export const writeBundleManifest = async () => {
   const { debug, ...manifest } = await getManifest();
   const bundleManifest: SimpleExtSpace.Manifest = manifest;
   const bundleDir = await getOutputDir();
-  const dependences = await getDepsRegistrationList({
-    // TODO: 需要修改为变量
-    baseUrl: 'http://192.168.50.41:94/dependences',
-    deps: manifest.dependences || {},
-  });
+
   writeFileSync(
     path.join(bundleDir, BUNDLE_MANIFEST_NAME),
-    JSON.stringify(Object.assign({}, bundleManifest, { dependences }), null, 2),
+    JSON.stringify(bundleManifest, null, 2),
     { encoding: 'utf8' },
   );
 };

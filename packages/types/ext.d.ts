@@ -8,9 +8,7 @@ declare global {
       view: 'share';
       slot: 'general';
     }
-    interface Manifest {
-      name: string;
-      version: string;
+    interface ManifestOriginal {
       engines: {
         connector: '0.0.0';
       };
@@ -49,6 +47,11 @@ declare global {
         serve: string;
       };
     }
+    type Manifest = Omit<ManifestOriginal, 'dependences'> & {
+      name: string;
+      version: string;
+      dependences: DepSpace.DepModel[];
+    };
   }
 }
 
