@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.4
+
+### Patch Changes
+
+- 87be2aa: 添加 ManifestOriginal 类型
+
 ## 0.0.3
 
 ### Patch Changes
