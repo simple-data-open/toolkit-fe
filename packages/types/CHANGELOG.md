@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.3
+
+### Patch Changes
+
+- 87672b2: 调整 slot 方式
+
 ## 0.0.2
 
 ### Patch Changes
