@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.6
+
+### Patch Changes
+
+- 9df3292: 修复类型文件导出
+
 ## 0.0.5
 
 ### Patch Changes
