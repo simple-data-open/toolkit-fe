@@ -83,8 +83,8 @@ importers:
   packages/utils:
     devDependencies:
       '@simple-data-open/types':
-        specifier: workspace:^
-        version: link:../types
+        specifier: ^0.0.6
+        version: 0.0.6
       typescript:
         specifier: 5.7.2
         version: 5.7.2
@@ -113,21 +113,12 @@ importers:
       babel-preset-solid:
         specifier: ^1.9.3
         version: 1.9.3(@babel/core@7.26.0)
-      css-loader:
-        specifier: ^6.10.0
-        version: 6.11.0(webpack@5.97.1)
       eslint-plugin-solid:
         specifier: ^0.14.5
         version: 0.14.5(eslint@9.16.0(jiti@2.4.2))(typescript@5.7.2)
-      postcss-loader:
-        specifier: ^8.1.1
-        version: 8.1.1(postcss@8.5.0)(typescript@5.7.2)(webpack@5.97.1)
       source-map-loader:
         specifier: ^5.0.0
         version: 5.0.0(webpack@5.97.1)
-      thread-loader:
-        specifier: ^4.0.4
-        version: 4.0.4(webpack@5.97.1)
       ts-loader:
         specifier: ^9.5.1
         version: 9.5.2(typescript@5.7.2)(webpack@5.97.1)
@@ -250,9 +241,6 @@ importers:
       source-map-loader:
         specifier: ^5.0.0
         version: 5.0.0(webpack@5.97.1)
-      thread-loader:
-        specifier: ^4.0.4
-        version: 4.0.4(webpack@5.97.1)
       ts-loader:
         specifier: ^9.5.1
         version: 9.5.2(typescript@5.7.2)(webpack@5.97.1)
@@ -2055,6 +2043,12 @@ packages:
         integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==,
       }
     engines: { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
+
+  '@simple-data-open/types@0.0.6':
+    resolution:
+      {
+        integrity: sha512-gDrRALH1E+/ttHM0FKeiwkAgOD+Dmnwmawh5BrZMtsOsQ6NEklsHuUiPkKwfzvN3Hqmaa3vlUx1Oecivlvrbtg==,
+      }
 
   '@sinclair/typebox@0.27.8':
     resolution:
@@ -5003,12 +4997,6 @@ packages:
         integrity: sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==,
       }
 
-  json-parse-better-errors@1.0.2:
-    resolution:
-      {
-        integrity: sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==,
-      }
-
   json-parse-even-better-errors@2.3.1:
     resolution:
       {
@@ -7400,15 +7388,6 @@ packages:
     peerDependencies:
       tslib: ^2
 
-  thread-loader@4.0.4:
-    resolution:
-      {
-        integrity: sha512-tXagu6Hivd03wB2tiS1bqvw345sc7mKei32EgpYpq31ZLes9FN0mEK2nKzXLRFgwt3PsBB0E/MZDp159rDoqwg==,
-      }
-    engines: { node: '>= 16.10.0' }
-    peerDependencies:
-      webpack: ^5.0.0
-
   thread-stream@3.1.0:
     resolution:
       {
@@ -9381,6 +9360,8 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
+  '@simple-data-open/types@0.0.6': {}
+
   '@sinclair/typebox@0.27.8': {}
 
   '@socket.io/component-emitter@3.1.2': {}
@@ -11212,8 +11193,6 @@ snapshots:
 
   json-buffer@3.0.1: {}
 
-  json-parse-better-errors@1.0.2: {}
-
   json-parse-even-better-errors@2.3.1: {}
 
   json-schema-ref-resolver@1.0.1:
@@ -12633,14 +12612,6 @@ snapshots:
   thingies@1.21.0(tslib@2.8.1):
     dependencies:
       tslib: 2.8.1
-
-  thread-loader@4.0.4(webpack@5.97.1):
-    dependencies:
-      json-parse-better-errors: 1.0.2
-      loader-runner: 4.3.0
-      neo-async: 2.6.2
-      schema-utils: 4.3.0
-      webpack: 5.97.1
 
   thread-stream@3.1.0:
     dependencies:

@@ -1,4 +1,4 @@
-import { getDepsRegistrationList } from '@simple-data-open/utils';
+import { transformManifest } from '@simple-data-open/utils';
 
 import fs, { existsSync, writeFileSync } from 'fs';
 import path, { resolve } from 'path';
@@ -20,25 +20,7 @@ export const getManifest = async (): Promise<SimpleExtSpace.Manifest> => {
         encoding: 'utf8',
       }),
     );
-    const manifestOriginal =
-      pkg.simpleManifest as SimpleExtSpace.ManifestOriginal;
-    const dependences = await getDepsRegistrationList({
-      // TODO: 需要修改为变量
-      baseUrl: 'http://192.168.50.41:94/dependences',
-      deps: manifestOriginal.dependences || {},
-    });
-    manifest = Object.assign({}, manifestOriginal, {
-      name: pkg.name,
-      version: pkg.version,
-      dependences,
-    });
-
-    if (!/^[a-z-]+$/.test(pkg.name)) {
-      manifest.name = pkg.name.toLowerCase().replace(/[^a-z-]+/g, '-');
-      console.log(
-        `Extension name should be lowercase and only contain letters and hyphens. The name has been automatically modified like ${manifest.name}.`,
-      );
-    }
+    manifest = await transformManifest(pkg);
   }
 
   return manifest;
