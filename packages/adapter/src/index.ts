@@ -22,15 +22,6 @@ export class ExtensionAdapterInterface {
   public onLangChange? = (_lang: string) => {};
 }
 
-type RegistCanvasOptions = {
-  view: 'canvas';
-  slot: 'widget';
-};
-
-export type RegistOptions = RegistCanvasOptions;
-
-export type Regist = (options: RegistOptions) => void;
-
 export class WidgetBase
   extends ExtensionAdatpter
   implements ExtensionAdapterInterface

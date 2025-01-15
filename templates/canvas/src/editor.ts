@@ -2,8 +2,6 @@ import {
   ExtensionAdapterInterface,
   ExtensionAdapterOptions,
   ExtensionAdatpter,
-  Regist,
-  RegistOptions,
 } from '@simple-data-open/adapter';
 
 import { render } from 'solid-js/web';
@@ -27,15 +25,20 @@ export class WidgetExtension
   };
 }
 
-export const resolveExtension = (regist: Regist) => {
-  regist({
-    view: 'canvas',
-    slot: 'widget',
-  });
-};
+export const mapSlots = (
+  slot: SimpleExtSpace.SlotCanvas | SimpleExtSpace.SlotShare,
+) => {
+  const views = {
+    canvas: {
+      widget: WidgetExtension,
+    },
+  };
 
-export const mapSlotToComponent = (slot: RegistOptions['slot']) => {
-  return {
-    widget: WidgetExtension,
-  }[slot];
+  const _slot = views[slot.view]?.[slot.slot];
+
+  if (_slot) {
+    console.error(`Miss slot ${slot.view} ${slot.slot}`);
+  }
+
+  return _slot;
 };

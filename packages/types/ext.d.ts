@@ -1,5 +1,13 @@
 declare global {
   namespace SimpleExtSpace {
+    interface SlotCanvas {
+      view: 'canvas';
+      slot: 'widget' | 'foreground' | 'background';
+    }
+    interface SlotShare {
+      view: 'share';
+      slot: 'general';
+    }
     interface Manifest {
       name: string;
       version: string;
@@ -18,11 +26,16 @@ declare global {
       docks: {
         editor?: {
           css: boolean;
-          views: 'canvas'[];
+          slots: {
+            canvas: SlotCanvas['slot'][];
+            share: SlotShare['slot'][];
+          };
         };
         reader?: {
           css: boolean;
-          views: 'canvas'[];
+          slots: {
+            canvas: SlotCanvas['slot'][];
+          };
         };
       };
       debug?: {
