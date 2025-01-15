@@ -4,7 +4,7 @@ export interface ExtensionAdapterOptions {
   container: HTMLElement;
 }
 
-export class ExtensionAdatpter {
+export class ExtensionAdapter {
   public instance: string;
   public name: string;
   public container: HTMLElement;
@@ -23,7 +23,7 @@ export class ExtensionAdapterInterface {
 }
 
 export class WidgetBase
-  extends ExtensionAdatpter
+  extends ExtensionAdapter
   implements ExtensionAdapterInterface
 {
   constructor(options) {
