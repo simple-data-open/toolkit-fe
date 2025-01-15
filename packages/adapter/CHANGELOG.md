@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.5
+
+### Patch Changes
+
+- ceb1098: 修复 ExtensionAdapterInterface
+
 ## 0.0.3
 
 ### Patch Changes
