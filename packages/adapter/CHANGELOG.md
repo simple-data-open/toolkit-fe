@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.3
+
+### Patch Changes
+
+- 5ce722f: 修复 ExtensionAdapter 命名
+
 ## 0.0.2
 
 ### Patch Changes
