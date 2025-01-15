@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.5
+
+### Patch Changes
+
+- 6022616: 修复类型命名
+
 ## 0.0.4
 
 ### Patch Changes
