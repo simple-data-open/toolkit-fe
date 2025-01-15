@@ -60,15 +60,19 @@
     "docks": {
       "editor": {
         "css": true,
-        "views": [
-          "canvas"
-        ]
+        "slots": {
+          "canvas": [
+            "widget"
+          ]
+        }
       },
       "reader": {
         "css": true,
-        "views": [
-          "canvas"
-        ]
+        "slots": {
+          "canvas": [
+            "widget"
+          ]
+        }
       }
     }
   }

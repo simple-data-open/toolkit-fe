@@ -50,7 +50,7 @@ declare global {
     type Manifest = Omit<ManifestOriginal, 'dependences'> & {
       name: string;
       version: string;
-      dependences: DepSpace.DepModel[];
+      dependences: SimpleDepSpace.DepModel[];
     };
   }
 }

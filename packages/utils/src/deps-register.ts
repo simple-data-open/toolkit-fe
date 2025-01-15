@@ -37,8 +37,8 @@ export async function getDepsRegistrationList({
   baseUrl: string;
   /** 格式: { [dep_name]: [dep_version] } */
   deps: Record<string, string>;
-  registry?: DepSpace.DepModel[];
-}): Promise<DepSpace.DepModel[]> {
+  registry?: SimpleDepSpace.DepModel[];
+}): Promise<SimpleDepSpace.DepModel[]> {
   // 找出待注册的依赖项
   const registryList = Object.entries(deps).filter(
     ([name, version]) =>
@@ -64,7 +64,7 @@ export async function getDepsRegistrationList({
           return null; // 标记为失败
         }
         const data = await response.json();
-        return data as DepSpace.DepModel;
+        return data as SimpleDepSpace.DepModel;
       } catch (error) {
         console.error(`Fetch failed for ${name}@${version}:`, error);
         return null; // 标记为失败
@@ -97,7 +97,7 @@ export function getDepsCssUrl({
 }: {
   baseUrl: string;
   deps: Record<string, string>;
-  registry: DepSpace.DepModel[];
+  registry: SimpleDepSpace.DepModel[];
 }): string[] {
   const links: string[] = [];
 

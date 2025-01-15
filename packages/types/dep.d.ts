@@ -1,5 +1,5 @@
 declare global {
-  namespace DepSpace {
+  namespace SimpleDepSpace {
     interface DepModel {
       name: string;
       version: string;
