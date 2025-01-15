@@ -16,7 +16,7 @@
     "lint": "pnpm --filter './tools/**' --filter './packages/**' --filter './extensions/**' lint",
     "lint:force": "pnpm --filter './tools/**' --filter './packages/**' --filter './extensions/**' lint:force",
     "prepare": "husky",
-    "publish": "bunx changeset publish",
+    "publish": "bun run build && bunx changeset publish",
     "start:pkg": "pm2 start pkg.ecosystem.config.cjs",
     "start:temp": "pm2 start temp.ecosystem.config.cjs",
     "start:tools": "pm2 start tools.ecosystem.config.cjs",
