@@ -1,5 +1,13 @@
 # @simple-data-open/simple-pack
 
+## 0.0.5
+
+### Patch Changes
+
+- 70b1132: 提取 manifest 转换到公用
+- Updated dependencies [70b1132]
+  - @simple-data-open/utils@0.0.3
+
 ## 0.0.4
 
 ### Patch Changes
