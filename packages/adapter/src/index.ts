@@ -16,10 +16,10 @@ export class ExtensionAdapter {
   }
 }
 
-export class ExtensionAdapterInterface {
-  public mount = () => {};
-  public unmount = () => {};
-  public onLangChange? = (_lang: string) => {};
+export interface ExtensionAdapterInterface {
+  mount: () => void;
+  unmount: () => void;
+  onLangChange?: (_lang: string) => void;
 }
 
 export class WidgetBase
