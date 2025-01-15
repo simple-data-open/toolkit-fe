@@ -1,6 +1,7 @@
 {
   "name": "simple-data-open-template-canvas",
   "version": "0.0.2",
+  "private": true,
   "description": "",
   "keywords": [],
   "license": "ISC",
@@ -30,7 +31,7 @@
     "ts-loader": "^9.5.1"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   },
   "simpleManifest": {
     "debug": {
