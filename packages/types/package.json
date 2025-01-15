@@ -11,6 +11,9 @@
     "./ext": {
       "default": "./ext.d.ts"
     },
+    "./dep": {
+      "default": "./dep.d.ts"
+    },
     "./window": {
       "default": "./window.d.ts"
     }
