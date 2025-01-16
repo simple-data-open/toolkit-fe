@@ -36,7 +36,7 @@ export const mapSlots = (
 
   const _slot = views[slot.view]?.[slot.slot];
 
-  if (_slot) {
+  if (!_slot) {
     console.error(`Miss slot ${slot.view} ${slot.slot}`);
   }
 

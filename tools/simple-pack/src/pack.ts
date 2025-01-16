@@ -34,7 +34,7 @@ export const formatWebpackConfig = async (): Promise<Configuration> => {
       color: '#9ff552',
     }),
     new CompressionPlugin({
-      threshold: 12800, // 对大于 128kb 的文件进行压缩
+      threshold: 6400, // 对大于 64kb 的文件进行压缩
     }),
   ];
   return {
