@@ -209,7 +209,7 @@ export async function debug() {
     let hasRegisted = false;
 
     const reload = debounce(() => {
-      ws?.emit('extension-reload', { name: manifest.name });
+      ws?.emit('extension-reload', manifest);
     }, 100);
 
     compiler.watch({}, err => {
