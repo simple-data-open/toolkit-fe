@@ -1,5 +1,12 @@
 # @simple-data-open/simple-pack
 
+## 0.0.7
+
+### Patch Changes
+
+- 37c5951: 重载 socket 发送完整信息
+  - @simple-data-open/utils@0.0.3
+
 ## 0.0.6
 
 ### Patch Changes

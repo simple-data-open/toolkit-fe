@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.7
+
+### Patch Changes
+
+- de38e23: 修复 类型
+
 ## 0.0.6
 
 ### Patch Changes
