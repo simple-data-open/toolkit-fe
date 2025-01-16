@@ -218,7 +218,9 @@ export async function debug() {
       } else if (!hasRegisted) {
         hasRegisted = true;
         ws = io(`${manifest.debug?.serve}`);
-        ws.emit('extension-connect', manifest);
+        ws.on('connect', () => {
+          ws?.emit('extension-connect', manifest);
+        });
       } else {
         reload();
       }
