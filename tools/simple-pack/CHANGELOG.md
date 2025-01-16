@@ -1,5 +1,11 @@
 # @simple-data-open/simple-pack
 
+## 0.0.8
+
+### Patch Changes
+
+- 48fdfb9: 修复 socket 重连
+
 ## 0.0.7
 
 ### Patch Changes
