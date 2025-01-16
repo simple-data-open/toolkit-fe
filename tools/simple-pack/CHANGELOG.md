@@ -1,5 +1,11 @@
 # @simple-data-open/simple-pack
 
+## 0.0.6
+
+### Patch Changes
+
+- f3381f0: 修复 externals 获取
+
 ## 0.0.5
 
 ### Patch Changes
