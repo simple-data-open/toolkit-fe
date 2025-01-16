@@ -23,16 +23,16 @@ declare global {
       };
       docks: {
         editor?: {
-          css: boolean;
-          slots: {
-            canvas: SlotCanvas['slot'][];
-            share: SlotShare['slot'][];
+          css?: boolean;
+          slots?: {
+            canvas?: SlotCanvas['slot'][];
+            share?: SlotShare['slot'][];
           };
         };
         reader?: {
-          css: boolean;
-          slots: {
-            canvas: SlotCanvas['slot'][];
+          css?: boolean;
+          slots?: {
+            canvas?: SlotCanvas['slot'][];
           };
         };
       };
