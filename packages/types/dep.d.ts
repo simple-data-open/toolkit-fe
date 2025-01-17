@@ -3,8 +3,8 @@ declare global {
     interface DepModel {
       name: string;
       version: string;
-      schema_version: string;
-      hasCss: boolean;
+      schema: string;
+      css: boolean;
       dependences?: Record<string, string> | null;
     }
   }

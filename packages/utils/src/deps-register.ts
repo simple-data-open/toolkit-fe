@@ -110,8 +110,8 @@ export function getDepsCssUrl({
     if (!info) {
       return;
     }
-    const { hasCss, dependences } = info;
-    if (hasCss) {
+    const { css, dependences } = info;
+    if (css) {
       links.push(formatDepCssUrl({ baseUrl, name, version }));
     }
 
