@@ -22,10 +22,10 @@
     "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
   },
   "dependencies": {
-    "@fastify/cors": "^10.0.1",
-    "@types/node": "^22.10.2",
+    "@fastify/cors": "^10.0.2",
+    "@types/node": "^22.10.7",
     "commander": "^12.1.0",
-    "fastify": "^5.1.0",
+    "fastify": "^5.2.1",
     "fastify-socket.io": "^5.1.0",
     "kleur": "^4.1.5",
     "socket.io": "^4.8.1"

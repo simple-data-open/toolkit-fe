@@ -1,7 +1,7 @@
 import {
+  ExtensionAdapter,
   ExtensionAdapterInterface,
   ExtensionAdapterOptions,
-  ExtensionAdatpter,
 } from '@simple-data-open/adapter';
 
 import { render } from 'solid-js/web';
@@ -9,7 +9,7 @@ import { render } from 'solid-js/web';
 import { Widget } from './widget';
 
 export class WidgetExtension
-  extends ExtensionAdatpter
+  extends ExtensionAdapter
   implements ExtensionAdapterInterface
 {
   private dispose: () => void = () => undefined;

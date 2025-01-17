@@ -24,11 +24,11 @@
   "devDependencies": {
     "@simple-data-open/simple-pack": "workspace:^",
     "@simple-data-open/types": "workspace:^",
-    "babel-loader": "^9.1.3",
+    "babel-loader": "^9.2.1",
     "babel-preset-solid": "^1.9.3",
     "eslint-plugin-solid": "^0.14.5",
     "source-map-loader": "^5.0.0",
-    "ts-loader": "^9.5.1"
+    "ts-loader": "^9.5.2"
   },
   "publishConfig": {
     "access": "restricted"
