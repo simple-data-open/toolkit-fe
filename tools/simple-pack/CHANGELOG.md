@@ -1,5 +1,12 @@
 # @simple-data-open/simple-pack
 
+## 0.0.9
+
+### Patch Changes
+
+- Updated dependencies [b877936]
+  - @simple-data-open/utils@0.0.4
+
 ## 0.0.8
 
 ### Patch Changes

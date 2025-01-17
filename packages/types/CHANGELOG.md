@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.8
+
+### Patch Changes
+
+- b877936: 优化类型数据
+
 ## 0.0.7
 
 ### Patch Changes
