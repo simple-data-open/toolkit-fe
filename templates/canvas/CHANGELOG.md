@@ -1,5 +1,11 @@
 # simple-data-open-template-canvas
 
+## 0.0.6
+
+### Patch Changes
+
+- 更新模板
+
 ## 0.0.5
 
 ### Patch Changes

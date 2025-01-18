@@ -1,6 +1,6 @@
 {
   "name": "simple-data-open-template-canvas",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": true,
   "description": "",
   "keywords": [],
@@ -12,18 +12,16 @@
     "check": "bunx tsc --noEmit --project tsconfig.json",
     "dev": "simple-pack serve",
     "preinstall": "npx only-allow pnpm",
-    "lint": "bun run check && bun run lint:fix",
-    "lint:fix": "bun ../../scripts/lint-changed.js",
-    "lint:force": "bun run check && bunx eslint --config ./eslint.config.mjs ./src --fix"
+    "lint": "bun run check && bunx eslint --config ./eslint.config.mjs ./src --fix"
   },
   "dependencies": {
-    "@simple-data-open/adapter": "workspace:^",
+    "@simple-data-open/adapter": "0.0.5",
     "solid-i18n": "1.1.0",
     "solid-js": "1.9.3"
   },
   "devDependencies": {
-    "@simple-data-open/simple-pack": "workspace:^",
-    "@simple-data-open/types": "workspace:^",
+    "@simple-data-open/simple-pack": "0.0.9",
+    "@simple-data-open/types": "0.0.8",
     "babel-loader": "^9.2.1",
     "babel-preset-solid": "^1.9.3",
     "eslint-plugin-solid": "^0.14.5",
