@@ -22,7 +22,8 @@
     "start:tools": "pm2 start tools.ecosystem.config.cjs",
     "stop:pkg": "pm2 stop pkg.ecosystem.config.cjs",
     "stop:temp": "pm2 stop temp.ecosystem.config.cjs",
-    "stop:tools": "pm2 stop tools.ecosystem.config.cjs"
+    "stop:tools": "pm2 stop tools.ecosystem.config.cjs",
+    "up:open": "pnpm update '@simple-data-open/*' --latest -r"
   },
   "lint-staged": {
     "*.{ts,tsx,css,mjs,json,yaml,md}": [

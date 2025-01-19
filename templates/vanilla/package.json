@@ -1,0 +1,70 @@
+{
+  "name": "simple-data-open-template-vanilla",
+  "version": "0.0.6",
+  "private": true,
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "scripts": {
+    "build": "simple-pack build",
+    "check": "bunx tsc --noEmit --project tsconfig.json",
+    "dev": "simple-pack serve",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "bun run check && bunx eslint --config ./eslint.config.mjs ./src --fix"
+  },
+  "dependencies": {
+    "@simple-data-open/adapter": "0.0.5"
+  },
+  "devDependencies": {
+    "@simple-data-open/simple-pack": "0.0.9",
+    "@simple-data-open/types": "0.0.8",
+    "babel-loader": "^9.2.1",
+    "source-map-loader": "^5.0.0",
+    "ts-loader": "^9.5.2"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "simpleManifest": {
+    "debug": {
+      "protocol": "http://",
+      "hostname": "localhost",
+      "port": 10010,
+      "serve": "ws://192.168.50.41:9999"
+    },
+    "engines": {
+      "simple": "1.0.0"
+    },
+    "locales": {
+      "zh_CN": {
+        "title": "画布插件模板",
+        "description": "画布插件模板"
+      },
+      "en_US": {
+        "title": "Panel",
+        "description": "Panel"
+      }
+    },
+    "dependences": {},
+    "docks": {
+      "editor": {
+        "css": true,
+        "slots": {
+          "canvas": [
+            "widget"
+          ]
+        }
+      },
+      "reader": {
+        "css": true,
+        "slots": {
+          "canvas": [
+            "widget"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -2,11 +2,11 @@
 import { program } from 'commander';
 import kleur from 'kleur';
 
-import { build, debug } from './pack.js';
+import { analyze, build, debug } from './pack.js';
 
 program
   .command('build')
-  .description('Build Extension.')
+  .description('Build library for systemjs.')
   .action(async () => {
     process.env.NODE_ENV = 'production';
     try {
@@ -21,6 +21,14 @@ program
       );
       process.exit(1);
     }
+  });
+
+program
+  .command('analyze')
+  .description('Analyze bundle')
+  .action(() => {
+    process.env.NODE_ENV = 'production';
+    analyze();
   });
 
 program

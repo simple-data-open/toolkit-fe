@@ -45,7 +45,7 @@ function printAfterRefresh() {
 }
 
 export async function serve({ port = 9999 }: { port: number }) {
-  await app.register(FastifySoketIO, {
+  await app.register(FastifySoketIO as any, {
     cors: {
       origin: '*',
     },

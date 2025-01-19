@@ -5,6 +5,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { createRequire } from 'module';
 import { Socket, io } from 'socket.io-client';
 import webpack, { Configuration } from 'webpack';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import WebpackDevServer from 'webpack-dev-server';
 import { merge } from 'webpack-merge';
 import WebpackBar from 'webpackbar';
@@ -18,9 +19,15 @@ import {
   writeBundleManifest,
 } from './utils.js';
 
+interface ConfigOptions {
+  analysis?: boolean;
+}
+
 const require = createRequire(import.meta.url);
 
-export const formatWebpackConfig = async (): Promise<Configuration> => {
+export const formatWebpackConfig = async (
+  options: ConfigOptions = { analysis: false },
+): Promise<Configuration> => {
   const isProd = process.env.NODE_ENV === 'production';
   const manifest = await getManifest();
   const entry = await getEntries();
@@ -37,6 +44,16 @@ export const formatWebpackConfig = async (): Promise<Configuration> => {
       threshold: 6400, // 对大于 64kb 的文件进行压缩
     }),
   ];
+
+  if (options?.analysis) {
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static', // 'static' 可生成 HTML 文件
+        openAnalyzer: true, // 构建完成后自动打开
+      }),
+    );
+  }
+
   return {
     stats: {
       all: false,
@@ -151,15 +168,17 @@ export const formatWebpackConfig = async (): Promise<Configuration> => {
   };
 };
 
-async function getWebpackConfig() {
-  const baseWebpackConfig = await formatWebpackConfig();
+async function getWebpackConfig(
+  options?: ConfigOptions,
+): Promise<Configuration> {
+  const baseWebpackConfig = await formatWebpackConfig(options);
   const customWebpackConfig = await getCustomWebpackConfig();
 
   return merge(baseWebpackConfig, customWebpackConfig);
 }
 
-async function execTask(): Promise<string> {
-  const webpackConfig = await getWebpackConfig();
+async function execTask(options?: ConfigOptions): Promise<string> {
+  const webpackConfig = await getWebpackConfig(options);
 
   return new Promise((resolve, reject) => {
     const compiler = webpack(webpackConfig);
@@ -241,6 +260,15 @@ export async function build() {
     await writeBundleManifest();
 
     process.exit(0);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
+
+export async function analyze() {
+  try {
+    await execTask({ analysis: true });
   } catch (error) {
     console.log(error);
     process.exit(1);

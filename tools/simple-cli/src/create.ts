@@ -18,6 +18,52 @@ interface CommandOptions {
   name: string;
 }
 
+const downloadOptions: DownloadGiteeOptions = {
+  owner: 'simple-data-open', // Gitee 用户/组织
+  repo: 'toolkit-fe', // 仓库名
+  branch: 'main', // 分支 (也可能是 'master')
+  // giteeToken: 'xxxx'       // 如果需要下载私有仓库或加速，可填写
+};
+
+/**
+ * 获取模板列表
+ * @param templatePath - 模板路径
+ * @options - 仓库参数（owner、repo、branch、giteeToken）
+ */
+export async function getTemplateList() {
+  const { owner, repo, branch = 'main', giteeToken } = downloadOptions;
+  const apiUrl = `https://gitee.com/api/v5/repos/${owner}/${repo}/contents/templates?ref=${branch}`;
+
+  // 如果有 Token，就添加到请求头
+  const headers: Record<string, string> = {};
+  if (giteeToken) {
+    headers.Authorization = `token ${giteeToken}`;
+  }
+
+  console.log(`Fetching: ${apiUrl}`);
+  const res = await fetch(apiUrl, { headers }); // 使用 Node.js 18+ 原生 fetch
+  if (!res.ok) {
+    throw new Error(
+      `Gitee API 请求失败。status = ${res.status}, statusText = ${res.statusText}`,
+    );
+  }
+
+  // Gitee 返回的目录内容
+  // 结构与 GitHub 类似: [{ name, path, type, download_url }, ...]
+  const items: Array<{
+    name: string;
+    path: string;
+    type: 'file' | 'dir';
+    download_url: string | null;
+  }> = await res.json();
+
+  // 如果不是数组，说明当前路径不是目录
+  if (!Array.isArray(items)) {
+    throw new Error('指定路径不是一个有效目录: tempaltes');
+  }
+  return items.filter(item => item.type === 'dir').map(item => item.name);
+}
+
 /**
  * 从 Gitee 获取指定 path 的目录/文件列表，并将内容下载到本地
  * @param currentPath - 仓库内需要下载的目录路径
@@ -113,18 +159,12 @@ export async function downloadGiteeDirectory({
 /**
  * 示例使用
  */
-export async function create(options: { name: string }) {
+export async function create(options: { name: string; template: string }) {
   try {
     // 指定要下载的 Gitee 仓库信息
-    const downloadOptions: DownloadGiteeOptions = {
-      owner: 'simple-data-open', // Gitee 用户/组织
-      repo: 'toolkit-fe', // 仓库名
-      branch: 'main', // 分支 (也可能是 'master')
-      // giteeToken: 'xxxx'       // 如果需要下载私有仓库或加速，可填写
-    };
 
     // 指定要下载的仓库目录，如 "templates/canvas" 等
-    const remotePath = 'templates/canvas';
+    const remotePath = `templates/${options.template}`;
 
     // 指定下载到本地的目录
     const localPath = path.resolve(options.name);

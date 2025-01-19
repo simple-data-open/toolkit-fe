@@ -13,6 +13,10 @@
     "./deps-register": {
       "import": "./lib/deps-register.js",
       "types": "./lib/deps-register.d.ts"
+    },
+    "./extension": {
+      "import": "./lib/extension.js",
+      "types": "./lib/extension.d.ts"
     }
   },
   "module": "lib/index.js",

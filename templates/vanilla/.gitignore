@@ -1,0 +1,16 @@
+node_modules
+
+# Editor directories and files
+.vscode/*
+.idea
+.DS_Store
+
+# cache
+.eslintcache
+tsconfig.tsbuildinfo
+.wireit
+
+# bunlder
+lib
+bin
+dist

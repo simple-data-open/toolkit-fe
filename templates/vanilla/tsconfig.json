@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",
+    "types": ["@simple-data-open/types"],
+    "module": "ESNext",
     "outDir": "lib",
     "strict": true,
     "allowJs": true,
@@ -15,17 +16,14 @@
     "strictPropertyInitialization": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "rootDir": "./src",
     "newLine": "lf",
-    "declaration": true,
-    "declarationDir": "lib",
     "incremental": false,
     "target": "ES2020",
-    "useUnknownInCatchVariables": false,
-    "types": ["node", "@simple-data-open/types"]
+    "useUnknownInCatchVariables": false
   },
   "exclude": ["./node_modules"],
-  "include": ["src/**/*.ts", "types/**/*.d.ts"]
+  "include": ["src"]
 }

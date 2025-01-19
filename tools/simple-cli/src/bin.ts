@@ -1,9 +1,12 @@
 #!/usr/bin/env node
+import { validateName } from '@simple-data-open/utils/extension';
+
 import { program } from 'commander';
+import inquirer from 'inquirer';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
-import { create } from './create.js';
+import { create, getTemplateList } from './create.js';
 import { serve } from './serve.js';
 
 const pkg = JSON.parse(
@@ -20,9 +23,40 @@ program
   .description('Create simple data extension project.')
   .option('-n, --name <name>', 'Project name')
   .action(async function (options) {
-    if (!options.name) {
-      throw new Error('Project name is required.');
+    if (!options.name || validateName(options.name).code === 1) {
+      const answers = await inquirer.prompt([
+        {
+          type: 'input',
+          name: 'name',
+          message: 'Project name',
+          validate: function (_value) {
+            const value = _value.trim();
+            const status = validateName(value);
+            if (status.code === 1) {
+              console.error(status.message);
+              return false;
+            } else {
+              return true;
+            }
+          },
+        },
+      ]);
+      options.name = answers.name;
     }
+
+    const templates = await getTemplateList();
+
+    const answers = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'template',
+        message: 'Template name',
+        default: templates[0],
+        choices: templates,
+      },
+    ]);
+    options.template = answers.template;
+
     await create(options);
   });
 
