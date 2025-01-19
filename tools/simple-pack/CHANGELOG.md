@@ -1,5 +1,13 @@
 # @simple-data-open/simple-pack
 
+## 0.0.10
+
+### Patch Changes
+
+- 1721248: 调整 cli 以及模板
+- Updated dependencies [1721248]
+  - @simple-data-open/utils@0.0.5
+
 ## 0.0.9
 
 ### Patch Changes

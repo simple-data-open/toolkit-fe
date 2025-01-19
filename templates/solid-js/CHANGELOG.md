@@ -1,5 +1,11 @@
 # simple-data-open-template-canvas
 
+## 0.0.7
+
+### Patch Changes
+
+- 1721248: 调整 cli 以及模板
+
 ## 0.0.6
 
 ### Patch Changes

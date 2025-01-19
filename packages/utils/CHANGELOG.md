@@ -1,5 +1,11 @@
 # @simple-data-open/utils
 
+## 0.0.5
+
+### Patch Changes
+
+- 1721248: 调整 cli 以及模板
+
 ## 0.0.4
 
 ### Patch Changes
