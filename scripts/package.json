@@ -1,9 +1,13 @@
 {
   "name": "@simple-data-open/scripts",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "keywords": [],
   "license": "ISC",
   "author": "",
-  "type": "module"
+  "type": "module",
+  "publishConfig": {
+    "access": "restricted"
+  }
 }
