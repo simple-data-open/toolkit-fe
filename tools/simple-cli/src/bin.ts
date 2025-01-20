@@ -6,12 +6,23 @@ import inquirer from 'inquirer';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
+import {
+  encrypt,
+  getConfig,
+  initializeConfig,
+  saveConfig,
+  storeToken,
+} from './config';
 import { create, getTemplateList } from './create';
 import { serve } from './serve';
 
 const pkg = JSON.parse(
   readFileSync(path.join(import.meta.dirname, '../package.json'), 'utf-8'),
 );
+
+initializeConfig(pkg.name);
+
+const activeEnv = getConfig(pkg.name).active;
 
 program
   .name(pkg.name)
@@ -70,6 +81,99 @@ program
   )
   .action(async function (options) {
     await serve(options);
+  });
+
+program
+  .command('config')
+  .description('Set config store.')
+  .option('--env <env>', 'Environment name dev/test/prod', 'dev')
+  .option('--url <url>', 'Environment url', 'http://localhost:3000')
+  .option('--list -l', 'Config settings list')
+  .action(options => {
+    const config = getConfig(pkg.name);
+
+    if (options.list) {
+      console.log(JSON.stringify(config, null, 2));
+      process.exit(0);
+    }
+
+    if (options.env) {
+      config.active = options.env;
+    }
+
+    if (options.url) {
+      const _env = options.env || config.envs[options.env];
+      config.envs[_env].url = options.url;
+    }
+
+    saveConfig(pkg.name, config);
+
+    console.log('Config saved.');
+    console.log(JSON.stringify(config, null, 2));
+    process.exit(0);
+  });
+
+program
+  .command('login')
+  .description('Login to use environment start development.')
+  .option('--env <env>', 'Environment name dev/test/prod', activeEnv)
+  .action(async options => {
+    const answers = await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'username',
+        message: 'username:',
+        validate: function (_value) {
+          if (!_value) {
+            console.error('请输入用户名');
+            return false;
+          } else {
+            return true;
+          }
+        },
+      },
+      {
+        type: 'password',
+        name: 'password',
+        message: 'password:',
+        mask: '*', // 显示掩码符号，比如 "*"
+      },
+    ]);
+
+    const config = getConfig(pkg.name);
+
+    const active = options.env || config.active;
+    const url = `${config.envs[active].url}/api/auth/login`;
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: answers.username,
+        password: encrypt(answers.password, active),
+      }),
+    });
+    const result = await res.headers.get('set-cookie');
+
+    const cookies = (result || '').split('; ');
+    let token = '';
+
+    for (const cookie of cookies) {
+      const [key, value] = cookie.split('=');
+      if (key === 'token') {
+        token = value;
+      }
+    }
+
+    if (!token) {
+      console.error('登录失败');
+      process.exit(1);
+    }
+    storeToken(pkg.name, active, token);
+
+    process.exit(0);
   });
 
 program

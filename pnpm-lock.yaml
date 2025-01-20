@@ -100,8 +100,8 @@ importers:
   templates/solid-js:
     dependencies:
       '@simple-data-open/adapter':
-        specifier: 0.0.5
-        version: 0.0.5
+        specifier: 0.0.6
+        version: 0.0.6
       solid-i18n:
         specifier: 1.1.0
         version: 1.1.0(solid-js@1.9.3)
@@ -110,8 +110,8 @@ importers:
         version: 1.9.3
     devDependencies:
       '@simple-data-open/simple-pack':
-        specifier: 0.0.10
-        version: 0.0.10(@types/node@22.10.7)(postcss@8.5.1)
+        specifier: 0.0.11
+        version: 0.0.11(@types/node@22.10.7)(postcss@8.5.1)
       '@simple-data-open/types':
         specifier: 0.0.8
         version: 0.0.8
@@ -134,12 +134,12 @@ importers:
   templates/vanilla:
     dependencies:
       '@simple-data-open/adapter':
-        specifier: 0.0.5
-        version: 0.0.5
+        specifier: 0.0.6
+        version: 0.0.6
     devDependencies:
       '@simple-data-open/simple-pack':
-        specifier: 0.0.10
-        version: 0.0.10(@types/node@22.10.7)(postcss@8.5.1)
+        specifier: 0.0.11
+        version: 0.0.11(@types/node@22.10.7)(postcss@8.5.1)
       '@simple-data-open/types':
         specifier: 0.0.8
         version: 0.0.8
@@ -199,14 +199,17 @@ importers:
         specifier: ^10.0.2
         version: 10.0.2
       '@simple-data-open/utils':
-        specifier: 0.0.5
-        version: 0.0.5
+        specifier: 0.0.6
+        version: link:../../packages/utils
       '@types/node':
         specifier: ^22.10.7
         version: 22.10.7
       commander:
         specifier: ^12.1.0
         version: 12.1.0
+      env-paths:
+        specifier: ^3.0.0
+        version: 3.0.0
       fastify:
         specifier: ^5.2.1
         version: 5.2.1
@@ -225,10 +228,10 @@ importers:
     devDependencies:
       '@simple-data-open/easy-tsc':
         specifier: 0.0.1
-        version: 0.0.1
+        version: link:../easy-tsc
       '@simple-data-open/types':
         specifier: 0.0.8
-        version: 0.0.8
+        version: link:../../packages/types
       chokidar:
         specifier: ^4.0.3
         version: 4.0.3
@@ -248,8 +251,8 @@ importers:
         specifier: ^7.26.0
         version: 7.26.0(@babel/core@7.26.0)
       '@simple-data-open/utils':
-        specifier: 0.0.5
-        version: 0.0.5
+        specifier: 0.0.6
+        version: 0.0.6
       babel-loader:
         specifier: ^9.2.1
         version: 9.2.1(@babel/core@7.26.0)(webpack@5.97.1)
@@ -2529,10 +2532,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@simple-data-open/adapter@0.0.5':
+  '@simple-data-open/adapter@0.0.6':
     resolution:
       {
-        integrity: sha512-tdG06UccEkTnZYWIuczVrXLmLluhu7X7vzHXGYaKd+SJvKtxf0bVb7Bp6rebyAfzOqxAmPrlWNkstVKd8n1fdQ==,
+        integrity: sha512-68wHjka8cJvBT14FFoIYcguuZCuIrszMg+7VB70yIkI233+dSOHgBekOw2vER8vvy29Rxspz0X8muh6Z8psCCg==,
       }
 
   '@simple-data-open/easy-tsc@0.0.1':
@@ -2542,12 +2545,11 @@ packages:
       }
     hasBin: true
 
-  '@simple-data-open/simple-pack@0.0.10':
+  '@simple-data-open/simple-pack@0.0.11':
     resolution:
       {
-        integrity: sha512-5oWK/5tM1/myS5pDZFO3HSgzVdDVa/gyEfJD2YdaId3c2wwx8gsd6vdXPi1ejHmOk/WG/m6wCHpexk9f7a2jug==,
+        integrity: sha512-807HcZqBH3cNVK7elKEjvhMecyeQ32fvfCEv9Jf4N/2P2Ksn3QYz7E5AkKRu26kRFJ3hueYpXynS5Lx+92yujw==,
       }
-    engines: { pnpm: '>=9.3.0' }
     hasBin: true
 
   '@simple-data-open/types@0.0.8':
@@ -2556,10 +2558,10 @@ packages:
         integrity: sha512-nA0GHH+PitfGDWOcsYvS6Uy+vKzF5JGVc1PGU5T1Tnf7h2ScYdHnMUvOSAuyW/19vNqrhC1L5STTjkCUMQuHuA==,
       }
 
-  '@simple-data-open/utils@0.0.5':
+  '@simple-data-open/utils@0.0.6':
     resolution:
       {
-        integrity: sha512-UcQRVliC7w9QQxn6M8HprEnDD9bsPT6mb1+YlFH+F18Yd4D/t2oBYKAT502Aa4TcnjaJ1bgN8Hc4v7I/PKRYzg==,
+        integrity: sha512-Ip97U4divXyq5u51By5rgDKSd3IY5YL8EDgmSwzPVQz8O9a4Ccfnww7R+4pR72s94ecws+oLWKy3XUA8KkkpSA==,
       }
 
   '@sinclair/typebox@0.27.8':
@@ -4418,6 +4420,13 @@ packages:
         integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==,
       }
     engines: { node: '>=6' }
+
+  env-paths@3.0.0:
+    resolution:
+      {
+        integrity: sha512-dtJUTepzMW3Lm/NPxRf3wP4642UWhjL2sQxc+ym2YMj1m/H2zDNQOlezafzkHwn6sMstjHTwG6iQQsctDW/b1A==,
+      }
+    engines: { node: ^12.20.0 || ^14.13.1 || >=16.0.0 }
 
   environment@1.1.0:
     resolution:
@@ -10597,7 +10606,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.31.0':
     optional: true
 
-  '@simple-data-open/adapter@0.0.5': {}
+  '@simple-data-open/adapter@0.0.6': {}
 
   '@simple-data-open/easy-tsc@0.0.1':
     dependencies:
@@ -10614,12 +10623,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@simple-data-open/simple-pack@0.0.10(@types/node@22.10.7)(postcss@8.5.1)':
+  '@simple-data-open/simple-pack@0.0.11(@types/node@22.10.7)(postcss@8.5.1)':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-json-strings': 7.25.9(@babel/core@7.26.0)
       '@babel/preset-env': 7.26.0(@babel/core@7.26.0)
-      '@simple-data-open/utils': 0.0.5
+      '@simple-data-open/utils': 0.0.6
       babel-loader: 9.2.1(@babel/core@7.26.0)(webpack@5.97.1)
       commander: 12.1.0
       compression-webpack-plugin: 11.1.0(webpack@5.97.1)
@@ -10660,7 +10669,7 @@ snapshots:
 
   '@simple-data-open/types@0.0.8': {}
 
-  '@simple-data-open/utils@0.0.5': {}
+  '@simple-data-open/utils@0.0.6': {}
 
   '@sinclair/typebox@0.27.8': {}
 
@@ -11826,6 +11835,8 @@ snapshots:
   entities@4.5.0: {}
 
   env-paths@2.2.1: {}
+
+  env-paths@3.0.0: {}
 
   environment@1.1.0: {}
 
