@@ -6,8 +6,8 @@ import inquirer from 'inquirer';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
-import { create, getTemplateList } from './create.js';
-import { serve } from './serve.js';
+import { create, getTemplateList } from './create';
+import { serve } from './serve';
 
 const pkg = JSON.parse(
   readFileSync(path.join(import.meta.dirname, '../package.json'), 'utf-8'),

@@ -1,42 +1,41 @@
 {
-  "name": "@simple-data-open/simple-cli",
-  "version": "0.0.3",
-  "description": "Command line tools for simple-data extensions development.",
+  "name": "@simple-data-open/easy-tsc",
+  "version": "0.0.1",
+  "description": "Easy build ts for nodenext.",
   "keywords": [],
   "license": "ISC",
   "author": "",
   "type": "module",
   "bin": {
-    "simple-cli": "lib/bin.js"
+    "easy-tsc": "lib/bin.js"
   },
   "files": [
     "package.json",
     "lib"
   ],
   "scripts": {
-    "build": "easy-tsc build",
+    "build": "premove lib && bunx tsc",
     "check": "bunx tsc --noEmit --project tsconfig.json",
-    "dev": "easy-tsc watch",
+    "dev": "bunx tsc --watch",
     "lint": "bun run check && bun run lint:fix",
     "lint:fix": "eslint --config ../../eslint.config.mjs ./src --cache --quiet --fix",
     "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
   },
   "dependencies": {
-    "@fastify/cors": "^10.0.2",
-    "@simple-data-open/utils": "0.0.6",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "@simple-data-open/types": "0.0.8",
     "@types/node": "^22.10.7",
+    "chokidar": "^4.0.3",
     "commander": "^12.1.0",
-    "fastify": "^5.2.1",
-    "fastify-socket.io": "^5.1.0",
-    "inquirer": "^12.3.2",
     "kleur": "^4.1.5",
-    "socket.io": "^4.8.1"
+    "premove": "^4.0.0",
+    "typescript": "5.7.2"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.2",
-    "@simple-data-open/types": "0.0.8",
-    "chokidar": "^4.0.3",
-    "typescript": "5.7.2"
+    "@types/babel-core": "^6.25.10",
+    "tsup": "^8.3.5"
   },
   "publishConfig": {
     "access": "public"

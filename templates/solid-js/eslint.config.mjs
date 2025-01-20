@@ -1,4 +1,3 @@
-// @ts-check
 import pluginJs from '@eslint/js';
 import * as tsParser from '@typescript-eslint/parser';
 

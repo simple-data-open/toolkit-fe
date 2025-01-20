@@ -1,5 +1,13 @@
 # @simple-data-open/simple-cli
 
+## 0.0.3
+
+### Patch Changes
+
+- fdcd6cf: 移除 tsc 编译
+- Updated dependencies [fdcd6cf]
+  - @simple-data-open/utils@0.0.6
+
 ## 0.0.2
 
 ### Patch Changes

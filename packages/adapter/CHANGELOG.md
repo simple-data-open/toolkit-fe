@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.6
+
+### Patch Changes
+
+- fdcd6cf: 移除 tsc 编译
+
 ## 0.0.5
 
 ### Patch Changes

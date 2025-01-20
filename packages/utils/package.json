@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/utils",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "> TODO: description",
   "license": "ISC",
   "author": "xiaoYown <qzy09101018@sina.com>",
@@ -29,15 +29,16 @@
     "lib"
   ],
   "scripts": {
-    "build": "bunx tsc",
+    "build": "easy-tsc build",
     "check": "bunx tsc --noEmit --project tsconfig.json",
-    "dev": "bunx tsc --watch",
+    "dev": "easy-tsc watch",
     "preinstall": "npx only-allow pnpm",
     "lint": "bun run check && bun run lint:fix",
     "lint:fix": "eslint --config ../../eslint.config.mjs ./src --cache --quiet --fix",
     "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
   },
   "devDependencies": {
+    "@simple-data-open/easy-tsc": "0.0.2",
     "@simple-data-open/types": "^0.0.8",
     "typescript": "5.7.2"
   },

@@ -2,7 +2,7 @@
 import { program } from 'commander';
 import kleur from 'kleur';
 
-import { analyze, build, debug } from './pack.js';
+import { analyze, build, debug } from './pack';
 
 program
   .command('build')

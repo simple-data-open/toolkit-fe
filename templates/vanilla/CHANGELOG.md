@@ -1,5 +1,13 @@
 # simple-data-open-template-canvas
 
+## 0.0.8
+
+### Patch Changes
+
+- fdcd6cf: 移除 tsc 编译
+- Updated dependencies [fdcd6cf]
+  - @simple-data-open/adapter@0.0.6
+
 ## 0.0.7
 
 ### Patch Changes

@@ -22,7 +22,7 @@
     "declaration": true,
     "declarationDir": "lib",
     "incremental": false,
-    "target": "ES2020",
+    "target": "ESNext",
     "useUnknownInCatchVariables": false,
     "moduleResolution": "bundler"
   },
