@@ -46,8 +46,9 @@ const printPath = dir => {
 
 // 判断是否需要添加后缀
 const shouldAddJsExtension = filePath => {
-  return suffixs.some(
-    suffix => filePath.startsWith('.') && !filePath.endsWith(suffix),
+  return (
+    filePath.startsWith('.') &&
+    !suffixs.some(suffix => filePath.endsWith(suffix))
   );
 };
 

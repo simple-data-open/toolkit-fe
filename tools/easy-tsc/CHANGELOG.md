@@ -1,5 +1,11 @@
 # @simple-data-open/easy-tsc
 
+## 0.0.7
+
+### Patch Changes
+
+- 修复后缀判断
+
 ## 0.0.6
 
 ### Patch Changes
