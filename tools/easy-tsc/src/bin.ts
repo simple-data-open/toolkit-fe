@@ -10,6 +10,12 @@ import path from 'node:path';
 
 const program = new Command();
 
+function isCommandInPath(command) {
+  const pathValue = process.env.PATH || '';
+  const paths = pathValue.split(path.delimiter);
+  return paths.some(p => fs.existsSync(path.join(p, command)));
+}
+
 // 读取 tsconfig.json 的 outDir 配置
 const loadOutDirFromTsconfig = () => {
   const tsconfigPath = path.resolve('tsconfig.json');
@@ -101,7 +107,8 @@ const compileFile = srcPath => {
 const generateTypeDefinitions = () => {
   console.log(kleur.yellow('Generating .d.ts files...'));
   try {
-    childProcess.execSync('tsc --emitDeclarationOnly', {
+    const command = isCommandInPath('bunx') ? 'bunx' : 'npx';
+    childProcess.execSync(`${command} tsc --emitDeclarationOnly`, {
       stdio: 'inherit',
     });
     console.log(kleur.green('Type declarations generated.'));

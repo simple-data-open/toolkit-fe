@@ -75,8 +75,8 @@ importers:
   packages/adapter:
     devDependencies:
       '@simple-data-open/easy-tsc':
-        specifier: 0.0.1
-        version: 0.0.1
+        specifier: 0.0.2
+        version: 0.0.2
       typescript:
         specifier: 5.7.2
         version: 5.7.2
@@ -86,8 +86,8 @@ importers:
   packages/utils:
     devDependencies:
       '@simple-data-open/easy-tsc':
-        specifier: 0.0.1
-        version: 0.0.1
+        specifier: 0.0.2
+        version: 0.0.2
       '@simple-data-open/types':
         specifier: ^0.0.8
         version: 0.0.8
@@ -233,8 +233,8 @@ importers:
         version: 4.8.1
     devDependencies:
       '@simple-data-open/easy-tsc':
-        specifier: 0.0.1
-        version: 0.0.1
+        specifier: 0.0.2
+        version: 0.0.2
       '@simple-data-open/types':
         specifier: 0.0.8
         version: 0.0.8
@@ -321,8 +321,8 @@ importers:
         version: 7.0.0(webpack@5.97.1)
     devDependencies:
       '@simple-data-open/easy-tsc':
-        specifier: 0.0.1
-        version: 0.0.1
+        specifier: 0.0.2
+        version: 0.0.2
       '@simple-data-open/types':
         specifier: 0.0.8
         version: 0.0.8
@@ -373,8 +373,8 @@ importers:
         version: 5.7.2
     devDependencies:
       '@simple-data-open/easy-tsc':
-        specifier: 0.0.1
-        version: 0.0.1
+        specifier: 0.0.2
+        version: 0.0.2
 
 packages:
   '@ampproject/remapping@2.3.0':
@@ -2838,10 +2838,10 @@ packages:
         integrity: sha512-68wHjka8cJvBT14FFoIYcguuZCuIrszMg+7VB70yIkI233+dSOHgBekOw2vER8vvy29Rxspz0X8muh6Z8psCCg==,
       }
 
-  '@simple-data-open/easy-tsc@0.0.1':
+  '@simple-data-open/easy-tsc@0.0.2':
     resolution:
       {
-        integrity: sha512-uiixxzGOH8Pm4nt8wxIRIH+JT6yqvAjkWLbwksOYJW2je+GAYb85QHu2R9WfPN/cR6qvTnIXRtyADd1D+rmTqQ==,
+        integrity: sha512-F+fJnFERmrydKWc+sIFNEcZDsR1d1GdwQPyAtuiDaNG59EHchL7jZppvhFRvDhu32scnv2vEDuIQDN5Qug2piA==,
       }
     hasBin: true
 
@@ -11146,9 +11146,11 @@ snapshots:
 
   '@simple-data-open/adapter@0.0.6': {}
 
-  '@simple-data-open/easy-tsc@0.0.1':
+  '@simple-data-open/easy-tsc@0.0.2':
     dependencies:
       '@babel/core': 7.26.0
+      '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.26.0)
+      '@babel/plugin-proposal-decorators': 7.25.9(@babel/core@7.26.0)
       '@babel/preset-env': 7.26.0(@babel/core@7.26.0)
       '@babel/preset-typescript': 7.26.0(@babel/core@7.26.0)
       '@simple-data-open/types': 0.0.8
