@@ -1,5 +1,11 @@
 # @simple-data-open/easy-tsc
 
+## 0.0.5
+
+### Patch Changes
+
+- class 编译修改为 "@babel/plugin-proposal-class-properties"
+
 ## 0.0.4
 
 ### Patch Changes

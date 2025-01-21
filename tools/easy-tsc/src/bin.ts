@@ -83,7 +83,7 @@ const compileFile = srcPath => {
         plugins: [
           addJsExtensionPlugin(),
           ['@babel/plugin-proposal-decorators', { legacy: true }], // 启用装饰器支持
-          '@babel/plugin-proposal-class-properties', // 支持类属性
+          '@babel/plugin-transform-class-properties', // 支持类属性
         ],
       },
       (err, result) => {
