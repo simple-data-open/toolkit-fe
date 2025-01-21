@@ -1,0 +1,42 @@
+{
+  "name": "@simple-data-open/util-pack",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "bin": {
+    "util-pack": "./lib/bin.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "easy-tsc build",
+    "check": "bunx tsc --noEmit --project tsconfig.json",
+    "dev": "easy-tsc watch",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "bun run check && bun run lint:fix",
+    "lint:fix": "eslint --config ../../eslint.config.mjs ./src --cache --quiet --fix",
+    "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
+  },
+  "dependencies": {
+    "@babel/preset-env": "7.26.0",
+    "@babel/preset-typescript": "7.26.0",
+    "@rollup/plugin-babel": "6.0.4",
+    "@rollup/plugin-commonjs": "28.0.1",
+    "@rollup/plugin-node-resolve": "15.3.0",
+    "@rollup/plugin-typescript": "12.1.1",
+    "@types/node": "22.10.1",
+    "commander": "12.1.0",
+    "kleur": "^4.1.5",
+    "ora": "^8.1.1",
+    "rollup": "4.28.1",
+    "rollup-plugin-cleaner": "1.0.0",
+    "typescript": "5.7.2"
+  },
+  "devDependencies": {
+    "@simple-data-open/easy-tsc": "0.0.1"
+  }
+}
