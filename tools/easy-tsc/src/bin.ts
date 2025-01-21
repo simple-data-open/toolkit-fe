@@ -36,21 +36,18 @@ const printPath = dir => {
   return color(dir.replace(path.resolve() + '/', ''));
 };
 
-// 默认 Babel 配置，添加文件后缀处理
-const defaultBabelConfig = () => ({
-  presets: [
-    ['@babel/preset-env', { targets: { node: 'current' }, modules: false }],
-    '@babel/preset-typescript',
-  ],
-  plugins: [
-    ['./babel-plugin-add-js-extension', { srcDir: SRC_DIR }], // 自定义插件处理 .js 后缀
-  ],
-});
-
 // 自定义 Babel 插件
 const addJsExtensionPlugin = () => ({
   visitor: {
     ImportDeclaration(path) {
+      const source = path.node.source.value;
+      if (source.startsWith('.') && !source.endsWith('.js')) {
+        path.node.source.value += '.js';
+      }
+    },
+    ExportDeclaration(path) {
+      if (!path.node.source) return;
+
       const source = path.node.source.value;
       if (source.startsWith('.') && !source.endsWith('.js')) {
         path.node.source.value += '.js';
@@ -69,7 +66,20 @@ const compileFile = srcPath => {
   return new Promise((resolve, reject) => {
     babel.transformFile(
       srcPath,
-      { ...defaultBabelConfig(), plugins: [addJsExtensionPlugin()] },
+      {
+        presets: [
+          [
+            '@babel/preset-env',
+            { targets: { node: 'current' }, modules: false },
+          ],
+          '@babel/preset-typescript',
+        ],
+        plugins: [
+          addJsExtensionPlugin(),
+          ['@babel/plugin-proposal-decorators', { legacy: true }], // 启用装饰器支持
+          '@babel/plugin-proposal-class-properties', // 支持类属性
+        ],
+      },
       (err, result) => {
         if (err) {
           console.error(`Error compiling ${printPath(srcPath)} (ESM):`, err);
