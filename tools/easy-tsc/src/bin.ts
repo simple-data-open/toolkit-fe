@@ -8,6 +8,8 @@ import childProcess from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { suffixs } from './suffix.js';
+
 const program = new Command();
 
 function isCommandInPath(command) {
@@ -42,12 +44,19 @@ const printPath = dir => {
   return color(dir.replace(path.resolve() + '/', ''));
 };
 
+// 判断是否需要添加后缀
+const shouldAddJsExtension = filePath => {
+  return suffixs.some(
+    suffix => filePath.startsWith('.') && !filePath.endsWith(suffix),
+  );
+};
+
 // 自定义 Babel 插件
 const addJsExtensionPlugin = () => ({
   visitor: {
     ImportDeclaration(path) {
       const source = path.node.source.value;
-      if (source.startsWith('.') && !source.endsWith('.js')) {
+      if (shouldAddJsExtension(source)) {
         path.node.source.value += '.js';
       }
     },
@@ -55,7 +64,7 @@ const addJsExtensionPlugin = () => ({
       if (!path.node.source) return;
 
       const source = path.node.source.value;
-      if (source.startsWith('.') && !source.endsWith('.js')) {
+      if (shouldAddJsExtension(source)) {
         path.node.source.value += '.js';
       }
     },
