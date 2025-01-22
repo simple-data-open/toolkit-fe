@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/util-pack",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "keywords": [],
   "license": "ISC",
@@ -37,7 +37,7 @@
     "typescript": "5.7.2"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.2"
+    "@simple-data-open/easy-tsc": "0.0.8"
   },
   "publishConfig": {
     "access": "public"

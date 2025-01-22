@@ -1,5 +1,11 @@
 # @simple-data-open/easy-tsc
 
+## 0.0.8
+
+### Patch Changes
+
+- 2a29581: 优化 easy-tsc 构建
+
 ## 0.0.7
 
 ### Patch Changes

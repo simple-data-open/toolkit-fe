@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/utils",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "> TODO: description",
   "license": "ISC",
   "author": "xiaoYown <qzy09101018@sina.com>",
@@ -38,7 +38,7 @@
     "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.2",
+    "@simple-data-open/easy-tsc": "0.0.8",
     "@simple-data-open/types": "^0.0.8",
     "typescript": "5.7.2"
   },

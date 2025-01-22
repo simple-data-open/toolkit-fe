@@ -1,5 +1,13 @@
 # @simple-data-open/simple-cli
 
+## 0.0.5
+
+### Patch Changes
+
+- 2a29581: 优化 easy-tsc 构建
+- Updated dependencies [2a29581]
+  - @simple-data-open/utils@0.0.7
+
 ## 0.0.4
 
 ### Patch Changes
