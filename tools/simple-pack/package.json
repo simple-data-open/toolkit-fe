@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/simple-pack",
-  "version": "0.0.12",
+  "version": "0.0.16",
   "description": "",
   "keywords": [],
   "license": "ISC",
@@ -26,7 +26,7 @@
     "@babel/core": "^7.26.0",
     "@babel/plugin-transform-json-strings": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
-    "@simple-data-open/utils": "0.0.6",
+    "@simple-data-open/utils": "0.0.11",
     "babel-loader": "^9.2.1",
     "commander": "^12.1.0",
     "compression-webpack-plugin": "^11.1.0",
@@ -49,7 +49,7 @@
     "webpackbar": "^7.0.0"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.8",
+    "@simple-data-open/easy-tsc": "0.0.14",
     "@simple-data-open/types": "0.0.8",
     "@types/node": "^20.17.14"
   },

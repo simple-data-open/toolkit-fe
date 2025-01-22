@@ -33,9 +33,11 @@ function addJsExtensionToImports(filePath: string): void {
       if (moduleSpecifier && ts.isStringLiteral(moduleSpecifier)) {
         const modulePath = moduleSpecifier.text;
 
+        // 判断是否内部模块
+        const isInternal = modulePath.startsWith('.');
         // 如果模块路径已经包含后缀，跳过
         const hasSuffix = suffixs.some(suffix => modulePath.endsWith(suffix));
-        if (hasSuffix) {
+        if (!isInternal || hasSuffix) {
           return;
         }
 

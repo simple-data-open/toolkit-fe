@@ -1,5 +1,29 @@
 # @simple-data-open/utils
 
+## 0.0.11
+
+### Patch Changes
+
+- 未更新依赖构建打包修复
+
+## 0.0.10
+
+### Patch Changes
+
+- 修复路径判断
+
+## 0.0.9
+
+### Patch Changes
+
+- 修复路径判断
+
+## 0.0.8
+
+### Patch Changes
+
+- 修复路径判断
+
 ## 0.0.7
 
 ### Patch Changes

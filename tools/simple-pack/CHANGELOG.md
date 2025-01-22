@@ -1,5 +1,37 @@
 # @simple-data-open/simple-pack
 
+## 0.0.16
+
+### Patch Changes
+
+- 未更新依赖构建打包修复
+- Updated dependencies
+  - @simple-data-open/utils@0.0.11
+
+## 0.0.15
+
+### Patch Changes
+
+- 修复路径判断
+- Updated dependencies
+  - @simple-data-open/utils@0.0.10
+
+## 0.0.14
+
+### Patch Changes
+
+- 修复路径判断
+- Updated dependencies
+  - @simple-data-open/utils@0.0.9
+
+## 0.0.13
+
+### Patch Changes
+
+- 修复路径判断
+- Updated dependencies
+  - @simple-data-open/utils@0.0.8
+
 ## 0.0.12
 
 ### Patch Changes
