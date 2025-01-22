@@ -1,1 +1,4 @@
-pnpm lint-staged
+bun run format
+bun run lint
+git add .
+

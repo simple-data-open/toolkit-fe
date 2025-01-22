@@ -61,12 +61,12 @@ function runESLint(_files) {
   // }
 
   const command = `bunx eslint${isExistConfigFile ? ' --config ./eslint.config.mjs' : ''} ${files.join(' ')} --cache --quiet --fix`;
-  const printWorkspacePath = files.map(
-    file => '[changed]: ' + resolve(file).replace(`${workspaceDirectory}/`, ''),
-  );
+  // const printWorkspacePath = files.map(
+  //   file => '[changed]: ' + resolve(file).replace(`${workspaceDirectory}/`, ''),
+  // );
 
-  console.log('Running ESLint on the following files:\n');
-  console.log(printWorkspacePath.join('\n'));
+  // console.log('Running ESLint on the following files:\n');
+  // console.log(printWorkspacePath.join('\n'));
   try {
     execSync(command, { encoding: 'utf-8', stdio: 'inherit' });
   } catch (error) {
