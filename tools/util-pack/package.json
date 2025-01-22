@@ -13,9 +13,9 @@
     "lib"
   ],
   "scripts": {
-    "build": "easy-tsc build",
+    "build": "tsc && easy-tsc append",
     "check": "bunx tsc --noEmit --project tsconfig.json",
-    "dev": "easy-tsc watch",
+    "dev": "tsc --watch & easy-tsc watch",
     "preinstall": "npx only-allow pnpm",
     "lint": "bun run check && bun run lint:fix",
     "lint:fix": "eslint --config ../../eslint.config.mjs ./src --cache --quiet --fix",

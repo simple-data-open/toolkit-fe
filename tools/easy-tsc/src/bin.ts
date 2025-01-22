@@ -1,217 +1,148 @@
 #!/usr/bin/env node
-import babel from '@babel/core';
-
 import chokidar from 'chokidar';
 import { Command } from 'commander';
+import fs from 'fs';
 import kleur from 'kleur';
-import childProcess from 'node:child_process';
-import fs from 'node:fs';
-import path from 'node:path';
+import ora from 'ora';
+import path from 'path';
+import ts from 'typescript';
 
 import { suffixs } from './suffix.js';
 
-const program = new Command();
+const spinner = ora();
 
-function isCommandInPath(command) {
-  const pathValue = process.env.PATH || '';
-  const paths = pathValue.split(path.delimiter);
-  return paths.some(p => fs.existsSync(path.join(p, command)));
-}
-
-// 读取 tsconfig.json 的 outDir 配置
-const loadOutDirFromTsconfig = () => {
-  const tsconfigPath = path.resolve('tsconfig.json');
-  if (fs.existsSync(tsconfigPath)) {
-    const tsconfig = JSON.parse(fs.readFileSync(tsconfigPath, 'utf8'));
-    return tsconfig?.compilerOptions?.outDir || 'lib';
-  }
-  return 'lib';
-};
-
-const OUT_DIR = path.resolve(loadOutDirFromTsconfig());
-const SRC_DIR = path.resolve('src');
-
-// 删除目标目录
-const removeOutDir = () => {
-  if (fs.existsSync(OUT_DIR)) {
-    fs.rmSync(OUT_DIR, { recursive: true, force: true });
-    console.log(kleur.strikethrough().red(`Removed directory: ${OUT_DIR}`));
-  }
-};
-
-const printPath = dir => {
-  const color = new RegExp(SRC_DIR).test(dir) ? kleur.green : kleur.blue;
-  return color(dir.replace(path.resolve() + '/', ''));
-};
-
-// 判断是否需要添加后缀
-const shouldAddJsExtension = filePath => {
-  return (
-    filePath.startsWith('.') &&
-    !suffixs.some(suffix => filePath.endsWith(suffix))
+/**
+ * 为导入语句添加 .js 后缀
+ * @param filePath 文件路径
+ */
+function addJsExtensionToImports(filePath: string): void {
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const sourceFile = ts.createSourceFile(
+    filePath,
+    fileContent,
+    ts.ScriptTarget.Latest,
+    true,
   );
-};
 
-// 自定义 Babel 插件
-const addJsExtensionPlugin = () => ({
-  visitor: {
-    ImportDeclaration(path) {
-      const source = path.node.source.value;
-      if (shouldAddJsExtension(source)) {
-        path.node.source.value += '.js';
-      }
-    },
-    ExportDeclaration(path) {
-      if (!path.node.source) return;
+  let result = '';
+  let lastPos = 0;
 
-      const source = path.node.source.value;
-      if (shouldAddJsExtension(source)) {
-        path.node.source.value += '.js';
-      }
-    },
-  },
-});
+  function visit(node: ts.Node): void {
+    if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) {
+      const moduleSpecifier = node.moduleSpecifier;
+      if (moduleSpecifier && ts.isStringLiteral(moduleSpecifier)) {
+        const modulePath = moduleSpecifier.text;
 
-// 编译单个文件
-const compileFile = srcPath => {
-  const relativePath = path.relative(SRC_DIR, srcPath);
-  const esmDestPath = path.resolve(
-    OUT_DIR,
-    relativePath.replace(/\.ts$/, '.js'),
-  );
-  return new Promise((resolve, reject) => {
-    babel.transformFile(
-      srcPath,
-      {
-        presets: [
-          [
-            '@babel/preset-env',
-            { targets: { node: 'current' }, modules: false },
-          ],
-          '@babel/preset-typescript',
-        ],
-        plugins: [
-          addJsExtensionPlugin(),
-          ['@babel/plugin-proposal-decorators', { legacy: true }], // 启用装饰器支持
-          '@babel/plugin-transform-class-properties', // 支持类属性
-        ],
-      },
-      (err, result) => {
-        if (err) {
-          console.error(`Error compiling ${printPath(srcPath)} (ESM):`, err);
-          reject(err);
-        } else {
-          fs.mkdirSync(path.dirname(esmDestPath), { recursive: true });
-          fs.writeFileSync(esmDestPath, result?.code || '', 'utf8');
-          console.log(
-            `Compiled (ESM): ${printPath(srcPath)} -> ${printPath(esmDestPath)}`,
-          );
-          resolve(null);
+        // 如果模块路径已经包含后缀，跳过
+        const hasSuffix = suffixs.some(suffix => modulePath.endsWith(suffix));
+        if (hasSuffix) {
+          return;
         }
-      },
-    );
-  });
-};
 
-// 使用 tsc 生成 .d.ts 文件
-const generateTypeDefinitions = () => {
-  console.log(kleur.yellow('Generating .d.ts files...'));
-  try {
-    const command = isCommandInPath('bunx') ? 'bunx' : 'npx';
-    childProcess.execSync(`${command} tsc --emitDeclarationOnly`, {
-      stdio: 'inherit',
-    });
-    console.log(kleur.green('Type declarations generated.'));
-  } catch (error) {
-    console.error(kleur.red('Error generating type declarations:'), error);
-  }
-};
+        // 在模块路径后添加 .js
+        const start = moduleSpecifier.getStart(sourceFile) + 1; // 跳过引号
+        const end = moduleSpecifier.getEnd() - 1; // 跳过引号
 
-// 删除目标文件
-const removeFile = srcPath => {
-  const relativePath = path.relative(SRC_DIR, srcPath);
-  const esmDestPath = path.resolve(
-    OUT_DIR,
-    relativePath.replace(/\.ts$/, '.js'),
-  );
-  const dtsDestPath = esmDestPath.replace(/\.js$/, '.d.ts');
-
-  if (fs.existsSync(esmDestPath)) {
-    fs.unlinkSync(esmDestPath);
-    console.log(`Removed (ESM): ${printPath(esmDestPath)}`);
-  }
-  if (fs.existsSync(dtsDestPath)) {
-    fs.unlinkSync(dtsDestPath);
-    console.log(`Removed (DTS): ${printPath(dtsDestPath)}`);
-  }
-};
-
-// 初始化编译 src 中的所有文件
-const initializeCompile = async () => {
-  const compileDir = async dir => {
-    const files = fs.readdirSync(dir);
-    for (const file of files) {
-      const filePath = path.join(dir, file);
-      const stat = fs.statSync(filePath);
-      if (stat.isDirectory()) {
-        await compileDir(filePath);
-      } else if (filePath.endsWith('.ts')) {
-        await compileFile(filePath);
+        // 将修改后的内容拼接到结果中
+        result += fileContent.slice(lastPos, start);
+        result += `${modulePath}.js`;
+        lastPos = end;
       }
     }
-  };
+    ts.forEachChild(node, visit);
+  }
 
-  console.log(kleur.green('Initializing compilation of all files in src...'));
-  await compileDir(SRC_DIR);
-  generateTypeDefinitions();
-};
+  visit(sourceFile);
+  result += fileContent.slice(lastPos);
+  fs.writeFileSync(filePath, result, 'utf8');
+  spinner.text = `Added .js extension to imports in ${filePath}`;
+}
 
-// 监听文件变化
-const watchFiles = () => {
-  const watcher = chokidar.watch(SRC_DIR, {
+/**
+ * 处理目录中的所有 .js 文件
+ * @param outDir 输出目录
+ */
+function processDirectory(outDir: string): void {
+  const files = fs.readdirSync(outDir);
+
+  files.forEach(file => {
+    const filePath = path.join(outDir, file);
+    const stat = fs.statSync(filePath);
+
+    if (stat.isDirectory()) {
+      processDirectory(filePath); // 递归处理子目录
+    } else if (file.endsWith('.js')) {
+      addJsExtensionToImports(filePath); // 处理 .js 文件
+    }
+  });
+}
+
+/**
+ * 监听目录并处理新生成的 .js 文件
+ * @param outDir 输出目录
+ */
+function watchDirectory(outDir: string): void {
+  const watcher = chokidar.watch(outDir, {
     persistent: true,
-    ignoreInitial: true,
-    ignored: /node_modules/,
+    ignoreInitial: false, // 处理已经存在的文件
   });
 
-  watcher
-    .on('add', async filePath => {
-      if (filePath.endsWith('.ts')) {
-        await compileFile(filePath);
-        generateTypeDefinitions();
-      }
-    })
-    .on('change', async filePath => {
-      if (filePath.endsWith('.ts')) {
-        await compileFile(filePath);
-        generateTypeDefinitions();
-      }
-    })
-    .on('unlink', async filePath => {
-      if (filePath.endsWith('.ts')) {
-        removeFile(filePath);
-      }
-    });
+  watcher.on('add', filePath => {
+    if (filePath.endsWith('.js')) {
+      addJsExtensionToImports(filePath);
+    }
+  });
 
-  console.log(kleur.gray(`Watching for changes in ${SRC_DIR}...`));
-};
+  watcher.on('change', filePath => {
+    if (filePath.endsWith('.js')) {
+      addJsExtensionToImports(filePath);
+    }
+  });
 
-// 命令行处理
+  console.log(kleur.green(`Watching for changes in ${outDir}...`));
+}
+
+/**
+ * 从 tsconfig.json 中读取 outDir
+ */
+function getOutDirFromTsConfig(): string {
+  const tsConfigPath = path.resolve('tsconfig.json');
+  if (!fs.existsSync(tsConfigPath)) {
+    throw new Error('tsconfig.json not found');
+  }
+
+  const tsConfig = JSON.parse(fs.readFileSync(tsConfigPath, 'utf8'));
+  return tsConfig.compilerOptions?.outDir || 'dist';
+}
+
+// 初始化 commander
+const program = new Command();
+
 program
-  .command('build')
-  .description('Compile TypeScript files')
+  .name('easy-tsc')
+  .description('Automatically add .js extension to imports in tsc output');
+
+// append 命令
+program
+  .command('append')
+  .description('Process the entire project and add .js extension to imports')
   .action(() => {
-    removeOutDir();
-    initializeCompile();
+    const outDir = getOutDirFromTsConfig();
+    spinner.start(`Processing ${outDir}...`);
+    processDirectory(outDir);
+    spinner.succeed('Append .js extension to imports in all files');
   });
 
+// watch 命令
 program
   .command('watch')
-  .description('Watch and compile TypeScript files')
+  .description(
+    'Watch for changes in tsc --watch output and add .js extension to imports',
+  )
   .action(() => {
-    removeOutDir();
-    initializeCompile();
-    watchFiles();
+    const outDir = getOutDirFromTsConfig();
+    watchDirectory(outDir);
   });
 
+// 解析命令行参数
 program.parse(process.argv);
