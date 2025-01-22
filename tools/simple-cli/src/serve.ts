@@ -6,6 +6,8 @@ import kleur from 'kleur';
 import os from 'os';
 import { DefaultEventsMap, Socket } from 'socket.io';
 
+import { logger } from './logger';
+
 type SocketClient = Socket<
   DefaultEventsMap,
   DefaultEventsMap,
@@ -23,9 +25,7 @@ const printAddress = (port: number) => {
     if (ifaces[dev]) {
       ifaces[dev].forEach(function (details) {
         if (details.family === 'IPv4') {
-          console.info(
-            '  ' + protocol + details.address + ':' + port.toString(),
-          );
+          logger(protocol + details.address + ':' + port.toString());
         }
       });
     }
@@ -38,9 +38,9 @@ const docks = new Map<string, SocketClient>();
 const extensions = new Map<string, SimpleExtSpace.Manifest>();
 
 function printAfterRefresh() {
-  console.log(kleur.green(`[Extension list] - ${Date().toString()}`));
+  logger(kleur.green(`[Extension list] - ${Date().toString()}`));
   extensions.forEach(ext => {
-    console.log(kleur.yellow('  -'), ext.name, ext.version);
+    logger(kleur.yellow('  -'), ext.name, ext.version);
   });
 }
 
@@ -70,8 +70,8 @@ export async function serve({ port = 9999 }: { port: number }) {
       client.on('extension-reload', data => {
         docks.forEach(dock => {
           dock.emit('extension-reload', data);
-          console.log(kleur.green(`[Reload] - ${Date().toString()}`));
-          console.log(kleur.blue(` - ${data.name}`));
+          logger(kleur.green(`[Reload] - ${Date().toString()}`));
+          logger(kleur.blue(` - ${data.name}`));
         });
       });
 

@@ -1,6 +1,6 @@
 {
   "name": "simple-data-open-template-vanilla",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": true,
   "description": "",
   "keywords": [],
@@ -12,7 +12,8 @@
     "check": "bunx tsc --noEmit --project tsconfig.json",
     "dev": "simple-pack serve",
     "preinstall": "npx only-allow pnpm",
-    "lint": "bun run check && bunx eslint --config ./eslint.config.mjs ./src --fix"
+    "lint": "bun run check && bunx eslint --config ./eslint.config.mjs ./src --fix",
+    "publish": "simple-cli publish"
   },
   "dependencies": {
     "@simple-data-open/adapter": "0.0.6"

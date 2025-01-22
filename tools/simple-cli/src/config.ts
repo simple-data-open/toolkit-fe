@@ -3,6 +3,10 @@ import envPaths from 'env-paths';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
+const pkg = JSON.parse(
+  readFileSync(path.join(import.meta.dirname, '../package.json'), 'utf-8'),
+);
+
 export type EnvType = 'dev' | 'test' | 'prod';
 
 export interface ConfigModel {
@@ -68,25 +72,24 @@ export const defaultConfig: ConfigModel = {
   active: 'dev',
   envs: {
     dev: {
-      url: 'http://localhost:3000',
+      url: 'http://api.simple-data-dev.com',
       token: '',
     },
     test: {
-      url: 'http://localhost:3000',
+      url: 'http://api.simple-data-dev.com',
       token: '',
     },
     prod: {
-      url: 'http://localhost:3000',
+      url: 'http://api.simple-data-dev.com',
       token: '',
     },
   },
 };
 
-const getConfigPath = (name: string) =>
-  path.join(envPaths(name).config, 'config.json');
+const getConfigPath = () => path.join(envPaths(pkg.name).config, 'config.json');
 
-export function initializeConfig(name: string) {
-  const paths = envPaths(name);
+export function initializeConfig() {
+  const paths = envPaths(pkg.name);
 
   const configPath = path.join(paths.config, 'config.json');
   // 判断是否存在 config 目录, 不存在则直接创建
@@ -100,16 +103,26 @@ export function initializeConfig(name: string) {
   }
 }
 
-export function getConfig(name: string): ConfigModel {
-  return JSON.parse(readFileSync(getConfigPath(name), 'utf-8'));
+export function getConfig(): ConfigModel {
+  return JSON.parse(readFileSync(getConfigPath(), 'utf-8'));
 }
 
-export function saveConfig(name: string, config: ConfigModel) {
-  writeFileSync(getConfigPath(name), JSON.stringify(config));
+export function saveConfig(config: ConfigModel) {
+  writeFileSync(getConfigPath(), JSON.stringify(config));
 }
 
-export function storeToken(name: string, env: EnvType, token: string) {
-  const config = getConfig(name);
+export function storeToken(env: EnvType, token: string) {
+  const config = getConfig();
   config.envs[env].token = token;
-  saveConfig(name, config);
+  saveConfig(config);
+}
+
+export function getUrl() {
+  const config = getConfig();
+  return config.envs[config.active].url;
+}
+
+export function getToken() {
+  const config = getConfig();
+  return config.envs[config.active].token;
 }

@@ -3,6 +3,7 @@ import { validateName } from '@simple-data-open/utils/extension';
 
 import { program } from 'commander';
 import inquirer from 'inquirer';
+import kleur from 'kleur';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
@@ -14,15 +15,17 @@ import {
   storeToken,
 } from './config';
 import { create, getTemplateList } from './create';
+import { logger } from './logger';
+import { publish } from './publish';
 import { serve } from './serve';
 
 const pkg = JSON.parse(
   readFileSync(path.join(import.meta.dirname, '../package.json'), 'utf-8'),
 );
 
-initializeConfig(pkg.name);
+initializeConfig();
 
-const activeEnv = getConfig(pkg.name).active;
+const activeEnv = getConfig().active;
 
 program
   .name(pkg.name)
@@ -86,14 +89,16 @@ program
 program
   .command('config')
   .description('Set config store.')
-  .option('--env <env>', 'Environment name dev/test/prod', 'dev')
-  .option('--url <url>', 'Environment url', 'http://localhost:3000')
-  .option('--list -l', 'Config settings list')
+  .option('-e, --env <env>', 'Environment name dev/test/prod', 'dev')
+  .option('-u, --url <url>', 'Environment url', 'http://localhost:3000')
+  .option('-l, --list', 'Config settings list')
   .action(options => {
-    const config = getConfig(pkg.name);
-
+    const config = getConfig();
     if (options.list) {
-      console.log(JSON.stringify(config, null, 2));
+      logger(kleur.red('active'), kleur.blue(`[${config.active}]`));
+      Object.entries(config.envs).forEach(([key, value]) => {
+        logger(kleur.green(key), value.url);
+      });
       process.exit(0);
     }
 
@@ -106,10 +111,8 @@ program
       config.envs[_env].url = options.url;
     }
 
-    saveConfig(pkg.name, config);
+    saveConfig(config);
 
-    console.log('Config saved.');
-    console.log(JSON.stringify(config, null, 2));
     process.exit(0);
   });
 
@@ -140,7 +143,7 @@ program
       },
     ]);
 
-    const config = getConfig(pkg.name);
+    const config = getConfig();
 
     const active = options.env || config.active;
     const url = `${config.envs[active].url}/api/auth/login`;
@@ -171,7 +174,7 @@ program
       console.error('登录失败');
       process.exit(1);
     }
-    storeToken(pkg.name, active, token);
+    storeToken(active, token);
 
     process.exit(0);
   });
@@ -180,7 +183,8 @@ program
   .command('publish')
   .description('Publish library to store.')
   .action(() => {
-    // 检查生成文件列表
+    logger('Publishing...');
+    publish();
   });
 
 program.parse();

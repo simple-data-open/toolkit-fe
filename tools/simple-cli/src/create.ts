@@ -1,5 +1,8 @@
+import kleur from 'kleur';
 import fs from 'node:fs';
 import path from 'node:path';
+
+import { logger } from './logger';
 
 /**
  * Gitee 下载参数
@@ -40,7 +43,6 @@ export async function getTemplateList() {
     headers.Authorization = `token ${giteeToken}`;
   }
 
-  console.log(`Fetching: ${apiUrl}`);
   const res = await fetch(apiUrl, { headers }); // 使用 Node.js 18+ 原生 fetch
   if (!res.ok) {
     throw new Error(
@@ -93,7 +95,7 @@ export async function downloadGiteeDirectory({
     headers.Authorization = `token ${giteeToken}`;
   }
 
-  console.log(`Fetching: ${apiUrl}`);
+  logger(kleur.green(`Fetching: ${apiUrl}`));
   const res = await fetch(apiUrl, { headers }); // 使用 Node.js 18+ 原生 fetch
   if (!res.ok) {
     throw new Error(
@@ -130,10 +132,10 @@ export async function downloadGiteeDirectory({
     } else if (item.type === 'file') {
       // 如果是文件，则下载
       if (!item.download_url) {
-        console.warn(`找不到文件下载地址: ${item.path}`);
+        logger(kleur.yellow(`找不到文件下载地址: ${item.path}`));
         continue;
       }
-      console.log(`Downloading file: ${item.path}`);
+      logger(kleur.gray(`Downloading file: ${item.path}`));
 
       const fileRes = await fetch(item.download_url, { headers });
       if (!fileRes.ok) {
@@ -177,8 +179,8 @@ export async function create(options: { name: string; template: string }) {
       cmdOptions: options,
     });
 
-    console.log('下载完成！');
+    logger(kleur.green('下载完成！'));
   } catch (error) {
-    console.error(`下载失败: ${(error as Error).message}`);
+    logger(kleur.red(`下载失败: ${(error as Error).message}`));
   }
 }

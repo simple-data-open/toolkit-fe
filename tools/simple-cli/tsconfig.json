@@ -24,7 +24,7 @@
     "incremental": false,
     "target": "ESNext",
     "useUnknownInCatchVariables": false,
-    "types": ["node", "@simple-data-open/types"]
+    "types": ["@simple-data-open/types"]
   },
   "exclude": ["./node_modules"],
   "include": ["src/**/*.ts", "types/**/*.d.ts"]

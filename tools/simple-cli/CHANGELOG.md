@@ -1,5 +1,11 @@
 # @simple-data-open/simple-cli
 
+## 0.0.4
+
+### Patch Changes
+
+- 添加发布命令
+
 ## 0.0.3
 
 ### Patch Changes
