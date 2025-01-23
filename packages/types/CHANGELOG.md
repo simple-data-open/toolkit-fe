@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.9
+
+### Patch Changes
+
+- debug 类型分离, 方便外部使用
+
 ## 0.0.8
 
 ### Patch Changes

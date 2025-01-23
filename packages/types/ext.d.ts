@@ -36,16 +36,17 @@ declare global {
           };
         };
       };
-      debug?: {
-        /** 开发环境协议： https:\/\/, http:\/\/ */
-        protocol: string;
-        /** 开发环境主机名 localhost, 127.0.0.1 */
-        hostname: string;
-        /** 插件运行端口 */
-        port: number;
-        /** 调试服务地址: simple-cli ws 服务地址 */
-        serve: string;
-      };
+      debug?: Debug;
+    }
+    interface Debug {
+      /** 开发环境协议： https:\/\/, http:\/\/ */
+      protocol: string;
+      /** 开发环境主机名 localhost, 127.0.0.1 */
+      hostname: string;
+      /** 插件运行端口 */
+      port: number;
+      /** 调试服务地址: simple-cli ws 服务地址 */
+      serve: string;
     }
     type Manifest = Omit<ManifestOriginal, 'dependences'> & {
       name: string;

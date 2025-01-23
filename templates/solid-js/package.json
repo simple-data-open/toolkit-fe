@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@simple-data-open/simple-pack": "0.0.16",
-    "@simple-data-open/types": "0.0.8",
+    "@simple-data-open/types": "0.0.9",
     "babel-loader": "^9.2.1",
     "babel-preset-solid": "^1.9.3",
     "eslint-plugin-solid": "^0.14.5",
