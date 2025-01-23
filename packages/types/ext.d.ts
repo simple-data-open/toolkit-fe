@@ -47,6 +47,8 @@ declare global {
       port: number;
       /** 调试服务地址: simple-cli ws 服务地址 */
       serve: string;
+      /** 插件更新标识 */
+      stamp?: string;
     }
     type Manifest = Omit<ManifestOriginal, 'dependences'> & {
       name: string;

@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.10
+
+### Patch Changes
+
+- 添加更新标志
+
 ## 0.0.9
 
 ### Patch Changes

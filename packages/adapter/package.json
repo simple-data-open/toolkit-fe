@@ -30,7 +30,7 @@
     "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.15",
+    "@simple-data-open/easy-tsc": "0.0.16",
     "typescript": "5.7.2"
   },
   "publishConfig": {
