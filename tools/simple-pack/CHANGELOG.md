@@ -1,5 +1,11 @@
 # @simple-data-open/simple-pack
 
+## 0.0.17
+
+### Patch Changes
+
+- 传递更新标志
+
 ## 0.0.16
 
 ### Patch Changes

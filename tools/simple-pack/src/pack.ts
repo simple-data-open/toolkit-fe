@@ -3,6 +3,7 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import debounce from 'debounce';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { createRequire } from 'module';
+import { nanoid } from 'nanoid';
 import { Socket, io } from 'socket.io-client';
 import webpack, { Configuration } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
@@ -238,6 +239,9 @@ export async function debug() {
         hasRegisted = true;
         ws = io(`${manifest.debug?.serve}`);
         ws.on('connect', () => {
+          if (manifest.debug) {
+            manifest.debug.stamp = nanoid(4);
+          }
           ws?.emit('extension-connect', manifest);
         });
       } else {
