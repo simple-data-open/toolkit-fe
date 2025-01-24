@@ -1,5 +1,11 @@
 # @simple-data-open/simple-pack
 
+## 0.0.19
+
+### Patch Changes
+
+- c29dc99: 修复热更 stamp 更新
+
 ## 0.0.18
 
 ### Patch Changes
