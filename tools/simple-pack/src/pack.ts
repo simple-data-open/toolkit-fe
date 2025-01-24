@@ -1,9 +1,11 @@
 import CompressionPlugin from 'compression-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import debounce from 'debounce';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { createRequire } from 'module';
 import { nanoid } from 'nanoid';
+import * as path from 'path';
 import { Socket, io } from 'socket.io-client';
 import webpack, { Configuration } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
@@ -11,6 +13,7 @@ import WebpackDevServer from 'webpack-dev-server';
 import { merge } from 'webpack-merge';
 import WebpackBar from 'webpackbar';
 
+import { ASSETS_DIR } from './constants.js';
 import {
   getCustomWebpackConfig,
   getEntries,
@@ -55,6 +58,20 @@ export const formatWebpackConfig = async (
     );
   }
 
+  if (isProd) {
+    plugins.push(
+      // @ts-expect-error: 插件类型错误
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(ASSETS_DIR),
+            to: path.resolve(outputDir, ASSETS_DIR),
+          },
+        ],
+      }),
+    );
+  }
+
   return {
     stats: {
       all: false,
@@ -71,7 +88,7 @@ export const formatWebpackConfig = async (
       path: outputDir,
       libraryTarget: 'system',
       clean: true,
-      publicPath: isProd ? undefined : `/${manifest.name}/${manifest.version}/`,
+      publicPath: `/${manifest.name}/${manifest.version}/`,
     },
     devServer: {
       hot: false,
@@ -84,6 +101,10 @@ export const formatWebpackConfig = async (
         'Access-Control-Allow-Methods': '*',
         // 'Access-Control-Allow-Headers':
         //   'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild',
+      },
+      static: {
+        publicPath: `/${manifest.name}/${manifest.version}/${ASSETS_DIR}`,
+        directory: path.resolve(ASSETS_DIR),
       },
     },
     optimization: {

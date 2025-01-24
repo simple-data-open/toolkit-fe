@@ -8,9 +8,9 @@
   "type": "module",
   "scripts": {
     "build": "pnpm --filter './tools/**' --filter './packages/**' --filter './extensions/**' build",
-    "bump": "changeset add",
-    "bump:v": "changeset version",
-    "commit": "git-cz",
+    "bump": "bunx changeset add",
+    "bump:v": "bunx changeset version",
+    "commit": "bunx changeset add && git-cz",
     "format": "prettier . --write --cache --list-different \"**/*.{ts,tsx,css,json,cjs.js}\"",
     "preinstall": "npx only-allow pnpm",
     "lint": "pnpm --filter './tools/**' --filter './packages/**' --filter './extensions/**' lint",
