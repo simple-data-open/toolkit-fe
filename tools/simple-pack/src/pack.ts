@@ -250,6 +250,9 @@ export async function debug() {
     let hasRegisted = false;
 
     const reload = debounce(() => {
+      if (manifest.debug) {
+        manifest.debug.stamp = nanoid(4);
+      }
       ws?.emit('extension-reload', manifest);
     }, 100);
 
