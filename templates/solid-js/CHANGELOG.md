@@ -1,5 +1,11 @@
 # simple-data-open-template-canvas
 
+## 0.0.11
+
+### Patch Changes
+
+- c2e5713: pack 工具添加静态资源路径
+
 ## 0.0.10
 
 ### Patch Changes

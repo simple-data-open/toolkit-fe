@@ -1,5 +1,11 @@
 # @simple-data-open/simple-pack
 
+## 0.0.18
+
+### Patch Changes
+
+- c2e5713: pack 工具添加静态资源路径
+
 ## 0.0.17
 
 ### Patch Changes

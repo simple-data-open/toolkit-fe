@@ -11,6 +11,7 @@
     "bump": "bunx changeset add",
     "bump:v": "bunx changeset version",
     "commit": "bunx changeset add && git-cz",
+    "commit:pure": "git-cz",
     "format": "prettier . --write --cache --list-different \"**/*.{ts,tsx,css,json,cjs.js}\"",
     "preinstall": "npx only-allow pnpm",
     "lint": "pnpm --filter './tools/**' --filter './packages/**' --filter './extensions/**' lint",
