@@ -9,6 +9,7 @@ declare global {
       slot: 'general';
     }
     interface ManifestOriginal {
+      icon?: string;
       engines: {
         connector: '0.0.0';
       };

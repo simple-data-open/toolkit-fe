@@ -29,6 +29,7 @@
     "access": "restricted"
   },
   "simpleManifest": {
+    "icon": "assets/icon.svg",
     "debug": {
       "protocol": "http://",
       "hostname": "localhost",
