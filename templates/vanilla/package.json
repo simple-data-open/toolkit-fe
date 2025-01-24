@@ -1,6 +1,6 @@
 {
   "name": "simple-data-open-template-vanilla",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "private": true,
   "description": "",
   "keywords": [],
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@simple-data-open/simple-pack": "0.0.18",
-    "@simple-data-open/types": "0.0.10",
+    "@simple-data-open/types": "0.0.11",
     "babel-loader": "^9.2.1",
     "source-map-loader": "^5.0.0",
     "ts-loader": "^9.5.2"

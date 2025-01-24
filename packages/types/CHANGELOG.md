@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.11
+
+### Patch Changes
+
+- d06d358: 添加 icon 字段
+
 ## 0.0.10
 
 ### Patch Changes

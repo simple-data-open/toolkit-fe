@@ -1,5 +1,11 @@
 # simple-data-open-template-canvas
 
+## 0.0.13
+
+### Patch Changes
+
+- d06d358: 添加 icon 字段
+
 ## 0.0.12
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @simple-data-open/easy-tsc
 
+## 0.0.17
+
+### Patch Changes
+
+- Updated dependencies [d06d358]
+  - @simple-data-open/types@0.0.11
+
 ## 0.0.16
 
 ### Patch Changes
