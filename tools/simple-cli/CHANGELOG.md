@@ -1,5 +1,11 @@
 # @simple-data-open/simple-cli
 
+## 0.0.10
+
+### Patch Changes
+
+- cli create 时重置版本号
+
 ## 0.0.9
 
 ### Patch Changes

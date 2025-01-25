@@ -150,6 +150,7 @@ export async function downloadGiteeDirectory({
       if (item.name === 'package.json') {
         const pkg = JSON.parse(fileBuffer.toString());
         pkg.name = cmdOptions.name;
+        pkg.version = '0.0.0';
         fs.writeFileSync(localFilePath, JSON.stringify(pkg, null, 2));
       } else {
         fs.writeFileSync(localFilePath, fileBuffer);
