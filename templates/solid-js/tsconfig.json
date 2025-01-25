@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["@simple-data-open/types"],
+    "types": ["@simple-data-open/types", "./types/customize.d.ts"],
     "module": "ESNext",
     "outDir": "lib",
     "strict": true,

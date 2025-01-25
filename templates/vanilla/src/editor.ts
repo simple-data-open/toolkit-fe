@@ -4,6 +4,7 @@ import {
   ExtensionAdapterOptions,
 } from '@simple-data-open/adapter';
 
+import { generateWidgetCustomizeData } from './customize';
 import { mount } from './widget';
 
 export class WidgetExtension
@@ -35,4 +36,10 @@ export const mapSlots = (
   }
 
   return _slot;
+};
+
+export const mapCustomizeData = (name: string) => {
+  return {
+    widget: generateWidgetCustomizeData,
+  }[name];
 };

@@ -6,6 +6,7 @@ import {
 
 import { render } from 'solid-js/web';
 
+import { generateWidgetCustomizeData } from './customize';
 import { Widget } from './widget';
 
 export class WidgetExtension
@@ -41,4 +42,10 @@ export const mapSlots = (
   }
 
   return _slot;
+};
+
+export const mapCustomizeData = (name: string) => {
+  return {
+    widget: generateWidgetCustomizeData,
+  }[name];
 };
