@@ -38,8 +38,8 @@
     "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.17",
-    "@simple-data-open/types": "^0.0.11",
+    "@simple-data-open/easy-tsc": "0.0.18",
+    "@simple-data-open/types": "^0.0.12",
     "typescript": "5.7.2"
   },
   "publishConfig": {

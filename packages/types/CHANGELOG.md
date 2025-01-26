@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.12
+
+### Patch Changes
+
+- 15cdc7b: 调整 manifest slot
+
 ## 0.0.11
 
 ### Patch Changes

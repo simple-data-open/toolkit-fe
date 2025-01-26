@@ -1,5 +1,11 @@
 # @simple-data-open/simple-cli
 
+## 0.0.11
+
+### Patch Changes
+
+- debd1ae: cli create 时重制版本号
+
 ## 0.0.10
 
 ### Patch Changes
