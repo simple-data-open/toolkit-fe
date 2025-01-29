@@ -17,7 +17,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "newLine": "lf",
-    "skipLibCheck": true,
+    "skipLibCheck": false,
     // 交给 eslint 检查
     "noUnusedLocals": false,
     "noUnusedParameters": false

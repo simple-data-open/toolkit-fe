@@ -1,0 +1,52 @@
+{
+  "name": "@simple-data-open/min-dom",
+  "version": "0.0.0",
+  "description": "A library for lightweight operation of DOM",
+  "license": "ISC",
+  "author": "xiaoYown <qzy09101018@sina.com>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./jsx": {
+      "types": "./types/jsx.d.ts"
+    },
+    "./jsx-runtime": {
+      "types": "./lib/jsx-runtime.d.ts",
+      "default": "./lib/jsx-runtime.js"
+    },
+    "./jsx-dev-runtime": {
+      "types": "./lib/jsx-runtime.d.ts",
+      "default": "./lib/jsx-runtime.js"
+    }
+  },
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "types": "types"
+  },
+  "files": [
+    "package.json",
+    "lib",
+    "types"
+  ],
+  "scripts": {
+    "build": "tsc && easy-tsc append",
+    "check": "bunx tsc --noEmit --project tsconfig.json",
+    "dev": "tsc --watch & easy-tsc watch",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "bun run check && bun run lint:fix",
+    "lint:fix": "eslint --config ../../eslint.config.mjs ./src --cache --quiet --fix",
+    "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
+  },
+  "devDependencies": {
+    "@simple-data-open/easy-tsc": "0.0.18",
+    "typescript": "5.7.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

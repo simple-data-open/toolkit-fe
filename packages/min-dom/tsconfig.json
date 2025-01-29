@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "rootDir": "./src",
+    "outDir": "lib",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "jsxImportSource": "./src",
+    "declaration": true,
+    "declarationDir": "lib",
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "moduleResolution": "bundler",
+    "types": ["./types/jsx.d.ts"]
+  },
+  "exclude": ["./node_modules", "lib"],
+  "extends": "../../tsconfig.base.json",
+  "include": ["src"]
+}
