@@ -19,9 +19,8 @@ function isIntrinsicElement(
 function hyperscript<K extends keyof JSX.IntrinsicElements>(
   tag: K | HyperscriptFunc<K>,
   props: JSX.IntrinsicElements[K] | null,
-  ...children: JSX.Child
+  ...children: JSX.Child[]
 ): JSX.IntrinsicElement<K> {
-  console.log(tag, children);
   if (typeof tag === 'function') {
     // 函数调用
     return tag(props, ...children);
@@ -79,6 +78,9 @@ function hyperscript<K extends keyof JSX.IntrinsicElements>(
       return value as string;
     },
     remove: () => element.remove(),
+    style: (style: Partial<CSSStyleDeclaration>) => {
+      Object.assign(element.style, style);
+    },
     __H__,
   };
 }

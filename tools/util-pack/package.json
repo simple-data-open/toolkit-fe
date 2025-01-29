@@ -1,8 +1,12 @@
 {
   "name": "@simple-data-open/util-pack",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:simple-data-open/toolkit-fe.git"
+  },
   "license": "ISC",
   "author": "",
   "type": "module",
@@ -37,7 +41,7 @@
     "typescript": "5.7.2"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.18"
+    "@simple-data-open/easy-tsc": "0.0.19"
   },
   "publishConfig": {
     "access": "public"

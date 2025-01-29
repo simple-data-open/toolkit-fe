@@ -1,8 +1,12 @@
 {
   "name": "@simple-data-open/easy-tsc",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Easy build ts for nodenext.",
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:simple-data-open/toolkit-fe.git"
+  },
   "license": "ISC",
   "author": "",
   "type": "module",
@@ -27,7 +31,7 @@
     "@babel/plugin-transform-class-properties": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-typescript": "^7.26.0",
-    "@simple-data-open/types": "0.0.12",
+    "@simple-data-open/types": "0.0.13",
     "@types/node": "^22.10.7",
     "chokidar": "^4.0.3",
     "commander": "^12.1.0",

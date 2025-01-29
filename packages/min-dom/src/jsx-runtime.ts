@@ -9,7 +9,7 @@ function jsx(tag, props) {
   );
 }
 const Fragment = (props: any, ...children: JSX.Child[]) => {
-  return h('Fragment', props, children);
+  return h('Fragment', props, ...children);
 };
 
 export { jsx, jsx as jsxs, jsx as jsxDEV, Fragment };

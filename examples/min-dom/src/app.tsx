@@ -9,6 +9,14 @@ const logo = (
   </a>
 );
 
+setInterval(() => {
+  const backgroundColor =
+    `${Math.random().toString(16).replace('0.', '#')}`.slice(0, 7);
+  counter.style({
+    backgroundColor,
+  });
+}, 1000);
+
 export const app = (
   <>
     {logo}

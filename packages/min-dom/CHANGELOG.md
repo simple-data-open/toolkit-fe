@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.2
+
+### Patch Changes
+
+- 优化更新
+
 ## 0.0.1
 
 ### Patch Changes

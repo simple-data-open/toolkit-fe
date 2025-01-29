@@ -1,7 +1,11 @@
 {
   "name": "@simple-data-open/types",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:simple-data-open/toolkit-fe.git"
+  },
   "license": "ISC",
   "author": "xiaoYown <qzy09101018@sina.com>",
   "exports": {

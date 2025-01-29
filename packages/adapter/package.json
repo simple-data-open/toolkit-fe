@@ -1,7 +1,11 @@
 {
   "name": "@simple-data-open/adapter",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "> TODO: description",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:simple-data-open/toolkit-fe.git"
+  },
   "license": "ISC",
   "author": "xiaoYown <qzy09101018@sina.com>",
   "type": "module",
@@ -30,7 +34,7 @@
     "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.18",
+    "@simple-data-open/easy-tsc": "0.0.19",
     "typescript": "5.7.2"
   },
   "publishConfig": {

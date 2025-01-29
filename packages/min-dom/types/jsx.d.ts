@@ -178,26 +178,13 @@ declare global {
       animateTransform: SVGAnimateTransformElement;
       set: SVGSetElement;
       view: SVGViewElement;
-      // script: SVGScriptElement;
-      // style: SVGStyleElement;
-      // title: SVGTitleElement;
       metadata: SVGMetadataElement;
     }
-
-    // interface IntrinsicElements
-    //   extends IntrinsicHTMLElements,
-    //     IntrinsicSVGElements {
-    //   //  web component 扩展
-    //   [key: string]: any;
-    // }
 
     interface DomElement extends IntrinsicHTMLElements, IntrinsicSVGElements {
       //  web component 扩展
       [key: string]: any;
     }
-    // interface IntrinsicElements {
-    //   [K: string]: IntrinsicElement<keyof DomElement>;
-    // }
 
     interface IntrinsicElements extends DomElement {
       [key: string]: DomElement[keyof DomElement] & {
@@ -212,20 +199,16 @@ declare global {
         value?: DomElement[K][T],
       ): string | null | void;
       remove(): void;
+      style(style: Partial<CSSStyleDeclaration>): void;
       __H__: symbol;
     }
 
     // 定义返回的 JSX 元素类型
-    type Element = any;
-    // type Element = IntrinsicElements;
-    // interface Element extends DomElement {
-    //   children?: Child;
-    // }
+    type Element = IntrinsicElement<keyof IntrinsicElements>;
 
     // 子节点可以是以下类型
     type Child =
-      | IntrinsicElement<keyof DomElement>
-      | Element
+      | IntrinsicElement<keyof IntrinsicElements>
       | string
       | number
       | boolean

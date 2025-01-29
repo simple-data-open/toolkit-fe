@@ -20,7 +20,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "jsxImportSource": "@simple-data-open/min-dom",
 
     "types": ["@simple-data-open/min-dom"]
