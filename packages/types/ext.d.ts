@@ -13,7 +13,7 @@ declare global {
           description: string;
         };
       };
-      dependences?: {
+      dependencies?: {
         [key: string]: string;
       };
       docks: {
@@ -40,10 +40,10 @@ declare global {
       /** 插件更新标识 */
       stamp?: string;
     }
-    type Manifest = Omit<ManifestOriginal, 'dependences'> & {
+    type Manifest = Omit<ManifestOriginal, 'dependencies'> & {
       name: string;
       version: string;
-      dependences: SimpleDepSpace.DepModel[];
+      dependencies: SimpleDepSpace.DepModel[];
     };
   }
 }

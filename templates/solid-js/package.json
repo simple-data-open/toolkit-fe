@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@simple-data-open/simple-pack": "0.0.20",
-    "@simple-data-open/types": "0.0.13",
+    "@simple-data-open/types": "0.0.14",
     "babel-loader": "^9.2.1",
     "babel-preset-solid": "^1.9.3",
     "eslint-plugin-solid": "^0.14.5",
@@ -52,7 +52,7 @@
         "description": "Panel"
       }
     },
-    "dependences": {
+    "dependencies": {
       "solid-js": "1.9.3",
       "solid-i18n": "1.1.0"
     },

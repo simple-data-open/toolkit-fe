@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.14
+
+### Patch Changes
+
+- 修复字段命名
+
 ## 0.0.13
 
 ### Patch Changes

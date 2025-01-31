@@ -42,10 +42,10 @@ export const transformManifest = async (
   const manifestOriginal =
     pkg.simpleManifest as SimpleExtSpace.ManifestOriginal;
 
-  const dependences = await getDepsRegistrationList({
+  const dependencies = await getDepsRegistrationList({
     // TODO: 需要修改为变量
-    baseUrl: 'http://192.168.50.41:94/dependences',
-    deps: manifestOriginal.dependences || {},
+    baseUrl: 'http://192.168.50.41:94/dependencies',
+    deps: manifestOriginal.dependencies || {},
   });
   const manifest: SimpleExtSpace.Manifest = Object.assign(
     {},
@@ -53,7 +53,7 @@ export const transformManifest = async (
     {
       name: pkg.name,
       version: pkg.version,
-      dependences,
+      dependencies,
     },
   );
 

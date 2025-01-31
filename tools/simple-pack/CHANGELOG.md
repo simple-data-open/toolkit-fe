@@ -1,5 +1,13 @@
 # @simple-data-open/simple-pack
 
+## 0.0.21
+
+### Patch Changes
+
+- 修复字段命名
+- Updated dependencies
+  - @simple-data-open/utils@0.0.13
+
 ## 0.0.20
 
 ### Patch Changes

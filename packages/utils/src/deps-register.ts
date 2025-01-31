@@ -79,8 +79,8 @@ export async function getDepsRegistrationList({
       const dep = result.value;
       if (dep.name && dep.version) {
         registry.push(dep);
-        if (dep.dependences) {
-          Object.assign(nextDeps, dep.dependences);
+        if (dep.dependencies) {
+          Object.assign(nextDeps, dep.dependencies);
         }
       }
     }
@@ -110,13 +110,13 @@ export function getDepsCssUrl({
     if (!info) {
       return;
     }
-    const { css, dependences } = info;
+    const { css, dependencies } = info;
     if (css) {
       links.push(formatDepCssUrl({ baseUrl, name, version }));
     }
 
-    if (dependences) {
-      links.push(...getDepsCssUrl({ baseUrl, deps: dependences, registry }));
+    if (dependencies) {
+      links.push(...getDepsCssUrl({ baseUrl, deps: dependencies, registry }));
     }
   });
 

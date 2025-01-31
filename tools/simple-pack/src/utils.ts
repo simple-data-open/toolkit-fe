@@ -57,10 +57,10 @@ export const getEntries = async (): Promise<Record<string, string>> => {
 };
 
 export const getExternals = async (): Promise<Record<string, string>> => {
-  const { dependences } = await getManifest();
+  const { dependencies } = await getManifest();
   const externals: Record<string, string> = {};
-  if (dependences) {
-    dependences.forEach(({ name, version }) => {
+  if (dependencies) {
+    dependencies.forEach(({ name, version }) => {
       Object.assign(externals, {
         [name]: `${name}@${version}`,
       });

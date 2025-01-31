@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/utils",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "> TODO: description",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@simple-data-open/easy-tsc": "0.0.19",
-    "@simple-data-open/types": "^0.0.13",
+    "@simple-data-open/types": "^0.0.14",
     "typescript": "5.7.2"
   },
   "publishConfig": {

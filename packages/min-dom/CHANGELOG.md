@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.3
+
+### Patch Changes
+
+- 修复字段命名
+
 ## 0.0.2
 
 ### Patch Changes

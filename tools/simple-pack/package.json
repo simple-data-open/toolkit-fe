@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/simple-pack",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "",
   "keywords": [],
   "repository": {
@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@simple-data-open/easy-tsc": "0.0.19",
-    "@simple-data-open/types": "0.0.13",
+    "@simple-data-open/types": "0.0.14",
     "@types/node": "^20.17.14"
   },
   "publishConfig": {

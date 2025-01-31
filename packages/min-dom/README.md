@@ -2,18 +2,31 @@
 
 [example](../../examples/min-dom/)
 
-### tsconfig.json
+### Profile
 
-```tsconfig.json
+```json
+// tsconfig.json
 {
   "compilerOptions": {
     // ...
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "jsxImportSource": "@simple-data-open/min-dom",
     "types": ["@simple-data-open/min-dom"]
     // ...
   }
 }
+```
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  esbuild: {
+    jsxImportSource: '@simple-data-open/min-dom',
+    jsx: 'automatic',
+  },
+});
 ```
 
 ```tsx

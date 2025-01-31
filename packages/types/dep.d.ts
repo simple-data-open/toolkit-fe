@@ -5,7 +5,7 @@ declare global {
       version: string;
       schema: string;
       css: boolean;
-      dependences?: Record<string, string> | null;
+      dependencies?: Record<string, string> | null;
     }
   }
 }
