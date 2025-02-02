@@ -10,8 +10,7 @@
   "compilerOptions": {
     // ...
     "jsx": "preserve",
-    "jsxImportSource": "@simple-data-open/min-dom",
-    "types": ["@simple-data-open/min-dom"]
+    "jsxImportSource": "@simple-data-open/min-dom"
     // ...
   }
 }
@@ -36,15 +35,21 @@ import viteLogo from '/vite.svg';
 
 export const counter = <button type="button"></button>;
 
-const logo = (
-  <a href="https://vite.dev" target="_blank">
+export const ButtonUmount = (props: { onClick: () => void }) => (
+  <button type="button" onclick={props.onClick}>
+    Unmount
+  </button>
+);
+
+const Logo = (props: { href: string }) => (
+  <a href={props.href} target="_blank">
     <img src={viteLogo} class="logo" alt="Vite logo" />
   </a>
 );
 
-export const app = (
+export const App = () => (
   <>
-    {logo}
+    <Logo href="https://vitejs.dev/" />
     <a href="https://www.typescriptlang.org/" target="_blank">
       <img src={typescriptLogo} class="logo vanilla" alt="TypeScript logo" />
     </a>
@@ -59,13 +64,25 @@ export const app = (
 
 ```ts
 // main.ts
-import './app.tsx';
-import { app, counter } from './app.tsx';
+import { render } from '@simple-data-open/min-dom';
+
+import { App, ButtonUmount, counter } from './app.tsx';
 import { setupCounter } from './counter.ts';
 
 import './style.css';
 
-document.querySelector<HTMLDivElement>('#app')!.appendChild(app.element);
+const unmountApp = render(App, document.querySelector<HTMLDivElement>('#app')!);
+
+const unmountButton = render(
+  () =>
+    ButtonUmount({
+      onClick: () => {
+        unmountApp();
+        unmountButton();
+      },
+    }),
+  document.querySelector<HTMLDivElement>('#app')!,
+);
 
 setupCounter(counter.element);
 ```

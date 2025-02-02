@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.4
+
+### Patch Changes
+
+- Perf tsconfig.json profile, remove h function third param for children
+
 ## 0.0.3
 
 ### Patch Changes

@@ -3,23 +3,21 @@ import viteLogo from '/vite.svg';
 
 export const counter = <button type="button"></button>;
 
-const logo = (
-  <a href="https://vite.dev" target="_blank">
+export const ButtonUmount = (props: { onClick: () => void }) => (
+  <button type="button" onclick={props.onClick}>
+    Unmount
+  </button>
+);
+
+const Logo = (props: { href: string }) => (
+  <a href={props.href} target="_blank">
     <img src={viteLogo} class="logo" alt="Vite logo" />
   </a>
 );
 
-setInterval(() => {
-  const backgroundColor =
-    `${Math.random().toString(16).replace('0.', '#')}`.slice(0, 7);
-  counter.style({
-    backgroundColor,
-  });
-}, 1000);
-
-export const app = (
+export const App = () => (
   <>
-    {logo}
+    <Logo href="https://vitejs.dev/" />
     <a href="https://www.typescriptlang.org/" target="_blank">
       <img src={typescriptLogo} class="logo vanilla" alt="TypeScript logo" />
     </a>
