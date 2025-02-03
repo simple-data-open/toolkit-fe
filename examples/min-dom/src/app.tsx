@@ -3,6 +3,15 @@ import viteLogo from '/vite.svg';
 
 export const counter = <button type="button"></button>;
 
+const handleClick = () => console.log('click');
+
+counter.on('click', handleClick);
+
+counter.on('dblclick', () => {
+  console.log('dblclick');
+  counter.off('click', handleClick);
+});
+
 export const ButtonUmount = (props: { onClick: () => void }) => (
   <button type="button" onclick={props.onClick}>
     Unmount

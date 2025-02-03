@@ -76,6 +76,8 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
       element.setAttribute(attr as string, value as string);
       return value as string;
     },
+    on: element.addEventListener.bind(element),
+    off: element.removeEventListener.bind(element),
     remove: () => element.remove(),
     style: (style: Partial<CSSStyleDeclaration>) => {
       Object.assign(element.style, style);

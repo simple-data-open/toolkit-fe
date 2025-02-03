@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.6
+
+### Patch Changes
+
+- add event listener function
+
 ## 0.0.5
 
 ### Patch Changes

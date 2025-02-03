@@ -196,6 +196,17 @@ export namespace JSX {
       value?: DomElement[K][T],
     ): string | null | void;
     remove(): void;
+    on<K extends keyof HTMLElementEventMap>(
+      type: K,
+      listener: (this: HTMLElement, event: HTMLElementEventMap[K]) => any,
+      options?: boolean | AddEventListenerOptions,
+    ): void;
+    off<K extends keyof HTMLElementEventMap>(
+      type: K,
+      listener: (this: HTMLElement, event: HTMLElementEventMap[K]) => any,
+      options?: boolean | AddEventListenerOptions,
+    ): void;
+
     style(style: Partial<CSSStyleDeclaration>): void;
     __H__: symbol;
   }
