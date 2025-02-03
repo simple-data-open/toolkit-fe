@@ -54,17 +54,15 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
       }
     }
   }
-
+  const isChildNode = (child: any) => typeof child !== 'undefined';
   // 添加子节点
   if (Array.isArray(props.children)) {
     props.children.forEach(child => {
-      if (Array.isArray(child)) {
-        child.forEach(nestedChild => element.appendChild(toNode(nestedChild)));
-      } else if (typeof child !== 'undefined') {
-        element.appendChild(toNode(child));
-      }
+      if (!isChildNode(child)) return;
+
+      element.appendChild(toNode(child));
     });
-  } else {
+  } else if (isChildNode(props.children)) {
     element.appendChild(toNode(props.children));
   }
 
