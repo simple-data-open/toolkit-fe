@@ -1,5 +1,12 @@
 # min-dom
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies
+  - @simple-data-open/min-dom@0.0.8
+
 ## 0.0.4
 
 ### Patch Changes

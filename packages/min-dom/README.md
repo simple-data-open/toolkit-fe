@@ -28,6 +28,36 @@ export default defineConfig({
 });
 ```
 
+```js
+// webpack.config.js
+{
+  module: {
+    rules: [
+      {
+        test: /\.tsx$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: [
+                [
+                  '@babel/plugin-transform-react-jsx',
+                  {
+                    runtime: 'automatic',
+                    importSource: '@simple-data-open/min-dom',
+                  },
+                ],
+              ],
+            },
+          },
+          'ts-loader',
+        ],
+      },
+    ],
+  }
+}
+```
+
 ```tsx
 // app.tsx
 import typescriptLogo from './typescript.svg';
