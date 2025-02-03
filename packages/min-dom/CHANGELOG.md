@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.5
+
+### Patch Changes
+
+- fix svg JSX
+
 ## 0.0.4
 
 ### Patch Changes
