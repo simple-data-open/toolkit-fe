@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.9
+
+### Patch Changes
+
+- 修复 child 类型
+
 ## 0.0.8
 
 ### Patch Changes

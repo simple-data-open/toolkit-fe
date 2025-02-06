@@ -216,7 +216,8 @@ export namespace JSX {
 
   // 子节点可以是以下类型
   type Child =
-    | IntrinsicElement<keyof IntrinsicElements>
+    | Element
+    | HTMLElement
     | string
     | number
     | boolean
