@@ -1,3 +1,5 @@
+import './dep.d.ts';
+
 declare global {
   namespace SimpleExtSpace {
     type Slot = 'widget';

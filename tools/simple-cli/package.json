@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@fastify/cors": "^10.0.2",
-    "@simple-data-open/utils": "0.0.12",
+    "@simple-data-open/utils": "0.0.13",
     "@types/node": "^22.10.7",
     "archiver": "^7.0.1",
     "commander": "^12.1.0",
@@ -44,8 +44,8 @@
     "undici": "^7.2.3"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.19",
-    "@simple-data-open/types": "0.0.14",
+    "@simple-data-open/easy-tsc": "0.0.21",
+    "@simple-data-open/types": "0.0.15",
     "@types/archiver": "^6.0.3",
     "@types/node-fetch": "^2.6.12",
     "@types/semver": "^7.5.8",

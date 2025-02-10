@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.15
+
+### Patch Changes
+
+- 修复类型引用
+
 ## 0.0.14
 
 ### Patch Changes
