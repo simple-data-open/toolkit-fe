@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.16
+
+### Patch Changes
+
+- 避免 manifest 为复杂类型
+
 ## 0.0.15
 
 ### Patch Changes

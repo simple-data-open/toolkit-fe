@@ -55,8 +55,8 @@
     "webpackbar": "^7.0.0"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.21",
-    "@simple-data-open/types": "0.0.15",
+    "@simple-data-open/easy-tsc": "0.0.22",
+    "@simple-data-open/types": "0.0.16",
     "@types/node": "^20.17.14"
   },
   "publishConfig": {

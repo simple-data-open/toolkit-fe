@@ -44,8 +44,8 @@
     "undici": "^7.2.3"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.21",
-    "@simple-data-open/types": "0.0.15",
+    "@simple-data-open/easy-tsc": "0.0.22",
+    "@simple-data-open/types": "0.0.16",
     "@types/archiver": "^6.0.3",
     "@types/node-fetch": "^2.6.12",
     "@types/semver": "^7.5.8",
