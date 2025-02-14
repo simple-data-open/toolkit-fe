@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.13
+
+### Patch Changes
+
+- 插件类型区分
+
 ## 0.0.12
 
 ### Patch Changes
