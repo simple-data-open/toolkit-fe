@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.15
+
+### Patch Changes
+
+- 限制 container 类型
+
 ## 0.0.14
 
 ### Patch Changes

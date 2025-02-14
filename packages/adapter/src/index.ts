@@ -3,7 +3,7 @@
 export interface WidgetAdapterOptions {
   instance: string;
   name: string;
-  container: HTMLElement;
+  container: HTMLDivElement;
 }
 
 export interface WidgetAdapterInterface {
@@ -15,14 +15,14 @@ export interface WidgetAdapterInterface {
 export class WidgetAdapter implements WidgetAdapterInterface {
   public instance: string;
   public name: string;
-  public container: HTMLElement;
+  public container: HTMLDivElement;
 
   /**
    * 创建 WidgetAdapter 的实例。
    * @param {WidgetAdapterOptions} options - 适配器的配置选项。
    * @prop {string} instance - 小部件的实例标识符。
    * @prop {string} name - 小部件的名称。
-   * @prop {HTMLElement} container - 包含小部件的 DOM 元素。
+   * @prop {HTMLDivElement} container - 包含小部件的 DOM 元素。
    */
   constructor(options: WidgetAdapterOptions) {
     this.instance = options.instance;
@@ -41,7 +41,7 @@ export class WidgetAdapter implements WidgetAdapterInterface {
 export interface PropertyAdapterOptions {
   instance: string;
   name: string;
-  container: HTMLElement;
+  container: HTMLDivElement;
   reload?: () => void;
 }
 
@@ -55,14 +55,14 @@ export interface PropertyAdapterInterface {
 export class PropertyAdapter implements PropertyAdapterInterface {
   public instance: string;
   public name: string;
-  public container: HTMLElement;
+  public container: HTMLDivElement;
   public reload?: () => void;
   /**
    * 创建 PropertyAdapter 的实例。
    * @param {PropertyAdapterOptions} options - 适配器的配置选项。
    * @prop {string} instance - 适配器的实例名称。
    * @prop {string} name - 适配器的名称。
-   * @prop {HTMLElement} container - 适配器的容器元素。
+   * @prop {HTMLDivElement} container - 适配器的容器元素。
    */
   constructor(options: PropertyAdapterOptions) {
     this.instance = options.instance;
