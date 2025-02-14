@@ -32,6 +32,8 @@ export class WidgetAdapter implements WidgetAdapterInterface {
 
   public mount = () => {};
   public unmount = () => {};
+
+  public onLangChange?: (_lang: string) => void;
 }
 
 /* property adapter */
@@ -71,4 +73,6 @@ export class PropertyAdapter implements PropertyAdapterInterface {
 
   public mount = () => {};
   public unmount = () => {};
+
+  public onLangChange?: (_lang: string) => void;
 }
