@@ -2,7 +2,7 @@ import './dep.d.ts';
 
 declare global {
   namespace SimpleExtSpace {
-    type Slot = 'widget';
+    type Slot = 'widget' | 'property';
 
     interface ManifestOriginal {
       icon?: string;

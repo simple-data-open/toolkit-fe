@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.17
+
+### Patch Changes
+
+- 添加属性栏 slot
+
 ## 0.0.16
 
 ### Patch Changes
