@@ -42,13 +42,13 @@ export interface PropertyAdapterOptions {
   instance: string;
   name: string;
   container: HTMLDivElement;
-  reload?: () => void;
+  rerender?: () => void;
 }
 
 export interface PropertyAdapterInterface {
   mount: () => void;
   unmount: () => void;
-  reload?: () => void;
+  rerender?: () => void;
   onLangChange?: (_lang: string) => void;
 }
 
@@ -56,7 +56,7 @@ export class PropertyAdapter implements PropertyAdapterInterface {
   public instance: string;
   public name: string;
   public container: HTMLDivElement;
-  public reload?: () => void;
+  public rerender?: () => void;
   /**
    * 创建 PropertyAdapter 的实例。
    * @param {PropertyAdapterOptions} options - 适配器的配置选项。
@@ -68,7 +68,7 @@ export class PropertyAdapter implements PropertyAdapterInterface {
     this.instance = options.instance;
     this.name = options.name;
     this.container = options.container;
-    this.reload = options.reload;
+    this.rerender = options.rerender;
   }
 
   public mount = () => {};

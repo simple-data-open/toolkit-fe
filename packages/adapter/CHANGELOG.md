@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.16
+
+### Patch Changes
+
+- 属性适配器添加 rerender 入参
+
 ## 0.0.15
 
 ### Patch Changes
