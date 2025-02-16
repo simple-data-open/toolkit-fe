@@ -4,6 +4,22 @@ import { svgTags } from './svg';
 
 const __H__ = Symbol.for('hyperscript');
 
+function transformListener(input: string): string {
+  // 移除 'on' 前缀
+  const withoutOn = input.startsWith('on') ? input.slice(2) : input;
+
+  // 将第一个字符转换为小写
+  const firstCharLower = withoutOn.charAt(0).toLowerCase() + withoutOn.slice(1);
+
+  // 将剩余的大写字母转换为 "-" 加上小写字母
+  const transformed = firstCharLower.replace(
+    /[A-Z]/g,
+    match => `-${match.toLowerCase()}`,
+  );
+
+  return transformed;
+}
+
 // 判断 child 是否为 IntrinsicElement
 function isIntrinsicElement(
   child: any,
@@ -42,7 +58,7 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
       if (key.startsWith('on') && typeof props[key] === 'function') {
         // 事件绑定
         element.addEventListener(
-          key.slice(2).toLowerCase(),
+          transformListener(key),
           props[key] as EventListener,
         );
       } else if (key in element) {

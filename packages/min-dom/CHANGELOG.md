@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.10
+
+### Patch Changes
+
+- 修复事件监听转换
+
 ## 0.0.9
 
 ### Patch Changes
