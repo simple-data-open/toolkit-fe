@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.11
+
+### Patch Changes
+
+- 修复 style 赋值
+
 ## 0.0.10
 
 ### Patch Changes

@@ -62,6 +62,17 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
           props[key] as EventListener,
         );
       } else if (key in element) {
+        if (key === 'style') {
+          // 处理 style 属性
+          if (typeof props[key] !== 'string') {
+            for (const styleKey in props[key]) {
+              (element.style as any)[styleKey] = props[key][styleKey];
+            }
+            continue;
+          }
+          element.style.cssText = props[key] as string;
+          continue;
+        }
         // 普通属性
         (element as any)[key] = props[key];
       } else {
