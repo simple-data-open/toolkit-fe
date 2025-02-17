@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.18
+
+### Patch Changes
+
+- 修改 PropertyAdapter, 使用 render 表示返回属性编辑渲染, 更易于理解
+
 ## 0.0.17
 
 ### Patch Changes

@@ -2,47 +2,48 @@
 
 export interface PropertyAdapterOptions {
   /**
-   * 适配器的实例名称。
+   * 适配器的实例名称
    */
   instance: string;
   /**
-   * 适配器的名称。
+   * 适配器的名称
    */
   name: string;
   /**
-   * 适配器的容器元素。
+   * 适配器的容器元素
    */
   container: HTMLDivElement;
   /**
-   * 可选的重新渲染函数，当适配器需要重新渲染时调用。
+   * 可选的重新渲染函数，当适配器需要重新渲染时调用
    */
   rerender?: () => void;
 }
 
 export interface PropertyAdapterInterface<T = any> {
   /**
-   * 挂载适配器到其容器元素中。
+   * 挂载适配器到其容器元素中
    */
   mount: () => void;
   /**
-   * 卸载适配器，清理其容器元素中的内容。
+   * 卸载适配器，清理其容器元素中的内容
    */
   unmount: () => void;
   /**
-   * 可选的重新渲染函数，当适配器需要重新渲染时调用。
+   * 可选的重新渲染函数，当适配器需要重新渲染时调用
    */
   rerender?: () => void;
   /**
-   * 可选的语言变化回调函数，当语言变化时调用。
-   * @param lang - 新的语言代码。
+   * 可选的语言变化回调函数，当语言变化时调用
+   * @param lang - 新的语言代码
    */
   onLangChange?: (lang: string) => void;
   /**
-   * 获取适配器的属性组模型数组
+   * 渲染适配器的属性组
+   * @param widget - 部件实例数据
    *
    * @return {PropertyGroupModel[]} 属性组模型数组
    */
-  geProperties(widget: T): PropertyGroupModel[];
+  render(widget: T): PropertyGroupModel[];
 }
 
 export class PropertyAdapter implements PropertyAdapterInterface {
@@ -51,11 +52,11 @@ export class PropertyAdapter implements PropertyAdapterInterface {
   public container: HTMLDivElement;
   public rerender?: () => void;
   /**
-   * 创建 PropertyAdapter 的实例。
-   * @param {PropertyAdapterOptions} options - 适配器的配置选项。
-   * @prop {string} instance - 适配器的实例名称。
-   * @prop {string} name - 适配器的名称。
-   * @prop {HTMLDivElement} container - 适配器的容器元素。
+   * 创建 PropertyAdapter 的实例
+   * @param {PropertyAdapterOptions} options - 适配器的配置选项
+   * @prop {string} instance - 适配器的实例名称
+   * @prop {string} name - 适配器的名称
+   * @prop {HTMLDivElement} container - 适配器的容器元素
    */
   constructor(options: PropertyAdapterOptions) {
     this.instance = options.instance;
@@ -69,7 +70,7 @@ export class PropertyAdapter implements PropertyAdapterInterface {
 
   public onLangChange?: (_lang: string) => void;
 
-  public geProperties = (_widget: any): PropertyGroupModel[] => [];
+  public render = (_widget: any): PropertyGroupModel[] => [];
 }
 
 /************* BLOCK: PropertyAdapter end *************/
@@ -77,7 +78,7 @@ export class PropertyAdapter implements PropertyAdapterInterface {
 /************* BLOCK: PropertyRenderer start *************/
 
 /**
- * 属性值类型，可以是字符串、数字、布尔值、空值、属性值类型的数组或对象。
+ * 属性值类型，可以是字符串、数字、布尔值、空值、属性值类型的数组或对象
  */
 export type PropertyValueType =
   | string
@@ -88,12 +89,12 @@ export type PropertyValueType =
   | { [key: string | number]: PropertyValueType };
 
 /**
- * 链类型，表示嵌套路径的字符串数组数组。
+ * 链类型，表示嵌套路径的字符串数组数组
  */
 export type ChainType = string[][];
 
 /**
- * 属性基础模型接口，包含名称、链和跨度。
+ * 属性基础模型接口，包含名称、链和跨度
  */
 export interface PropertyRendererModel {
   chain: ChainType;
@@ -102,7 +103,7 @@ export interface PropertyRendererModel {
 }
 
 /**
- * 属性渲染器选项接口，继承自属性基础模型，包含容器、值和更新函数。
+ * 属性渲染器选项接口，继承自属性基础模型，包含容器、值和更新函数
  */
 export interface PropertyRendererOptions extends PropertyRendererModel {
   container: HTMLElement;
@@ -111,12 +112,12 @@ export interface PropertyRendererOptions extends PropertyRendererModel {
 }
 
 /**
- * 渲染类型，可以是 'axis'、'size' 或 PropertyRenderer 类型。
+ * 渲染类型，可以是 'axis'、'size' 或 PropertyRenderer 类型
  */
 export type Render = 'position' | 'layout' | 'color' | typeof PropertyRenderer;
 
 /**
- * 属性组模型接口，包含名称和属性数组。
+ * 属性组模型接口，包含名称和属性数组
  */
 export interface PropertyGroupModel {
   name?: string;
@@ -124,7 +125,7 @@ export interface PropertyGroupModel {
 }
 
 /**
- * 属性渲染器类，用于渲染属性。
+ * 属性渲染器类，用于渲染属性
  */
 export class PropertyRenderer<T = any> {
   public container: HTMLElement;
@@ -135,9 +136,9 @@ export class PropertyRenderer<T = any> {
   public update: (chain: string[], value: PropertyValueType) => boolean;
 
   /**
-   * 构造函数，初始化属性渲染器。
+   * 构造函数，初始化属性渲染器
    *
-   * @param options - 属性渲染器选项。
+   * @param options - 属性渲染器选项
    */
   constructor(options: PropertyRendererOptions) {
     this.container = options.container;
@@ -149,20 +150,20 @@ export class PropertyRenderer<T = any> {
   }
 
   /**
-   * 挂载渲染器。
+   * 挂载渲染器
    */
   public mount = () => {};
 
   /**
-   * 卸载渲染器。
+   * 卸载渲染器
    */
   public unmount = () => {};
 
   /**
-   * 通用 value 修改。
+   * 通用 value 修改
    *
-   * @param param0 - 包含链和值的对象。
-   * @return 是否有变化。
+   * @param param0 - 包含链和值的对象
+   * @return 是否有变化
    */
   public changeValue = ({
     chain,
@@ -182,9 +183,9 @@ export class PropertyRenderer<T = any> {
   };
 
   /**
-   * 指定单一链修改 value。
+   * 指定单一链修改 value
    *
-   * @param data - 包含链和值的对象。
+   * @param data - 包含链和值的对象
    */
   public onValueChange = (data: { chain: string[]; value: any }) => {
     this.changeValue(data);
