@@ -3,6 +3,7 @@ export namespace JSX {
   type MinPartial<T> = Partial<Omit<T, 'children'>> &
     ElementChildrenAttribute & {
       class?: string;
+      style?: Partial<CSSStyleDeclaration>;
     };
   // HTML 的属性支持（继承 TypeScript 内置的类型）
   interface IntrinsicHTMLElements {
