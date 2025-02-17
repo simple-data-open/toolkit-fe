@@ -121,7 +121,7 @@ export type Render = 'position' | 'layout' | 'color' | typeof PropertyRenderer;
  */
 export interface PropertyGroupModel {
   name?: string;
-  properties: (PropertyRendererModel & { render: Render })[];
+  renderers: (PropertyRendererModel & { render: Render })[];
 }
 
 /**

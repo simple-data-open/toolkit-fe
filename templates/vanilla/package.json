@@ -1,6 +1,6 @@
 {
   "name": "simple-data-open-template-vanilla",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "private": true,
   "description": "",
   "keywords": [],
@@ -16,7 +16,7 @@
     "publish": "simple-cli publish"
   },
   "dependencies": {
-    "@simple-data-open/adapter": "0.0.18"
+    "@simple-data-open/adapter": "0.0.19"
   },
   "devDependencies": {
     "@simple-data-open/simple-pack": "0.0.21",

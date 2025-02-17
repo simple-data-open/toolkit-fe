@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.19
+
+### Patch Changes
+
+- 修复 PropertyGroupModel 类型字段
+
 ## 0.0.18
 
 ### Patch Changes
