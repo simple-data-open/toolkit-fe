@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.17
+
+### Patch Changes
+
+- 拆分 adapter 文件, 添加属性面板渲染相关 class/interface/type
+
 ## 0.0.16
 
 ### Patch Changes

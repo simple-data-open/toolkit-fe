@@ -1,78 +1,14 @@
-/* widget adapter */
+export { WidgetAdapter } from './widget';
+export type { WidgetAdapterOptions, WidgetAdapterInterface } from './widget';
 
-export interface WidgetAdapterOptions {
-  instance: string;
-  name: string;
-  container: HTMLDivElement;
-}
-
-export interface WidgetAdapterInterface {
-  mount: () => void;
-  unmount: () => void;
-  onLangChange?: (_lang: string) => void;
-}
-
-export class WidgetAdapter implements WidgetAdapterInterface {
-  public instance: string;
-  public name: string;
-  public container: HTMLDivElement;
-
-  /**
-   * 创建 WidgetAdapter 的实例。
-   * @param {WidgetAdapterOptions} options - 适配器的配置选项。
-   * @prop {string} instance - 小部件的实例标识符。
-   * @prop {string} name - 小部件的名称。
-   * @prop {HTMLDivElement} container - 包含小部件的 DOM 元素。
-   */
-  constructor(options: WidgetAdapterOptions) {
-    this.instance = options.instance;
-    this.name = options.name;
-    this.container = options.container;
-  }
-
-  public mount = () => {};
-  public unmount = () => {};
-
-  public onLangChange?: (_lang: string) => void;
-}
-
-/* property adapter */
-
-export interface PropertyAdapterOptions {
-  instance: string;
-  name: string;
-  container: HTMLDivElement;
-  rerender?: () => void;
-}
-
-export interface PropertyAdapterInterface {
-  mount: () => void;
-  unmount: () => void;
-  rerender?: () => void;
-  onLangChange?: (_lang: string) => void;
-}
-
-export class PropertyAdapter implements PropertyAdapterInterface {
-  public instance: string;
-  public name: string;
-  public container: HTMLDivElement;
-  public rerender?: () => void;
-  /**
-   * 创建 PropertyAdapter 的实例。
-   * @param {PropertyAdapterOptions} options - 适配器的配置选项。
-   * @prop {string} instance - 适配器的实例名称。
-   * @prop {string} name - 适配器的名称。
-   * @prop {HTMLDivElement} container - 适配器的容器元素。
-   */
-  constructor(options: PropertyAdapterOptions) {
-    this.instance = options.instance;
-    this.name = options.name;
-    this.container = options.container;
-    this.rerender = options.rerender;
-  }
-
-  public mount = () => {};
-  public unmount = () => {};
-
-  public onLangChange?: (_lang: string) => void;
-}
+export { PropertyAdapter, PropertyRenderer } from './property';
+export type {
+  PropertyAdapterOptions,
+  PropertyAdapterInterface,
+  PropertyValueType,
+  Render,
+  ChainType,
+  PropertyRendererModel,
+  PropertyRendererOptions,
+  PropertyGroupModel,
+} from './property';
