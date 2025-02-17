@@ -1,6 +1,6 @@
 // 声明 JSX 的命名空间
 export namespace JSX {
-  type MinPartial<T> = Partial<Omit<T, 'children'>> &
+  type MinPartial<T> = Partial<Omit<T, 'children' | 'class' | 'style'>> &
     ElementChildrenAttribute & {
       class?: string;
       style?: Partial<CSSStyleDeclaration>;

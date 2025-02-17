@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.13
+
+### Patch Changes
+
+- 修复 JSX 类型
+
 ## 0.0.12
 
 ### Patch Changes

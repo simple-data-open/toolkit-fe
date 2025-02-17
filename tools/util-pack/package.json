@@ -41,7 +41,7 @@
     "typescript": "5.7.2"
   },
   "devDependencies": {
-    "@simple-data-open/easy-tsc": "0.0.19"
+    "@simple-data-open/easy-tsc": "0.0.23"
   },
   "publishConfig": {
     "access": "public"
