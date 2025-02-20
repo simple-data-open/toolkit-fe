@@ -23,6 +23,14 @@ export interface WidgetAdapterInterface {
    */
   unmount: () => void;
   /**
+   * 可选的大小变化回调函数，当小部件大小发生变化时调用
+   */
+  resize?: (size: [number, number]) => void;
+  /**
+   * 可选的属性更新回调函数，当小部件属性发生变化时调用
+   */
+  update?: <V>(chain: string[], value: V) => void;
+  /**
    * 可选的语言变化回调函数，当语言变化时调用
    * @param _lang - 新的语言代码
    */
@@ -49,6 +57,9 @@ export class WidgetAdapter<T = any> implements WidgetAdapterInterface {
 
   public mount = () => {};
   public unmount = () => {};
+
+  public resize?: (size: [number, number]) => void;
+  public update?: <V>(chain: string[], value: V) => void;
 
   public onLangChange?: (_lang: string) => void;
 }

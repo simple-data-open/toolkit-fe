@@ -1,5 +1,17 @@
 # @simple-data-open/adapter
 
+## 0.0.31
+
+### Patch Changes
+
+- 添加 update 方法泛型, 方便编码
+
+## 0.0.30
+
+### Patch Changes
+
+- 添加 widget 触发方法
+
 ## 0.0.29
 
 ### Patch Changes

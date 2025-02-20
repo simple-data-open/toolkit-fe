@@ -1,6 +1,6 @@
 {
   "name": "simple-data-open-template-vanilla",
-  "version": "0.0.18",
+  "version": "0.0.20",
   "private": true,
   "description": "",
   "keywords": [],
@@ -16,10 +16,11 @@
     "publish": "simple-cli publish"
   },
   "dependencies": {
-    "@simple-data-open/adapter": "0.0.29"
+    "@antv/g2": "5.2.11",
+    "@simple-data-open/adapter": "0.0.31"
   },
   "devDependencies": {
-    "@simple-data-open/simple-pack": "0.0.22",
+    "@simple-data-open/simple-pack": "workspace:^",
     "@simple-data-open/types": "0.0.19",
     "babel-loader": "^9.2.1",
     "source-map-loader": "^5.0.0",
@@ -49,7 +50,9 @@
         "description": "Panel"
       }
     },
-    "dependencies": {},
+    "dependencies": {
+      "@antv/g2": "5.2.11"
+    },
     "docks": {
       "editor": {
         "css": true,
