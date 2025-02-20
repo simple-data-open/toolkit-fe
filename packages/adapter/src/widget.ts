@@ -1,8 +1,10 @@
-export interface WidgetAdapterOptions {
+import '@simple-data-open/types';
+
+export interface WidgetAdapterOptions<T = any> {
   /**
    * 小部件的实例标识符
    */
-  instance: string;
+  instance?: T;
   /**
    * 小部件的名称
    */
@@ -29,8 +31,8 @@ export interface WidgetAdapterInterface {
   onLangChange?: (_lang: string) => void;
 }
 
-export class WidgetAdapter implements WidgetAdapterInterface {
-  public instance: string;
+export class WidgetAdapter<T = any> implements WidgetAdapterInterface {
+  public instance: SimpleExtSpace.Widget<T>;
   public name: string;
   public container: HTMLDivElement;
 

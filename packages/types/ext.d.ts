@@ -64,7 +64,7 @@ declare global {
         | 'inset'
         | 'outset';
     }
-    interface Widget {
+    interface Widget<T = any> {
       schema: string;
       extension: {
         name: string;
@@ -90,7 +90,7 @@ declare global {
         radius: number | number[];
       };
       border: WidgetBorder | WidgetBorder[];
-      custom_data: any;
+      custom_data: T;
     }
   }
 }

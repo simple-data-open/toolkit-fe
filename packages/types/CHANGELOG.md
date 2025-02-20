@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.19
+
+### Patch Changes
+
+- widget class 添加 instance 泛型, 方便编写
+
 ## 0.0.18
 
 ### Patch Changes

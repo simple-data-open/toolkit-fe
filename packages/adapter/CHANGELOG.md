@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.28
+
+### Patch Changes
+
+- widget class 添加 instance 泛型, 方便编写
+
 ## 0.0.27
 
 ### Patch Changes

@@ -88,7 +88,10 @@ importers:
   packages/adapter:
     devDependencies:
       '@simple-data-open/easy-tsc':
-        specifier: 0.0.19
+        specifier: 0.0.24
+        version: 0.0.24
+      '@simple-data-open/types':
+        specifier: ^0.0.19
         version: 0.0.19
       typescript:
         specifier: 5.7.2
@@ -97,8 +100,8 @@ importers:
   packages/min-dom:
     devDependencies:
       '@simple-data-open/easy-tsc':
-        specifier: 0.0.19
-        version: 0.0.19
+        specifier: 0.0.24
+        version: 0.0.24
       typescript:
         specifier: 5.7.2
         version: 5.7.2
@@ -108,11 +111,11 @@ importers:
   packages/utils:
     devDependencies:
       '@simple-data-open/easy-tsc':
-        specifier: 0.0.19
-        version: 0.0.19
+        specifier: 0.0.24
+        version: 0.0.24
       '@simple-data-open/types':
-        specifier: ^0.0.14
-        version: 0.0.14
+        specifier: ^0.0.19
+        version: 0.0.19
       typescript:
         specifier: 5.7.2
         version: 5.7.2
@@ -122,8 +125,8 @@ importers:
   templates/solid-js:
     dependencies:
       '@simple-data-open/adapter':
-        specifier: 0.0.12
-        version: 0.0.12
+        specifier: 0.0.28
+        version: 0.0.27
       solid-i18n:
         specifier: 1.1.0
         version: 1.1.0(solid-js@1.9.3)
@@ -132,11 +135,11 @@ importers:
         version: 1.9.3
     devDependencies:
       '@simple-data-open/simple-pack':
-        specifier: 0.0.20
-        version: 0.0.20(@types/node@22.12.0)(postcss@8.5.1)
+        specifier: 0.0.22
+        version: 0.0.22(@types/node@22.12.0)(postcss@8.5.1)
       '@simple-data-open/types':
-        specifier: 0.0.14
-        version: 0.0.14
+        specifier: 0.0.19
+        version: 0.0.19
       babel-loader:
         specifier: ^9.2.1
         version: 9.2.1(@babel/core@7.26.7)(webpack@5.97.1)
@@ -156,15 +159,15 @@ importers:
   templates/vanilla:
     dependencies:
       '@simple-data-open/adapter':
-        specifier: 0.0.12
-        version: 0.0.12
+        specifier: 0.0.28
+        version: 0.0.27
     devDependencies:
       '@simple-data-open/simple-pack':
-        specifier: 0.0.20
-        version: 0.0.20(@types/node@22.12.0)(postcss@8.5.1)
+        specifier: 0.0.22
+        version: 0.0.22(@types/node@22.12.0)(postcss@8.5.1)
       '@simple-data-open/types':
-        specifier: 0.0.14
-        version: 0.0.14
+        specifier: 0.0.19
+        version: 0.0.19
       babel-loader:
         specifier: ^9.2.1
         version: 9.2.1(@babel/core@7.26.7)(webpack@5.97.1)
@@ -192,9 +195,6 @@ importers:
       '@babel/preset-typescript':
         specifier: ^7.26.0
         version: 7.26.0(@babel/core@7.26.0)
-      '@simple-data-open/types':
-        specifier: 0.0.14
-        version: 0.0.14
       '@types/node':
         specifier: ^22.10.7
         version: 22.10.7
@@ -230,8 +230,8 @@ importers:
         specifier: ^10.0.2
         version: 10.0.2
       '@simple-data-open/utils':
-        specifier: 0.0.12
-        version: 0.0.12
+        specifier: 0.0.13
+        version: 0.0.13
       '@types/node':
         specifier: ^22.10.7
         version: 22.10.7
@@ -276,11 +276,11 @@ importers:
         version: 7.3.0
     devDependencies:
       '@simple-data-open/easy-tsc':
+        specifier: 0.0.24
+        version: 0.0.24
+      '@simple-data-open/types':
         specifier: 0.0.19
         version: 0.0.19
-      '@simple-data-open/types':
-        specifier: 0.0.14
-        version: 0.0.14
       '@types/archiver':
         specifier: ^6.0.3
         version: 6.0.3
@@ -309,8 +309,8 @@ importers:
         specifier: ^7.26.0
         version: 7.26.0(@babel/core@7.26.0)
       '@simple-data-open/utils':
-        specifier: 0.0.12
-        version: 0.0.12
+        specifier: 0.0.13
+        version: 0.0.13
       babel-loader:
         specifier: ^9.2.1
         version: 9.2.1(@babel/core@7.26.0)(webpack@5.97.1)
@@ -379,11 +379,11 @@ importers:
         version: 7.0.0(webpack@5.97.1)
     devDependencies:
       '@simple-data-open/easy-tsc':
+        specifier: 0.0.24
+        version: 0.0.24
+      '@simple-data-open/types':
         specifier: 0.0.19
         version: 0.0.19
-      '@simple-data-open/types':
-        specifier: 0.0.14
-        version: 0.0.14
       '@types/node':
         specifier: ^20.17.14
         version: 20.17.14
@@ -431,8 +431,8 @@ importers:
         version: 5.7.2
     devDependencies:
       '@simple-data-open/easy-tsc':
-        specifier: 0.0.19
-        version: 0.0.19
+        specifier: 0.0.24
+        version: 0.0.24
 
 packages:
   '@ampproject/remapping@2.3.0':
@@ -1175,15 +1175,6 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
-  '@babel/plugin-transform-typeof-symbol@7.26.7':
-    resolution:
-      {
-        integrity: sha512-jfoTXXZTgGg36BmhqT3cAYK5qkmqvJpvNrPhaK/52Vgjhw4Rq29s9UqpWWV0D6yuRmgiFH/BUVlkl96zJWqnaw==,
-      }
-    engines: { node: '>=6.9.0' }
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-
   '@babel/plugin-transform-typescript@7.26.5':
     resolution:
       {
@@ -1233,15 +1224,6 @@ packages:
     resolution:
       {
         integrity: sha512-H84Fxq0CQJNdPFT2DrfnylZ3cf5K43rGfWK4LJGPpjKHiZlk0/RzwEus3PDDZZg+/Er7lCA03MVacueUuXdzfw==,
-      }
-    engines: { node: '>=6.9.0' }
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-
-  '@babel/preset-env@7.26.7':
-    resolution:
-      {
-        integrity: sha512-Ycg2tnXwixaXOVb29rana8HNPgLVBof8qqtNQ9LE22IoyZboQbGSxI6ZySMdW3K5nAe6gu35IaJefUJflhUFTQ==,
       }
     engines: { node: '>=6.9.0' }
     peerDependencies:
@@ -2904,42 +2886,42 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@simple-data-open/adapter@0.0.12':
+  '@simple-data-open/adapter@0.0.27':
     resolution:
       {
-        integrity: sha512-/Gp8VinFqhkgQmUv/Lzm0SAassvr2LeT0Ce+GbvZNHWZNIbA3ql+AV6r+G6bVTnheaHbJiKJhxYb0zyCU9Semg==,
+        integrity: sha512-Q8U81BtBjfh7IpV7Nns6aTwNzrMRvYVcfSmh1qRyDi0+x1Gpt8OB3EqqZ/rA3ZXuqY4+8AaKjIoq7KXaw9zu5Q==,
       }
 
-  '@simple-data-open/easy-tsc@0.0.19':
+  '@simple-data-open/easy-tsc@0.0.24':
     resolution:
       {
-        integrity: sha512-0rfZwrfAXgpd5DkjAWicq81D6xjCq1DiGcrbwQDYh1lcWcx95sC3AVI4LkVAnw/Yd+hd5rKb3UWbaoE/HVZ+ag==,
-      }
-    hasBin: true
-
-  '@simple-data-open/simple-pack@0.0.20':
-    resolution:
-      {
-        integrity: sha512-tsyXCNuuyLLhmt4DSIcWWzuIPkqYiAwMACUtmz0X9mDKn9EGQlJ4PAwGwgv71GKh7jg0Pfxx4RWD62Owa56Dyw==,
+        integrity: sha512-Bd2GuU7gvYICgcmhQF9wDeoeeyoJxXTrdr0xG94BK8EhWZUEAOGAe67jHApOdcudfRJdGuFir/P8xJ1Kxs+bhA==,
       }
     hasBin: true
 
-  '@simple-data-open/types@0.0.13':
+  '@simple-data-open/simple-pack@0.0.22':
     resolution:
       {
-        integrity: sha512-kGwUwNUebM/Z+rCmRZLRwkjMMJur9FoeqhipDlr4C9jRmWKJH+yNJr1Z2aptSfGpGGsMf9N1JSiVB7BEHwzMvA==,
+        integrity: sha512-XM6+z7q0iI/Si+NkxNrPz56dXdmFnf2xYQtPZRufrCsBm30Daz5hVsOhEkQM4kClqWzxP6F6/t3Sm+vDhIZXew==,
+      }
+    hasBin: true
+
+  '@simple-data-open/types@0.0.18':
+    resolution:
+      {
+        integrity: sha512-6tvN8S7iiDKtBOa27eQknlWlRF3WQOwoAfNPlEv6h4onOFyppTv22hIAUPm+BfV/DPU+0vMNV8u347q6ffVjoA==,
       }
 
-  '@simple-data-open/types@0.0.14':
+  '@simple-data-open/types@0.0.19':
     resolution:
       {
-        integrity: sha512-ZU7AA1rGi+iyEXZHDLFQs584jbNlpPOyJS/LfnkV80lcJoDkGqxOT0OR8Gy4C4Db1VSSW9kkaCi5l5OsvQXbrg==,
+        integrity: sha512-H/EfDGolSUBTkOOjke6VYcmtJHIwBwKbiaVctqsJC5r7+m6a5x2Tt9W44noiNt4xBJwuUzAiXog2lgNkawQVhA==,
       }
 
-  '@simple-data-open/utils@0.0.12':
+  '@simple-data-open/utils@0.0.13':
     resolution:
       {
-        integrity: sha512-PlJPslZvSIIotsLNIEiN+5dw0v7HFzg5SN2/ymEiefWgZZgnUbCb3t21GSAK7n8NM7DcynIlpR90TH6Zr7VuUg==,
+        integrity: sha512-UyGqY08w/WWrooP0DqPmSLId7fg7OptipoS0HgeqGXidqFfSdCwpnwbZI/FNXBFOLqMQrzgZ1Aa+3LBLN7XQ/Q==,
       }
 
   '@sinclair/typebox@0.27.8':
@@ -10558,11 +10540,6 @@ snapshots:
       '@babel/core': 7.26.7
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-transform-typeof-symbol@7.26.7(@babel/core@7.26.7)':
-    dependencies:
-      '@babel/core': 7.26.7
-      '@babel/helper-plugin-utils': 7.26.5
-
   '@babel/plugin-transform-typescript@7.26.5(@babel/core@7.26.0)':
     dependencies:
       '@babel/core': 7.26.0
@@ -10768,81 +10745,6 @@ snapshots:
       '@babel/plugin-transform-sticky-regex': 7.25.9(@babel/core@7.26.7)
       '@babel/plugin-transform-template-literals': 7.25.9(@babel/core@7.26.7)
       '@babel/plugin-transform-typeof-symbol': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-unicode-escapes': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-unicode-property-regex': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-unicode-regex': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-unicode-sets-regex': 7.25.9(@babel/core@7.26.7)
-      '@babel/preset-modules': 0.1.6-no-external-plugins(@babel/core@7.26.7)
-      babel-plugin-polyfill-corejs2: 0.4.12(@babel/core@7.26.7)
-      babel-plugin-polyfill-corejs3: 0.10.6(@babel/core@7.26.7)
-      babel-plugin-polyfill-regenerator: 0.6.3(@babel/core@7.26.7)
-      core-js-compat: 3.40.0
-      semver: 6.3.1
-    transitivePeerDependencies:
-      - supports-color
-
-  '@babel/preset-env@7.26.7(@babel/core@7.26.7)':
-    dependencies:
-      '@babel/compat-data': 7.26.5
-      '@babel/core': 7.26.7
-      '@babel/helper-compilation-targets': 7.26.5
-      '@babel/helper-plugin-utils': 7.26.5
-      '@babel/helper-validator-option': 7.25.9
-      '@babel/plugin-bugfix-firefox-class-in-computed-class-key': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-bugfix-safari-class-field-initializer-scope': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-proposal-private-property-in-object': 7.21.0-placeholder-for-preset-env.2(@babel/core@7.26.7)
-      '@babel/plugin-syntax-import-assertions': 7.26.0(@babel/core@7.26.7)
-      '@babel/plugin-syntax-import-attributes': 7.26.0(@babel/core@7.26.7)
-      '@babel/plugin-syntax-unicode-sets-regex': 7.18.6(@babel/core@7.26.7)
-      '@babel/plugin-transform-arrow-functions': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-async-generator-functions': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-async-to-generator': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-block-scoped-functions': 7.26.5(@babel/core@7.26.7)
-      '@babel/plugin-transform-block-scoping': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-class-properties': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-class-static-block': 7.26.0(@babel/core@7.26.7)
-      '@babel/plugin-transform-classes': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-computed-properties': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-destructuring': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-dotall-regex': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-duplicate-keys': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-duplicate-named-capturing-groups-regex': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-dynamic-import': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-exponentiation-operator': 7.26.3(@babel/core@7.26.7)
-      '@babel/plugin-transform-export-namespace-from': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-for-of': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-function-name': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-json-strings': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-literals': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-logical-assignment-operators': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-member-expression-literals': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-modules-amd': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-modules-commonjs': 7.26.3(@babel/core@7.26.7)
-      '@babel/plugin-transform-modules-systemjs': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-modules-umd': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-named-capturing-groups-regex': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-new-target': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-nullish-coalescing-operator': 7.26.6(@babel/core@7.26.7)
-      '@babel/plugin-transform-numeric-separator': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-object-rest-spread': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-object-super': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-optional-catch-binding': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-optional-chaining': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-parameters': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-private-methods': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-private-property-in-object': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-property-literals': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-regenerator': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-regexp-modifiers': 7.26.0(@babel/core@7.26.7)
-      '@babel/plugin-transform-reserved-words': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-shorthand-properties': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-spread': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-sticky-regex': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-template-literals': 7.25.9(@babel/core@7.26.7)
-      '@babel/plugin-transform-typeof-symbol': 7.26.7(@babel/core@7.26.7)
       '@babel/plugin-transform-unicode-escapes': 7.25.9(@babel/core@7.26.7)
       '@babel/plugin-transform-unicode-property-regex': 7.25.9(@babel/core@7.26.7)
       '@babel/plugin-transform-unicode-regex': 7.25.9(@babel/core@7.26.7)
@@ -11957,7 +11859,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 20.17.14
+      '@types/node': 22.12.0
       '@types/yargs': 17.0.33
       chalk: 4.1.2
 
@@ -12142,16 +12044,16 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.28.1':
     optional: true
 
-  '@simple-data-open/adapter@0.0.12': {}
+  '@simple-data-open/adapter@0.0.27': {}
 
-  '@simple-data-open/easy-tsc@0.0.19':
+  '@simple-data-open/easy-tsc@0.0.24':
     dependencies:
       '@babel/core': 7.26.7
       '@babel/plugin-proposal-decorators': 7.25.9(@babel/core@7.26.7)
       '@babel/plugin-transform-class-properties': 7.25.9(@babel/core@7.26.7)
-      '@babel/preset-env': 7.26.7(@babel/core@7.26.7)
+      '@babel/preset-env': 7.26.0(@babel/core@7.26.7)
       '@babel/preset-typescript': 7.26.0(@babel/core@7.26.7)
-      '@simple-data-open/types': 0.0.13
+      '@simple-data-open/types': 0.0.18
       '@types/node': 22.12.0
       chokidar: 4.0.3
       commander: 12.1.0
@@ -12162,12 +12064,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@simple-data-open/simple-pack@0.0.20(@types/node@22.12.0)(postcss@8.5.1)':
+  '@simple-data-open/simple-pack@0.0.22(@types/node@22.12.0)(postcss@8.5.1)':
     dependencies:
       '@babel/core': 7.26.7
       '@babel/plugin-transform-json-strings': 7.25.9(@babel/core@7.26.7)
-      '@babel/preset-env': 7.26.7(@babel/core@7.26.7)
-      '@simple-data-open/utils': 0.0.12
+      '@babel/preset-env': 7.26.0(@babel/core@7.26.7)
+      '@simple-data-open/utils': 0.0.13
       babel-loader: 9.2.1(@babel/core@7.26.7)(webpack@5.97.1)
       commander: 12.1.0
       compression-webpack-plugin: 11.1.0(webpack@5.97.1)
@@ -12208,11 +12110,11 @@ snapshots:
       - utf-8-validate
       - webpack-cli
 
-  '@simple-data-open/types@0.0.13': {}
+  '@simple-data-open/types@0.0.18': {}
 
-  '@simple-data-open/types@0.0.14': {}
+  '@simple-data-open/types@0.0.19': {}
 
-  '@simple-data-open/utils@0.0.12': {}
+  '@simple-data-open/utils@0.0.13': {}
 
   '@sinclair/typebox@0.27.8': {}
 
@@ -12271,7 +12173,7 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.17.14
+      '@types/node': 22.12.0
 
   '@types/bonjour@3.5.13':
     dependencies:
@@ -12284,7 +12186,7 @@ snapshots:
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 20.17.14
+      '@types/node': 22.12.0
 
   '@types/conventional-commits-parser@5.0.1':
     dependencies:
@@ -12294,7 +12196,7 @@ snapshots:
 
   '@types/cors@2.8.17':
     dependencies:
-      '@types/node': 22.10.7
+      '@types/node': 22.12.0
 
   '@types/eslint-scope@3.7.7':
     dependencies:
@@ -12310,14 +12212,14 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.6':
     dependencies:
-      '@types/node': 20.17.14
+      '@types/node': 22.12.0
       '@types/qs': 6.9.18
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
 
   '@types/express-serve-static-core@5.0.5':
     dependencies:
-      '@types/node': 20.17.14
+      '@types/node': 22.12.0
       '@types/qs': 6.9.18
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -12333,7 +12235,7 @@ snapshots:
 
   '@types/http-proxy@1.17.15':
     dependencies:
-      '@types/node': 20.17.14
+      '@types/node': 22.12.0
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -12356,7 +12258,7 @@ snapshots:
 
   '@types/node-forge@1.3.11':
     dependencies:
-      '@types/node': 20.17.14
+      '@types/node': 22.12.0
 
   '@types/node@12.20.55': {}
 
@@ -12393,7 +12295,7 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.17.14
+      '@types/node': 22.12.0
 
   '@types/serve-index@1.9.4':
     dependencies:
@@ -14313,7 +14215,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 20.17.14
+      '@types/node': 22.12.0
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -14321,7 +14223,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 20.17.14
+      '@types/node': 22.12.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
