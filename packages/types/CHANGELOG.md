@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.18
+
+### Patch Changes
+
+- 添加 widget 实例类型
+
 ## 0.0.17
 
 ### Patch Changes

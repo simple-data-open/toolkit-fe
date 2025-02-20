@@ -49,6 +49,49 @@ declare global {
       version: string;
       dependencies: SimpleDepSpace.DepModel[];
     };
+
+    interface WidgetBorder {
+      width: number;
+      color: string;
+      style:
+        | 'none'
+        | 'solid'
+        | 'dashed'
+        | 'dotted'
+        | 'double'
+        | 'groove'
+        | 'ridge'
+        | 'inset'
+        | 'outset';
+    }
+    interface Widget {
+      schema: string;
+      extension: {
+        name: string;
+        version: string;
+      };
+      id: string;
+      name: string;
+      rotation: number;
+      hide: boolean;
+      background: string;
+      position: {
+        /** 固定定位 */
+        fixed: boolean;
+        axis: [number, number];
+      };
+      layout: {
+        /** 固定宽高比例 */
+        fixed: boolean;
+        size: [number, number];
+      };
+      appearance: {
+        opacity: number;
+        radius: number | number[];
+      };
+      border: WidgetBorder | WidgetBorder[];
+      custom_data: any;
+    }
   }
 }
 
