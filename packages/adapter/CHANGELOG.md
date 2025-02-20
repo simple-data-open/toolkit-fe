@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.22
+
+### Patch Changes
+
+- 添加规则约束字段类型
+
 ## 0.0.21
 
 ### Patch Changes

@@ -100,6 +100,17 @@ export interface PropertyRendererModel {
   chain: ChainType;
   name?: string;
   span?: 1 | 2 | 3 | 4;
+  placeholder?: string;
+  defaultValue?: PropertyValueType;
+  /** 暂时仅支持 min/max/minLength/maxLength */
+  restrict?: {
+    min: number;
+    max: number;
+    minLength?: number;
+    maxLength?: number;
+    includePatterns?: RegExp[];
+    excludePatterns?: RegExp[];
+  };
 }
 
 /**
