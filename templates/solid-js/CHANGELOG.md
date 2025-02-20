@@ -1,5 +1,12 @@
 # simple-data-open-template-canvas
 
+## 0.0.12
+
+### Patch Changes
+
+- Updated dependencies
+  - @simple-data-open/adapter@0.0.23
+
 ## 0.0.11
 
 ### Patch Changes

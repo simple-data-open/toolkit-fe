@@ -104,8 +104,8 @@ export interface PropertyRendererModel {
   defaultValue?: PropertyValueType;
   /** 暂时仅支持 min/max/minLength/maxLength */
   restrict?: {
-    min: number;
-    max: number;
+    min?: number;
+    max?: number;
     minLength?: number;
     maxLength?: number;
     includePatterns?: RegExp[];
