@@ -93,6 +93,15 @@ export type PropertyValueType =
  */
 export type ChainType = string[][];
 
+export interface RestrictType {
+  min?: number;
+  max?: number;
+  minLength?: number;
+  maxLength?: number;
+  includePatterns?: RegExp[];
+  excludePatterns?: RegExp[];
+}
+
 /**
  * 属性基础模型接口，包含名称、链和跨度
  */
@@ -103,14 +112,7 @@ export interface PropertyRendererModel {
   placeholder?: string;
   defaultValue?: PropertyValueType;
   /** 暂时仅支持 min/max/minLength/maxLength */
-  restrict?: {
-    min?: number;
-    max?: number;
-    minLength?: number;
-    maxLength?: number;
-    includePatterns?: RegExp[];
-    excludePatterns?: RegExp[];
-  };
+  restrict?: RestrictType;
 }
 
 /**
@@ -145,6 +147,7 @@ export class PropertyRenderer<T = any> {
   public chain: ChainType;
   public span: 1 | 2 | 3 | 4;
   public value: T;
+  public restrict?: RestrictType;
   public update: (chain: string[], value: PropertyValueType) => boolean;
 
   /**
@@ -158,6 +161,7 @@ export class PropertyRenderer<T = any> {
     this.chain = options.chain;
     this.span = options.span || 4;
     this.value = options.value as T;
+    this.restrict = options.restrict;
     this.update = options.update;
   }
 
