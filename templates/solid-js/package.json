@@ -1,6 +1,6 @@
 {
   "name": "simple-data-open-template-solid-js",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "private": true,
   "description": "",
   "keywords": [],
@@ -15,7 +15,7 @@
     "lint": "bun run check && bunx eslint --config ./eslint.config.mjs ./src --fix"
   },
   "dependencies": {
-    "@simple-data-open/adapter": "0.0.26",
+    "@simple-data-open/adapter": "0.0.27",
     "solid-i18n": "1.1.0",
     "solid-js": "1.9.3"
   },

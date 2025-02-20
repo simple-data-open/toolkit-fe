@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.14
+
+### Patch Changes
+
+- bug 修复
+
 ## 0.0.13
 
 ### Patch Changes

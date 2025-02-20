@@ -109,8 +109,6 @@ export type ChainType = string[][];
 export interface RestrictType {
   min?: number;
   max?: number;
-  minLength?: number;
-  maxLength?: number;
   step?: number;
   decimal?: number;
   minlength?: number;

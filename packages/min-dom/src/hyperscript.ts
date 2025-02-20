@@ -73,9 +73,16 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
           element.style.cssText = props[key] as string;
           continue;
         }
+        if (typeof props[key] === 'undefined') {
+          delete props[key];
+          continue;
+        }
         // 普通属性
         (element as any)[key] = props[key];
       } else {
+        if (typeof props[key] === 'undefined') {
+          element.removeAttribute(key);
+        }
         // 自定义属性
         element.setAttribute(key, props[key] as string);
       }
