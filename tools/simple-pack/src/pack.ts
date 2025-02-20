@@ -155,7 +155,12 @@ export const formatWebpackConfig = async (
           test: /\.ts?$/,
           use: [
             require.resolve('babel-loader'),
-            require.resolve('ts-loader'),
+            {
+              loader: require.resolve('ts-loader'),
+              options: {
+                configFile: path.resolve('tsconfig.json'),
+              },
+            },
             {
               loader: require.resolve('source-map-loader'),
             },

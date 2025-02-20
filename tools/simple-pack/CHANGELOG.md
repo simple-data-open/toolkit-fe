@@ -1,5 +1,11 @@
 # @simple-data-open/simple-pack
 
+## 0.0.22
+
+### Patch Changes
+
+- 修复 tsconfig.json 读取路径
+
 ## 0.0.21
 
 ### Patch Changes
