@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.21
+
+### Patch Changes
+
+- 修复类型字段
+
 ## 0.0.20
 
 ### Patch Changes
