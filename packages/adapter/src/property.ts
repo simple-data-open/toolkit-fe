@@ -98,6 +98,8 @@ export interface RestrictType {
   max?: number;
   minLength?: number;
   maxLength?: number;
+  step?: number;
+  decimal?: number;
   includePatterns?: RegExp[];
   excludePatterns?: RegExp[];
 }
