@@ -1,5 +1,3 @@
-import '@simple-data-open/types';
-
 export interface WidgetAdapterOptions<T = any> {
   /**
    * 小部件的实例标识符

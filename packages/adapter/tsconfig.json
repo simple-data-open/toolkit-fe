@@ -25,7 +25,8 @@
     "outDir": "lib",
     "module": "ESNext",
     "declaration": true,
-    "declarationDir": "lib"
+    "declarationDir": "lib",
+    "types": ["@simple-data-open/types"]
   },
   "exclude": ["./node_modules", "lib"],
   "extends": "../../tsconfig.base.json",

@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.29
+
+### Patch Changes
+
+- 移除类型引入, webpack 编译报错
+
 ## 0.0.28
 
 ### Patch Changes
