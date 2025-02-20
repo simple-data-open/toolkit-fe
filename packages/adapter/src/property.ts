@@ -78,6 +78,19 @@ export class PropertyAdapter implements PropertyAdapterInterface {
 /************* BLOCK: PropertyRenderer start *************/
 
 /**
+ * 渲染类型，可以是 'axis'、'size' 或 PropertyRenderer 类型
+ */
+export type Render =
+  | 'position'
+  | 'layout'
+  | 'color'
+  | 'text'
+  | 'number'
+  | 'opacity'
+  | 'border'
+  | typeof PropertyRenderer;
+
+/**
  * 属性值类型，可以是字符串、数字、布尔值、空值、属性值类型的数组或对象
  */
 export type PropertyValueType =
@@ -100,6 +113,8 @@ export interface RestrictType {
   maxLength?: number;
   step?: number;
   decimal?: number;
+  minlength?: number;
+  maxlength?: number;
   includePatterns?: RegExp[];
   excludePatterns?: RegExp[];
 }
@@ -125,11 +140,6 @@ export interface PropertyRendererOptions extends PropertyRendererModel {
   value: PropertyValueType;
   update: (chain: string[], value: PropertyValueType) => boolean;
 }
-
-/**
- * 渲染类型，可以是 'axis'、'size' 或 PropertyRenderer 类型
- */
-export type Render = 'position' | 'layout' | 'color' | typeof PropertyRenderer;
 
 /**
  * 属性组模型接口，包含名称和属性数组
