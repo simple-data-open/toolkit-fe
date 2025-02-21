@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.32
+
+### Patch Changes
+
+- f148580: 添加 widget cover 类型描述
+
 ## 0.0.31
 
 ### Patch Changes

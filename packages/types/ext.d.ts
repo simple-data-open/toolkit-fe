@@ -92,6 +92,19 @@ declare global {
       border: WidgetBorder | WidgetBorder[];
       custom_data: T;
     }
+    type WidgetCover = Partial<
+      Pick<
+        Widget,
+        | 'name'
+        | 'rotation'
+        | 'hide'
+        | 'background'
+        | 'position'
+        | 'layout'
+        | 'appearance'
+        | 'border'
+      >
+    >;
   }
 }
 

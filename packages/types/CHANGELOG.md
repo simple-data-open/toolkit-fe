@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.20
+
+### Patch Changes
+
+- f148580: 添加 widget cover 类型描述
+
 ## 0.0.19
 
 ### Patch Changes
