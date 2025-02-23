@@ -191,7 +191,7 @@ export namespace JSX {
   }
 
   interface IntrinsicElement<K extends keyof DomElement> {
-    element: DomElement[K];
+    element: K extends keyof IntrinsicSVGElements ? SVGElement : HTMLElement;
     attr<T extends keyof DomElement[K]>(
       attr: T,
       value?: DomElement[K][T],

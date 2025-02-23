@@ -1,5 +1,17 @@
 # @simple-data-open/min-dom
 
+## 0.0.17
+
+### Patch Changes
+
+- 修复 element 类型
+
+## 0.0.16
+
+### Patch Changes
+
+- 修复返回 element 类型
+
 ## 0.0.15
 
 ### Patch Changes

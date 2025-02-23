@@ -111,7 +111,9 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
   appendChild(element, props.children);
 
   return {
-    element,
+    element: element as K extends keyof JSX.IntrinsicSVGElements
+      ? SVGElement
+      : HTMLElement,
     attr(attr, value) {
       if (typeof value === 'undefined')
         return element.getAttribute(attr as string);
