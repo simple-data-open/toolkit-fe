@@ -223,7 +223,8 @@ export namespace JSX {
     | number
     | boolean
     | null
-    | undefined;
+    | undefined
+    | Child[];
 
   // 定义 Fragment 的 children 属性
   interface ElementChildrenAttribute {

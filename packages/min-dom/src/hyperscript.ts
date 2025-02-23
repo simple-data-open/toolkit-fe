@@ -37,7 +37,7 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
     return tag(props);
   }
 
-  let element;
+  let element: HTMLElement | SVGElement;
   // if (tag === 'Fragment') {
   //   element = document.createDocumentFragment();
   // } else
@@ -45,9 +45,9 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
     element = document.createElementNS(
       'http://www.w3.org/2000/svg',
       tag as string,
-    );
+    ) as SVGElement;
   } else {
-    element = document.createElement(tag as string);
+    element = document.createElement(tag as string) as HTMLElement;
   }
 
   // 设置属性
@@ -89,16 +89,26 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
     }
   }
   const isChildNode = (child: any) => typeof child !== 'undefined';
-  // 添加子节点
-  if (Array.isArray(props.children)) {
-    props.children.forEach(child => {
-      if (!isChildNode(child)) return;
 
-      element.appendChild(toNode(child));
-    });
-  } else if (isChildNode(props.children)) {
-    element.appendChild(toNode(props.children));
+  function appendChild(element: HTMLElement | SVGElement, children: any) {
+    // 添加子节点
+    if (Array.isArray(children)) {
+      children.forEach(child => {
+        if (Array.isArray(child)) {
+          appendChild(element, child);
+          return;
+        }
+
+        if (!isChildNode(child)) return;
+
+        element.appendChild(toNode(child));
+      });
+    } else if (isChildNode(children)) {
+      element.appendChild(toNode(children));
+    }
   }
+
+  appendChild(element, props.children);
 
   return {
     element,

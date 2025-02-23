@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.21
+
+### Patch Changes
+
+- 修复 child 为数组时的渲染, 添加 types datasource 类型
+
 ## 0.0.20
 
 ### Patch Changes

@@ -24,6 +24,17 @@ const Logo = (props: { href: string }) => (
   </a>
 );
 
+const list = [
+  {
+    name: 'Vite',
+    version: '2.9.1',
+  },
+  {
+    name: 'TypeScript',
+    version: '4.6.2',
+  },
+];
+
 export const App = () => (
   <>
     <Logo href="https://vitejs.dev/" />
@@ -34,6 +45,11 @@ export const App = () => (
     <div class="card">{counter}</div>
     <p class="read-the-docs">
       Click on the Vite and TypeScript logos to learn more
+      {list.map(item => (
+        <li>
+          {item.name} {item.version}
+        </li>
+      ))}
     </p>
   </>
 );

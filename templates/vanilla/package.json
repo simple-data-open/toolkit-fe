@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@simple-data-open/simple-pack": "workspace:^",
-    "@simple-data-open/types": "0.0.20",
+    "@simple-data-open/types": "0.0.21",
     "babel-loader": "^9.2.1",
     "source-map-loader": "^5.0.0",
     "ts-loader": "^9.5.2"

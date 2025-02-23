@@ -64,6 +64,9 @@ declare global {
         | 'inset'
         | 'outset';
     }
+
+    type DatasourceType = 'custom' | 'locale' | 'api' | 'database';
+
     interface Widget<T = any> {
       schema: string;
       extension: {
@@ -91,6 +94,11 @@ declare global {
       };
       border: WidgetBorder | WidgetBorder[];
       custom_data: T;
+      datasource: {
+        // 暂时仅支持 custom | locale 数据源
+        source: DatasourceType;
+        data: Record<string, any>[];
+      };
     }
     type WidgetCover = Partial<
       Pick<
