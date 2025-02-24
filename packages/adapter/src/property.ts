@@ -12,7 +12,7 @@ export interface PropertyAdapterOptions {
   /**
    * 适配器的容器元素
    */
-  container: HTMLDivElement;
+  container: HTMLElement;
   /**
    * 可选的重新渲染函数，当适配器需要重新渲染时调用
    */
@@ -49,14 +49,14 @@ export interface PropertyAdapterInterface<T = any> {
 export class PropertyAdapter implements PropertyAdapterInterface {
   public instance: string;
   public name: string;
-  public container: HTMLDivElement;
+  public container: HTMLElement;
   public rerender?: () => void;
   /**
    * 创建 PropertyAdapter 的实例
    * @param {PropertyAdapterOptions} options - 适配器的配置选项
    * @prop {string} instance - 适配器的实例名称
    * @prop {string} name - 适配器的名称
-   * @prop {HTMLDivElement} container - 适配器的容器元素
+   * @prop {HTMLElement} container - 适配器的容器元素
    */
   constructor(options: PropertyAdapterOptions) {
     this.instance = options.instance;

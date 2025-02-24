@@ -91,8 +91,8 @@ importers:
         specifier: 0.0.24
         version: 0.0.24
       '@simple-data-open/types':
-        specifier: ^0.0.19
-        version: 0.0.19
+        specifier: ^0.0.21
+        version: 0.0.21
       typescript:
         specifier: 5.7.2
         version: 5.7.2
@@ -114,8 +114,8 @@ importers:
         specifier: 0.0.24
         version: 0.0.24
       '@simple-data-open/types':
-        specifier: ^0.0.19
-        version: 0.0.19
+        specifier: ^0.0.21
+        version: 0.0.21
       typescript:
         specifier: 5.7.2
         version: 5.7.2
@@ -125,8 +125,8 @@ importers:
   templates/solid-js:
     dependencies:
       '@simple-data-open/adapter':
-        specifier: 0.0.31
-        version: 0.0.31
+        specifier: 0.0.32
+        version: 0.0.32
       solid-i18n:
         specifier: 1.1.0
         version: 1.1.0(solid-js@1.9.3)
@@ -138,8 +138,8 @@ importers:
         specifier: 0.0.22
         version: 0.0.22(@types/node@22.13.4)(postcss@8.5.1)
       '@simple-data-open/types':
-        specifier: 0.0.19
-        version: 0.0.19
+        specifier: 0.0.21
+        version: 0.0.21
       babel-loader:
         specifier: ^9.2.1
         version: 9.2.1(@babel/core@7.26.9)(webpack@5.98.0)
@@ -162,15 +162,15 @@ importers:
         specifier: 5.2.11
         version: 5.2.11
       '@simple-data-open/adapter':
-        specifier: 0.0.31
-        version: 0.0.31
+        specifier: 0.0.32
+        version: 0.0.32
     devDependencies:
       '@simple-data-open/simple-pack':
         specifier: workspace:^
         version: link:../../tools/simple-pack
       '@simple-data-open/types':
-        specifier: 0.0.19
-        version: 0.0.19
+        specifier: 0.0.21
+        version: 0.0.21
       babel-loader:
         specifier: ^9.2.1
         version: 9.2.1(@babel/core@7.26.9)(webpack@5.98.0)
@@ -282,8 +282,8 @@ importers:
         specifier: 0.0.24
         version: 0.0.24
       '@simple-data-open/types':
-        specifier: 0.0.19
-        version: 0.0.19
+        specifier: 0.0.21
+        version: 0.0.21
       '@types/archiver':
         specifier: ^6.0.3
         version: 6.0.3
@@ -385,8 +385,8 @@ importers:
         specifier: 0.0.24
         version: 0.0.24
       '@simple-data-open/types':
-        specifier: 0.0.19
-        version: 0.0.19
+        specifier: 0.0.21
+        version: 0.0.21
       '@types/node':
         specifier: ^20.17.14
         version: 20.17.14
@@ -3142,10 +3142,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@simple-data-open/adapter@0.0.31':
+  '@simple-data-open/adapter@0.0.32':
     resolution:
       {
-        integrity: sha512-wP3ZxEDSSSTRbWqWKwnI/89trss6TTJqmOb9XDgp5z+ydP/L5qmNfPb5Fm2cauwu+pmgKr2lRoqZ+XwupMy1oQ==,
+        integrity: sha512-fnWEBg9QHwELT98jS/iQnuBmikoj3kxzTd2TMqIxHPSSFIwqxFAsoKvQmEPrxS8mCbNkt9KLly7yZhsVAtKZWQ==,
       }
 
   '@simple-data-open/easy-tsc@0.0.24':
@@ -3168,10 +3168,10 @@ packages:
         integrity: sha512-6tvN8S7iiDKtBOa27eQknlWlRF3WQOwoAfNPlEv6h4onOFyppTv22hIAUPm+BfV/DPU+0vMNV8u347q6ffVjoA==,
       }
 
-  '@simple-data-open/types@0.0.19':
+  '@simple-data-open/types@0.0.21':
     resolution:
       {
-        integrity: sha512-H/EfDGolSUBTkOOjke6VYcmtJHIwBwKbiaVctqsJC5r7+m6a5x2Tt9W44noiNt4xBJwuUzAiXog2lgNkawQVhA==,
+        integrity: sha512-faAwoePxDS+AcIrCpvWUk/0CDR4aUyAX15SoixWRCJ4KkmdzVR8r4CL54mX3IS54ymC0lcIYJL8Cs40xGVFuGQ==,
       }
 
   '@simple-data-open/utils@0.0.13':
@@ -13756,7 +13756,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.28.1':
     optional: true
 
-  '@simple-data-open/adapter@0.0.31': {}
+  '@simple-data-open/adapter@0.0.32': {}
 
   '@simple-data-open/easy-tsc@0.0.24':
     dependencies:
@@ -13824,7 +13824,7 @@ snapshots:
 
   '@simple-data-open/types@0.0.18': {}
 
-  '@simple-data-open/types@0.0.19': {}
+  '@simple-data-open/types@0.0.21': {}
 
   '@simple-data-open/utils@0.0.13': {}
 
