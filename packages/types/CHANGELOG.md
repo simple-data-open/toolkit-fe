@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.22
+
+### Patch Changes
+
+- 修改驱动版本
+
 ## 0.0.21
 
 ### Patch Changes

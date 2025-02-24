@@ -7,7 +7,7 @@ declare global {
     interface ManifestOriginal {
       icon?: string;
       engines: {
-        connector: '0.0.0';
+        connector: 'v1';
       };
       locales: {
         [key: string]: {
