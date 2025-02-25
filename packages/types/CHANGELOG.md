@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.24
+
+### Patch Changes
+
+- 添加数据源来源字段
+
 ## 0.0.23
 
 ### Patch Changes

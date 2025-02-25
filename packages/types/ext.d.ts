@@ -97,6 +97,21 @@ declare global {
       datasource: {
         // 暂时仅支持 custom | locale 数据源
         source: DatasourceType;
+        columns: {
+          field: string;
+          type:
+            | 'text'
+            | 'numeric'
+            | 'date'
+            | 'checkbox'
+            | 'dropdown'
+            | 'autocomplete'
+            | 'password'
+            | 'time'
+            | 'color'
+            | 'custom';
+          width: number;
+        }[];
         data: Record<string, any>[];
       };
     }
