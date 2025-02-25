@@ -111,6 +111,7 @@ declare global {
         | 'layout'
         | 'appearance'
         | 'border'
+        | 'datasource'
       >
     >;
   }

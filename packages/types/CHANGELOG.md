@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.23
+
+### Patch Changes
+
+- 添加 datasource 可自定义
+
 ## 0.0.22
 
 ### Patch Changes
