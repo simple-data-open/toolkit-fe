@@ -119,7 +119,7 @@ export namespace JSX {
     var: MinPartial<HTMLElement>;
     video: MinPartial<HTMLVideoElement>;
     wbr: MinPartial<HTMLElement>;
-    // svg
+    [tag: string]: MinPartial<HTMLElement>;
   }
   // svg 标签
   interface IntrinsicSVGElements {

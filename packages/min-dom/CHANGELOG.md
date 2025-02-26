@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.19
+
+### Patch Changes
+
+- 修复 html 扩展 tag 名
+
 ## 0.0.18
 
 ### Patch Changes
