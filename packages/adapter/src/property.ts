@@ -132,7 +132,7 @@ export interface PropertyRendererOptions extends PropertyRendererModel {
   container: HTMLElement;
   value: PropertyValueType;
   update: (
-    chain: SimpleModifier.ChainType[],
+    chain: SimpleModifier.ChainType,
     value: PropertyValueType,
   ) => boolean;
 }
@@ -157,7 +157,7 @@ export class PropertyRenderer<T = any> {
   public value: T;
   public restrict?: RestrictType;
   public update: (
-    chain: SimpleModifier.ChainType[],
+    chain: SimpleModifier.ChainType,
     value: PropertyValueType,
   ) => boolean;
 
@@ -196,7 +196,7 @@ export class PropertyRenderer<T = any> {
     chain,
     value,
   }: {
-    chain: SimpleModifier.ChainType[];
+    chain: SimpleModifier.ChainType;
     value: any;
   }): boolean => {
     let hasChange = false;
@@ -215,7 +215,7 @@ export class PropertyRenderer<T = any> {
    * @param data - 包含链和值的对象
    */
   public onValueChange = (data: {
-    chain: SimpleModifier.ChainType[];
+    chain: SimpleModifier.ChainType;
     value: any;
   }) => {
     this.changeValue(data);
