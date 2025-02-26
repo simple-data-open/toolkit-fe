@@ -7,7 +7,6 @@ export type {
   PropertyAdapterInterface,
   PropertyValueType,
   Render,
-  ChainType,
   PropertyRendererModel,
   PropertyRendererOptions,
   PropertyGroupModel,

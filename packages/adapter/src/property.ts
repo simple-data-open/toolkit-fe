@@ -101,11 +101,6 @@ export type PropertyValueType =
   | PropertyValueType[]
   | { [key: string | number]: PropertyValueType };
 
-/**
- * 链类型，表示嵌套路径的字符串数组数组
- */
-export type ChainType = string[][];
-
 export interface RestrictType {
   min?: number;
   max?: number;
@@ -121,7 +116,7 @@ export interface RestrictType {
  * 属性基础模型接口，包含名称、链和跨度
  */
 export interface PropertyRendererModel {
-  chain: ChainType;
+  chains: SimpleModifier.ChainType[];
   name?: string;
   span?: 1 | 2 | 3 | 4;
   placeholder?: string;
@@ -136,7 +131,10 @@ export interface PropertyRendererModel {
 export interface PropertyRendererOptions extends PropertyRendererModel {
   container: HTMLElement;
   value: PropertyValueType;
-  update: (chain: string[], value: PropertyValueType) => boolean;
+  update: (
+    chain: SimpleModifier.ChainType[],
+    value: PropertyValueType,
+  ) => boolean;
 }
 
 /**
@@ -154,11 +152,14 @@ export interface PropertyGroupModel {
 export class PropertyRenderer<T = any> {
   public container: HTMLElement;
   public name?: string;
-  public chain: ChainType;
+  public chains: SimpleModifier.ChainType[];
   public span: 1 | 2 | 3 | 4;
   public value: T;
   public restrict?: RestrictType;
-  public update: (chain: string[], value: PropertyValueType) => boolean;
+  public update: (
+    chain: SimpleModifier.ChainType[],
+    value: PropertyValueType,
+  ) => boolean;
 
   /**
    * 构造函数，初始化属性渲染器
@@ -168,7 +169,7 @@ export class PropertyRenderer<T = any> {
   constructor(options: PropertyRendererOptions) {
     this.container = options.container;
     this.name = options.name;
-    this.chain = options.chain;
+    this.chains = options.chains;
     this.span = options.span || 4;
     this.value = options.value as T;
     this.restrict = options.restrict;
@@ -195,11 +196,11 @@ export class PropertyRenderer<T = any> {
     chain,
     value,
   }: {
-    chain: string[];
+    chain: SimpleModifier.ChainType[];
     value: any;
   }): boolean => {
     let hasChange = false;
-    this.chain.forEach((_chain, index) => {
+    this.chains.forEach((_chain, index) => {
       if (_chain.join(',') === chain.join(',')) {
         this.value[index] = value;
         hasChange = true;
@@ -213,7 +214,10 @@ export class PropertyRenderer<T = any> {
    *
    * @param data - 包含链和值的对象
    */
-  public onValueChange = (data: { chain: string[]; value: any }) => {
+  public onValueChange = (data: {
+    chain: SimpleModifier.ChainType[];
+    value: any;
+  }) => {
     this.changeValue(data);
   };
 }

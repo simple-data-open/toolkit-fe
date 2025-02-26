@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.34
+
+### Patch Changes
+
+- 提取 ChainType
+
 ## 0.0.33
 
 ### Patch Changes
