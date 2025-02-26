@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.36
+
+### Patch Changes
+
+- value -> values, 复数容易辨别
+
 ## 0.0.35
 
 ### Patch Changes

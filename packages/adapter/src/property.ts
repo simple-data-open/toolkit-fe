@@ -130,7 +130,7 @@ export interface PropertyRendererModel {
  */
 export interface PropertyRendererOptions extends PropertyRendererModel {
   container: HTMLElement;
-  value: PropertyValueType;
+  values: PropertyValueType;
   update: (
     chain: SimpleModifier.ChainType,
     value: PropertyValueType,
@@ -154,7 +154,7 @@ export class PropertyRenderer<T = any> {
   public name?: string;
   public chains: SimpleModifier.ChainType[];
   public span: 1 | 2 | 3 | 4;
-  public value: T;
+  public values: T;
   public restrict?: RestrictType;
   public update: (
     chain: SimpleModifier.ChainType,
@@ -171,7 +171,7 @@ export class PropertyRenderer<T = any> {
     this.name = options.name;
     this.chains = options.chains;
     this.span = options.span || 4;
-    this.value = options.value as T;
+    this.values = options.values as T;
     this.restrict = options.restrict;
     this.update = options.update;
   }
@@ -202,7 +202,7 @@ export class PropertyRenderer<T = any> {
     let hasChange = false;
     this.chains.forEach((_chain, index) => {
       if (_chain.join(',') === chain.join(',')) {
-        this.value[index] = value;
+        this.values[index] = value;
         hasChange = true;
       }
     });
