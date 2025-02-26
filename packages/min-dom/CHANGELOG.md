@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.18
+
+### Patch Changes
+
+- adapter 类型扩展, min-dom undefined, null 渲染修复
+
 ## 0.0.17
 
 ### Patch Changes

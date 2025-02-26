@@ -77,17 +77,49 @@ export class PropertyAdapter implements PropertyAdapterInterface {
 
 /************* BLOCK: PropertyRenderer start *************/
 
+interface InherentRenderPosition {
+  name: 'position';
+}
+
+interface InherentRenderLayout {
+  name: 'layout';
+}
+
+interface InherentRenderColor {
+  name: 'color';
+}
+
+interface InherentRenderText {
+  name: 'text';
+}
+
+interface InherentRenderNumber {
+  name: 'number';
+}
+
+interface InherentRenderOpacity {
+  name: 'opacity';
+}
+
+interface InherentRenderBorder {
+  name: 'border';
+}
+
+type InherentRender =
+  | InherentRenderPosition
+  | InherentRenderLayout
+  | InherentRenderColor
+  | InherentRenderText
+  | InherentRenderNumber
+  | InherentRenderOpacity
+  | InherentRenderBorder;
+
 /**
  * 渲染类型，可以是 'axis'、'size' 或 PropertyRenderer 类型
  */
 export type Render =
-  | 'position'
-  | 'layout'
-  | 'color'
-  | 'text'
-  | 'number'
-  | 'opacity'
-  | 'border'
+  | Pick<InherentRender, 'name'>
+  | InherentRender
   | typeof PropertyRenderer;
 
 /**

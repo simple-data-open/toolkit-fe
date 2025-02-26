@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.37
+
+### Patch Changes
+
+- adapter 类型扩展, min-dom undefined, null 渲染修复
+
 ## 0.0.36
 
 ### Patch Changes

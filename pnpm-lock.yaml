@@ -125,8 +125,8 @@ importers:
   templates/solid-js:
     dependencies:
       '@simple-data-open/adapter':
-        specifier: 0.0.35
-        version: 0.0.35
+        specifier: 0.0.36
+        version: 0.0.36
       solid-i18n:
         specifier: 1.1.0
         version: 1.1.0(solid-js@1.9.3)
@@ -162,8 +162,8 @@ importers:
         specifier: 5.2.11
         version: 5.2.11
       '@simple-data-open/adapter':
-        specifier: 0.0.35
-        version: 0.0.35
+        specifier: 0.0.36
+        version: 0.0.36
     devDependencies:
       '@simple-data-open/simple-pack':
         specifier: workspace:^
@@ -3142,10 +3142,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@simple-data-open/adapter@0.0.35':
+  '@simple-data-open/adapter@0.0.36':
     resolution:
       {
-        integrity: sha512-0lrqeZL0Z2xOhcHxlWLdvZimyi6/64+EaAHyfLAVPdEEqJ1qCaIZGwKKX8zGZR2850NTxBUGwFicC9mTSwEUtQ==,
+        integrity: sha512-4qo3AKeeFfedk42F366vHNwpRaNW8uvFJYLo30/eTk81w2nvLG6MNX9+DilHR2hmnNyQTSodbrN1QItQULg2HA==,
       }
 
   '@simple-data-open/easy-tsc@0.0.24':
@@ -13762,7 +13762,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.28.1':
     optional: true
 
-  '@simple-data-open/adapter@0.0.35': {}
+  '@simple-data-open/adapter@0.0.36': {}
 
   '@simple-data-open/easy-tsc@0.0.24':
     dependencies:

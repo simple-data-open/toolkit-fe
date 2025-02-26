@@ -132,6 +132,9 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
 
 // 将子节点转换为 DOM 节点
 function toNode(child: any): Node {
+  if (typeof child === 'undefined' || child === null)
+    return document.createComment(String(child));
+
   if (isIntrinsicElement(child)) return child.element;
 
   if (child instanceof Node) return child;
