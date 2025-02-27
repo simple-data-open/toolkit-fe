@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.39
+
+### Patch Changes
+
+- 添加 data render
+
 ## 0.0.38
 
 ### Patch Changes

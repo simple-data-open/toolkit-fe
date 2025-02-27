@@ -80,29 +80,26 @@ export class PropertyAdapter implements PropertyAdapterInterface {
 interface InherentRenderPosition {
   name: 'position';
 }
-
 interface InherentRenderLayout {
   name: 'layout';
 }
-
 interface InherentRenderColor {
   name: 'color';
 }
-
 interface InherentRenderText {
   name: 'text';
 }
-
 interface InherentRenderNumber {
   name: 'number';
 }
-
 interface InherentRenderOpacity {
   name: 'opacity';
 }
-
 interface InherentRenderBorder {
   name: 'border';
+}
+interface InherentRenderData {
+  name: 'data';
 }
 
 type InherentRender =
@@ -112,7 +109,8 @@ type InherentRender =
   | InherentRenderText
   | InherentRenderNumber
   | InherentRenderOpacity
-  | InherentRenderBorder;
+  | InherentRenderBorder
+  | InherentRenderData;
 
 /**
  * 渲染类型，可以是 'axis'、'size' 或 PropertyRenderer 类型
