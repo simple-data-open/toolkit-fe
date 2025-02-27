@@ -86,8 +86,8 @@ function isCommandInPath(command) {
 }
 
 function getCmd() {
-  if (isCommandInPath('bunx')) {
-    return 'bunx';
+  if (isCommandInPath('npx')) {
+    return 'npx';
   }
   return 'npx';
 }

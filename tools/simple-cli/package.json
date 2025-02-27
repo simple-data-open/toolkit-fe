@@ -18,12 +18,12 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc && easy-tsc append",
-    "check": "bunx tsc --noEmit --project tsconfig.json",
-    "dev": "tsc --watch & easy-tsc watch",
+    "build": "npx tsc && easy-tsc append",
+    "check": "npx tsc --noEmit --project tsconfig.json",
+    "dev": "npx tsc --watch & easy-tsc watch",
     "lint": "bun run check && bun run lint:fix",
     "lint:fix": "eslint --config ../../eslint.config.mjs ./src --cache --quiet --fix",
-    "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
+    "lint:force": "bun run check && npx eslint --config ../../eslint.config.mjs ./src --fix"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.2",

@@ -9,10 +9,10 @@
   "type": "module",
   "scripts": {
     "build": "simple-pack build",
-    "check": "bunx tsc --noEmit --project tsconfig.json",
+    "check": "npx tsc --noEmit --project tsconfig.json",
     "dev": "simple-pack serve",
     "preinstall": "npx only-allow pnpm",
-    "lint": "bun run check && bunx eslint --config ./eslint.config.mjs ./src --fix"
+    "lint": "bun run check && npx eslint --config ./eslint.config.mjs ./src --fix"
   },
   "dependencies": {
     "@simple-data-open/adapter": "0.0.39",

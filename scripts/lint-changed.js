@@ -60,7 +60,7 @@ function runESLint(_files) {
   //   process.exit(1);
   // }
 
-  const command = `bunx eslint${isExistConfigFile ? ' --config ./eslint.config.mjs' : ''} ${files.join(' ')} --cache --quiet --fix`;
+  const command = `npx eslint${isExistConfigFile ? ' --config ./eslint.config.mjs' : ''} ${files.join(' ')} --cache --quiet --fix`;
   // const printWorkspacePath = files.map(
   //   file => '[changed]: ' + resolve(file).replace(`${workspaceDirectory}/`, ''),
   // );

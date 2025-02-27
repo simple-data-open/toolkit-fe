@@ -18,12 +18,12 @@
     "lib"
   ],
   "scripts": {
-    "build": "premove lib && bunx tsc",
-    "check": "bunx tsc --noEmit --project tsconfig.json",
-    "dev": "bunx tsc --watch",
+    "build": "premove lib && npx tsc",
+    "check": "npx tsc --noEmit --project tsconfig.json",
+    "dev": "npx tsc --watch",
     "lint": "bun run check && bun run lint:fix",
     "lint:fix": "eslint --config ../../eslint.config.mjs ./src --cache --quiet --fix",
-    "lint:force": "bun run check && bunx eslint --config ../../eslint.config.mjs ./src --fix"
+    "lint:force": "bun run check && npx eslint --config ../../eslint.config.mjs ./src --fix"
   },
   "dependencies": {
     "@babel/core": "^7.26.0",
