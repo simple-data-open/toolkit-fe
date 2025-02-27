@@ -18,7 +18,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "premove lib && npx tsc",
+    "build": "npx premove lib && npx tsc",
     "check": "npx tsc --noEmit --project tsconfig.json",
     "dev": "npx tsc --watch",
     "lint": "bun run check && bun run lint:fix",
