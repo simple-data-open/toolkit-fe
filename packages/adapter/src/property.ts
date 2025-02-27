@@ -172,7 +172,6 @@ export interface PropertyRendererOptions extends PropertyRendererModel {
  * 属性组模型接口，包含名称和属性数组
  */
 export interface PropertyGroupModel {
-  id: string;
   name?: string;
   unfold?: boolean;
   renderers: (PropertyRendererModel & { render: Render })[];
