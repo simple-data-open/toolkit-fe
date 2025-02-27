@@ -118,7 +118,7 @@ type InherentRender =
  * 渲染类型，可以是 'axis'、'size' 或 PropertyRenderer 类型
  */
 export type Render =
-  | Pick<InherentRender, 'name'>
+  | InherentRender['name']
   | InherentRender
   | typeof PropertyRenderer;
 

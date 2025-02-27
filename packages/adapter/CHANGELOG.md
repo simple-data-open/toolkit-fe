@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.38
+
+### Patch Changes
+
+- 修复 property Render 类型
+
 ## 0.0.37
 
 ### Patch Changes
