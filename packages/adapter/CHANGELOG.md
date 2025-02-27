@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.43
+
+### Patch Changes
+
+- 修复 update chain 类型
+
 ## 0.0.42
 
 ### Patch Changes

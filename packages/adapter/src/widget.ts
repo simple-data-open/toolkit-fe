@@ -29,7 +29,7 @@ export interface WidgetAdapterInterface {
   /**
    * 可选的属性更新回调函数，当小部件属性发生变化时调用
    */
-  update?: (chain: string[], value: any) => void;
+  update?: (chain: SimpleModifier.ChainType, value: any) => void;
   /**
    * 可选的语言变化回调函数，当语言变化时调用
    * @param _lang - 新的语言代码
@@ -59,7 +59,7 @@ export class WidgetAdapter<T = any> implements WidgetAdapterInterface {
   public unmount = () => {};
 
   public resize?: (size: [number, number]) => void;
-  public update?: (chain: string[], value: any) => void;
+  public update?: (chain: SimpleModifier.ChainType, value: any) => void;
 
   public onLangChange?: (_lang: string) => void;
 }
