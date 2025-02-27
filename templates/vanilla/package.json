@@ -12,7 +12,7 @@
     "check": "npx tsc --noEmit --project tsconfig.json",
     "dev": "simple-pack serve",
     "preinstall": "npx only-allow pnpm",
-    "lint": "bun run check && npx eslint --config ./eslint.config.mjs ./src --fix",
+    "lint": "npm run check && npx eslint --config ./eslint.config.mjs ./src --fix",
     "publish": "simple-cli publish"
   },
   "dependencies": {

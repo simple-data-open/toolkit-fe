@@ -32,9 +32,9 @@
   ],
   "scripts": {
     "check": "npx tsc --noEmit --project tsconfig.json",
-    "lint": "bun run check && bun run lint:fix",
+    "lint": "npm run check && npm run lint:fix",
     "lint:fix": "eslint --config ../../eslint.config.mjs . --cache --quiet --fix",
-    "lint:force": "bun run check && npx eslint --config ../../eslint.config.mjs . --fix"
+    "lint:force": "npm run check && npx eslint --config ../../eslint.config.mjs . --fix"
   },
   "publishConfig": {
     "access": "public"

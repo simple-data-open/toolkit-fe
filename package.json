@@ -16,7 +16,7 @@
     "lint": "pnpm --filter './tools/**' --filter './packages/**' --filter './extensions/**' lint",
     "lint:force": "pnpm --filter './tools/**' --filter './packages/**' --filter './extensions/**' lint:force",
     "prepare": "husky",
-    "publish": "bun run build && npx changeset publish",
+    "publish": "npm run build && npx changeset publish",
     "start:pkg": "pm2 start pkg.ecosystem.config.cjs",
     "start:temp": "pm2 start temp.ecosystem.config.cjs",
     "start:tools": "pm2 start tools.ecosystem.config.cjs",
@@ -56,7 +56,6 @@
   },
   "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c",
   "engines": {
-    "bun": ">=1.1.42",
     "node": ">=22.11.0",
     "pnpm": ">=9.15.0"
   }
