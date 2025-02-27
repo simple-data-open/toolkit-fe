@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.40
+
+### Patch Changes
+
+- render 添加 id 字段, 可能有需要
+
 ## 0.0.39
 
 ### Patch Changes

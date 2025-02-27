@@ -159,6 +159,7 @@ export interface PropertyRendererModel {
  * 属性渲染器选项接口，继承自属性基础模型，包含容器、值和更新函数
  */
 export interface PropertyRendererOptions extends PropertyRendererModel {
+  id: string;
   container: HTMLElement;
   values: PropertyValueType;
   update: (
@@ -171,6 +172,7 @@ export interface PropertyRendererOptions extends PropertyRendererModel {
  * 属性组模型接口，包含名称和属性数组
  */
 export interface PropertyGroupModel {
+  id: string;
   name?: string;
   unfold?: boolean;
   renderers: (PropertyRendererModel & { render: Render })[];
@@ -180,6 +182,7 @@ export interface PropertyGroupModel {
  * 属性渲染器类，用于渲染属性
  */
 export class PropertyRenderer<T = any> {
+  public id: string;
   public container: HTMLElement;
   public name?: string;
   public chains: SimpleModifier.ChainType[];
@@ -197,6 +200,7 @@ export class PropertyRenderer<T = any> {
    * @param options - 属性渲染器选项
    */
   constructor(options: PropertyRendererOptions) {
+    this.id = options.id;
     this.container = options.container;
     this.name = options.name;
     this.chains = options.chains;
