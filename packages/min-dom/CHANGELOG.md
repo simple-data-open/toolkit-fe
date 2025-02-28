@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.20
+
+### Patch Changes
+
+- 修复内存泄漏
+
 ## 0.0.19
 
 ### Patch Changes

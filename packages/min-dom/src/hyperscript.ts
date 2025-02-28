@@ -122,7 +122,19 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
     },
     on: element.addEventListener.bind(element),
     off: element.removeEventListener.bind(element),
-    remove: () => element.remove(),
+    remove: () => {
+      for (const key in props) {
+        if (key.startsWith('on') && typeof props[key] === 'function') {
+          element.removeEventListener(
+            transformListener(key),
+            props[key] as EventListener,
+          );
+        }
+      }
+      element.remove();
+      // @ts-expect-error: element is null
+      element = null;
+    },
     style: (style: Partial<CSSStyleDeclaration>) => {
       Object.assign(element.style, style);
     },
