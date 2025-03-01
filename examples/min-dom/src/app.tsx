@@ -1,3 +1,5 @@
+import { JSX } from '@simple-data-open/min-dom/jsx-runtime';
+
 import typescriptLogo from './typescript.svg';
 import viteLogo from '/vite.svg';
 
@@ -35,6 +37,37 @@ const list = [
   },
 ];
 
+const MemoryLeak = () => {
+  let nodes: JSX.Element[] = [];
+  const btnInsert = <button onclick={handleInsert}>Insert</button>;
+  const btnClear = <button onclick={handleClear}>Clear</button>;
+
+  function handleInsert() {
+    Array.from({ length: 1000 }).forEach((_, index) => {
+      const node = <div data-index={index}>node - {index}</div>;
+      nodes.push(node);
+      root.element.appendChild(node.element);
+    });
+  }
+
+  function handleClear() {
+    nodes.forEach(node => {
+      node.remove();
+    });
+    nodes = [];
+  }
+
+  const root = (
+    <div>
+      {btnInsert}
+      {btnClear}
+      <br />
+    </div>
+  );
+
+  return root;
+};
+
 export const App = () => (
   <>
     <Logo href="https://vitejs.dev/" />
@@ -51,5 +84,6 @@ export const App = () => (
         </li>
       ))}
     </p>
+    <MemoryLeak />
   </>
 );

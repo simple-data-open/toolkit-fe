@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.44
+
+### Patch Changes
+
+- 优化 adapter 类型
+
 ## 0.0.43
 
 ### Patch Changes

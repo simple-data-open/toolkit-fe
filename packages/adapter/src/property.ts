@@ -88,9 +88,19 @@ interface InherentRenderColor {
 }
 interface InherentRenderText {
   name: 'text';
+  options?: {
+    minlength?: number;
+    maxlength?: number;
+  };
 }
 interface InherentRenderNumber {
   name: 'number';
+  options?: {
+    min?: number;
+    max?: number;
+    step?: number;
+    decimal?: number;
+  };
 }
 interface InherentRenderOpacity {
   name: 'opacity';
@@ -101,6 +111,15 @@ interface InherentRenderBorder {
 interface InherentRenderData {
   name: 'data';
 }
+interface InherentRenderSelect {
+  name: 'select';
+  options?: {
+    options?: {
+      label: string | number;
+      value: string | number;
+    }[];
+  };
+}
 
 type InherentRender =
   | InherentRenderPosition
@@ -110,7 +129,8 @@ type InherentRender =
   | InherentRenderNumber
   | InherentRenderOpacity
   | InherentRenderBorder
-  | InherentRenderData;
+  | InherentRenderData
+  | InherentRenderSelect;
 
 /**
  * 渲染类型，可以是 'axis'、'size' 或 PropertyRenderer 类型
@@ -131,17 +151,6 @@ export type PropertyValueType =
   | PropertyValueType[]
   | { [key: string | number]: PropertyValueType };
 
-export interface RestrictType {
-  min?: number;
-  max?: number;
-  step?: number;
-  decimal?: number;
-  minlength?: number;
-  maxlength?: number;
-  includePatterns?: RegExp[];
-  excludePatterns?: RegExp[];
-}
-
 /**
  * 属性基础模型接口，包含名称、链和跨度
  */
@@ -151,8 +160,7 @@ export interface PropertyRendererModel {
   span?: 1 | 2 | 3 | 4;
   placeholder?: string;
   defaultValue?: PropertyValueType;
-  /** 暂时仅支持 min/max/minLength/maxLength */
-  restrict?: RestrictType;
+  options?: any;
 }
 
 /**
@@ -181,7 +189,7 @@ export interface PropertyGroupModel {
 /**
  * 属性渲染器类，用于渲染属性
  */
-export class PropertyRenderer<T = any> {
+export class PropertyRenderer<T = any, O = any> {
   public pageId: string;
   public widgetId: string;
   public container: HTMLElement;
@@ -189,7 +197,7 @@ export class PropertyRenderer<T = any> {
   public chains: SimpleModifier.ChainType[];
   public span: 1 | 2 | 3 | 4;
   public values: T;
-  public restrict?: RestrictType;
+  public options?: O;
   public update: (
     chain: SimpleModifier.ChainType,
     value: PropertyValueType,
@@ -208,7 +216,7 @@ export class PropertyRenderer<T = any> {
     this.chains = options.chains;
     this.span = options.span || 4;
     this.values = options.values as T;
-    this.restrict = options.restrict;
+    this.options = options.options;
     this.update = options.update;
   }
 

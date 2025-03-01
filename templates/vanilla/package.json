@@ -1,6 +1,6 @@
 {
   "name": "simple-data-open-template-vanilla",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "private": true,
   "description": "",
   "keywords": [],
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@antv/g2": "5.2.11",
-    "@simple-data-open/adapter": "0.0.43"
+    "@simple-data-open/adapter": "0.0.44"
   },
   "devDependencies": {
     "@simple-data-open/simple-pack": "workspace:^",
