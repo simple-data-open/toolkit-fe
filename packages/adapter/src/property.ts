@@ -44,6 +44,13 @@ export interface PropertyAdapterInterface<T = any> {
    * @return {PropertyGroupModel[]} 属性组模型数组
    */
   render(widget: T): PropertyGroupModel[];
+
+  /**
+   * 可选的属性值变化回调函数，当属性值变化时调用
+   * @param chain - 属性链
+   * @param value - 新的属性值
+   */
+  onValueChange?: (chain: SimpleModifier.ChainType, value: any) => void;
 }
 
 export class PropertyAdapter implements PropertyAdapterInterface {
@@ -71,6 +78,8 @@ export class PropertyAdapter implements PropertyAdapterInterface {
   public onLangChange?: (_lang: string) => void;
 
   public render = (_widget: any): PropertyGroupModel[] => [];
+
+  public update = (_chain: SimpleModifier.ChainType, _value: any) => {};
 }
 
 /************* BLOCK: PropertyAdapter end *************/

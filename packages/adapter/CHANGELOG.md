@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.45
+
+### Patch Changes
+
+- 添加 property adapter onValueChange 触发方法
+
 ## 0.0.44
 
 ### Patch Changes
