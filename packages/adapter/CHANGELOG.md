@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.46
+
+### Patch Changes
+
+- 修复 onValueChange 命名
+
 ## 0.0.45
 
 ### Patch Changes

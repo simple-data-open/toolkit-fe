@@ -79,7 +79,7 @@ export class PropertyAdapter implements PropertyAdapterInterface {
 
   public render = (_widget: any): PropertyGroupModel[] => [];
 
-  public update = (_chain: SimpleModifier.ChainType, _value: any) => {};
+  public onValueChange = (_chain: SimpleModifier.ChainType, _value: any) => {};
 }
 
 /************* BLOCK: PropertyAdapter end *************/
