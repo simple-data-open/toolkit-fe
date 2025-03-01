@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.47
+
+### Patch Changes
+
+- onValueChange 添加返回值, 可选阻止默认重渲染
+
 ## 0.0.46
 
 ### Patch Changes

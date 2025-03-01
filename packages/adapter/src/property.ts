@@ -49,8 +49,13 @@ export interface PropertyAdapterInterface<T = any> {
    * 可选的属性值变化回调函数，当属性值变化时调用
    * @param chain - 属性链
    * @param value - 新的属性值
+   *
+   * @return {boolean} 是否阻止默认 property renderer 重新渲染
    */
-  onValueChange?: (chain: SimpleModifier.ChainType, value: any) => void;
+  onValueChange?: (
+    chain: SimpleModifier.ChainType,
+    value: any,
+  ) => boolean | undefined;
 }
 
 export class PropertyAdapter implements PropertyAdapterInterface {
@@ -79,7 +84,9 @@ export class PropertyAdapter implements PropertyAdapterInterface {
 
   public render = (_widget: any): PropertyGroupModel[] => [];
 
-  public onValueChange = (_chain: SimpleModifier.ChainType, _value: any) => {};
+  public onValueChange = (_chain: SimpleModifier.ChainType, _value: any) => {
+    return false;
+  };
 }
 
 /************* BLOCK: PropertyAdapter end *************/
