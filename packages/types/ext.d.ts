@@ -67,6 +67,22 @@ declare global {
 
     type DatasourceType = 'custom' | 'locale' | 'api' | 'database';
 
+    type DatasourceColumn = {
+      field: string;
+      type:
+        | 'text'
+        | 'numeric'
+        | 'date'
+        | 'checkbox'
+        | 'dropdown'
+        | 'autocomplete'
+        | 'password'
+        | 'time'
+        | 'color'
+        | 'custom';
+      width: number;
+    };
+
     interface Widget<T = any> {
       schema: string;
       extension: {
@@ -97,21 +113,7 @@ declare global {
       datasource: {
         // 暂时仅支持 custom | locale 数据源
         source: DatasourceType;
-        columns: {
-          field: string;
-          type:
-            | 'text'
-            | 'numeric'
-            | 'date'
-            | 'checkbox'
-            | 'dropdown'
-            | 'autocomplete'
-            | 'password'
-            | 'time'
-            | 'color'
-            | 'custom';
-          width: number;
-        }[];
+        columns: DatasourceColumn[];
         data: Record<string, any>[];
       };
     }

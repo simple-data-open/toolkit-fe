@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.26
+
+### Patch Changes
+
+- 类型提取
+
 ## 0.0.25
 
 ### Patch Changes
