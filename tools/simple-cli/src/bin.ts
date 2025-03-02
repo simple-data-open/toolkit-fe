@@ -91,16 +91,13 @@ program
   .description('Set config store.')
   .option('-e, --env <env>', 'Environment name dev/test/prod', 'dev')
   .option('-u, --url <url>', 'Environment url', 'http://localhost:3000')
-  .option('-l, --list', 'Config settings list')
+  .option(
+    '-d, --dep <dep>',
+    'Environment url',
+    'http://192.168.50.171:94/dependencies',
+  )
   .action(options => {
     const config = getConfig();
-    if (options.list) {
-      logger(kleur.red('active'), kleur.blue(`[${config.active}]`));
-      Object.entries(config.envs).forEach(([key, value]) => {
-        logger(kleur.green(key), value.url);
-      });
-      process.exit(0);
-    }
 
     if (options.env) {
       config.active = options.env;
@@ -111,7 +108,45 @@ program
       config.envs[_env].url = options.url;
     }
 
+    if (options.dep) {
+      const _env = options.env || config.envs[options.env];
+      config.envs[_env].dependencies_url = options.dep;
+    }
+
     saveConfig(config);
+
+    process.exit(0);
+  });
+
+program
+  .command('info')
+  .description('Get config info.')
+  .option('-e, --env <env>', 'Environment name dev/test/prod')
+  .option('-k, --key <key>', 'Environment url/dep/all', 'all')
+  .action(options => {
+    const config = getConfig();
+
+    const _env = options.env || config.active;
+
+    if (options.key === 'all') {
+      logger(kleur.red('active'), kleur.blue(`[${_env}]`));
+
+      Object.entries(config.envs).forEach(([key, value]) => {
+        logger(kleur.green(`${key} api`), value.url);
+        logger(kleur.green(`${key} dependencies`), value.dependencies_url);
+      });
+      process.exit(0);
+    }
+
+    if (options.key === 'url') {
+      console.log(config.envs[_env].url);
+      process.exit(0);
+    }
+
+    if (options.key === 'dep') {
+      console.log(config.envs[_env].dependencies_url);
+      process.exit(0);
+    }
 
     process.exit(0);
   });

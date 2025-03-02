@@ -1,3 +1,5 @@
+import { execSync } from 'node:child_process';
+
 import { getDepsRegistrationList } from './deps-register.js';
 
 /** 校验名称是否符合规则 */
@@ -42,9 +44,11 @@ export const transformManifest = async (
   const manifestOriginal =
     pkg.simpleManifest as SimpleExtSpace.ManifestOriginal;
 
+  const baseUrl = execSync('simple-cli info -k baseUrl').toString();
+
   const dependencies = await getDepsRegistrationList({
     // TODO: 需要修改为变量
-    baseUrl: 'http://192.168.50.41:94/dependencies',
+    baseUrl,
     deps: manifestOriginal.dependencies || {},
   });
   const manifest: SimpleExtSpace.Manifest = Object.assign(

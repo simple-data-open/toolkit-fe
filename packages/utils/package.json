@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/utils",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "> TODO: description",
   "repository": {
     "type": "git",
@@ -40,6 +40,9 @@
     "lint": "npm run check && npm run lint:fix",
     "lint:fix": "eslint --config ../../eslint.config.mjs ./src --cache --quiet --fix",
     "lint:force": "npm run check && npx eslint --config ../../eslint.config.mjs ./src --fix"
+  },
+  "dependencies": {
+    "@types/node": "^22.13.8"
   },
   "devDependencies": {
     "@simple-data-open/easy-tsc": "0.0.24",

@@ -9,7 +9,7 @@
     "importHelpers": true,
     "esModuleInterop": true,
     "moduleResolution": "bundler",
-    "types": ["@simple-data-open/types"]
+    "types": ["@simple-data-open/types", "@types/node"]
   },
   "exclude": ["./node_modules", "lib"],
   "extends": "../../tsconfig.base.json",

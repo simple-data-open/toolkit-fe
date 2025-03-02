@@ -15,14 +15,17 @@ export interface ConfigModel {
     dev: {
       url: string;
       token: string;
+      dependencies_url: string;
     };
     test: {
       url: string;
       token: string;
+      dependencies_url: string;
     };
     prod: {
       url: string;
       token: string;
+      dependencies_url: string;
     };
   };
 }
@@ -73,15 +76,18 @@ export const defaultConfig: ConfigModel = {
   envs: {
     dev: {
       url: 'http://api.simple-data-dev.com',
+      dependencies_url: 'http://192.168.50.171:94/dependencies',
       token: '',
     },
     test: {
       url: 'http://api.simple-data-dev.com',
       token: '',
+      dependencies_url: 'http://dependencies.simple-data-dev.com/dependencies',
     },
     prod: {
       url: 'http://api.simple-data-dev.com',
       token: '',
+      dependencies_url: 'http://dependencies.simple-data-dev.com/dependencies',
     },
   },
 };

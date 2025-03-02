@@ -1,5 +1,11 @@
 # @simple-data-open/utils
 
+## 0.0.14
+
+### Patch Changes
+
+- 移除硬编码依赖 url, 使用 cli 获取
+
 ## 0.0.13
 
 ### Patch Changes
