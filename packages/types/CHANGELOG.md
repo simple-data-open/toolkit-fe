@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.27
+
+### Patch Changes
+
+- datasource 添加关联 id
+
 ## 0.0.26
 
 ### Patch Changes

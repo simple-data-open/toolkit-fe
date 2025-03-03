@@ -111,6 +111,7 @@ declare global {
       border: WidgetBorder | WidgetBorder[];
       custom_data: T;
       datasource: {
+        id: string;
         // 暂时仅支持 custom | locale 数据源
         source: DatasourceType;
         columns: DatasourceColumn[];
