@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.25
+
+### Patch Changes
+
+- element 无需设置为 null
+
 ## 0.0.24
 
 ### Patch Changes

@@ -180,8 +180,6 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
         }
       }
       element.remove();
-      // @ts-expect-error: element is null
-      element = null;
     },
     style: (style: Partial<CSSStyleDeclaration>) => {
       Object.assign(element.style, style);
