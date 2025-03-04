@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.24
+
+### Patch Changes
+
+- 仅支持 HTML 元素属性直接设置
+
 ## 0.0.23
 
 ### Patch Changes

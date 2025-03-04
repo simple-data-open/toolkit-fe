@@ -217,20 +217,21 @@ function setupMinKey(
 }
 
 function setupAtttrbiutes(element: Element, key: string, value: any): void {
-  if (key in element) {
-    // 标准属性
-    if (
-      key === 'style' &&
-      (element instanceof HTMLElement || element instanceof SVGElement)
-    ) {
-      // style 属性
-      if (typeof value !== 'string') {
-        Object.assign(element.style, value);
-        return;
-      }
-      element.style.cssText = value as string;
+  // 标准属性
+  if (
+    key === 'style' &&
+    (element instanceof HTMLElement || element instanceof SVGElement)
+  ) {
+    // style 属性
+    if (typeof value !== 'string') {
+      Object.assign(element.style, value);
       return;
     }
+    element.style.cssText = value as string;
+    return;
+  }
+  // 仅支持 HTML 元素属性直接设置
+  if (key in element && element instanceof HTMLElement) {
     if (typeof value === 'undefined') {
       // 删除属性
       delete element[key];
