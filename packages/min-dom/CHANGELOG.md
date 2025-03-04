@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.21
+
+### Patch Changes
+
+- 添加 dom 查询方法
+
 ## 0.0.20
 
 ### Patch Changes

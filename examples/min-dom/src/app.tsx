@@ -10,7 +10,6 @@ const handleClick = () => console.log('click');
 counter.on('click', handleClick);
 
 counter.on('dblclick', () => {
-  console.log('dblclick');
   counter.off('click', handleClick);
 });
 
@@ -21,7 +20,7 @@ export const ButtonUmount = (props: { onClick: () => void }) => (
 );
 
 const Logo = (props: { href: string }) => (
-  <a href={props.href} target="_blank">
+  <a href={props.href} target="_blank" min:query="QUERY_IDENTIFIER">
     <img src={viteLogo} class="logo" alt="Vite logo" />
   </a>
 );
@@ -68,6 +67,84 @@ const MemoryLeak = () => {
   return root;
 };
 
+const QueryTest = () => {
+  const root = (
+    <div>
+      <button
+        onclick={() => {
+          const element = root.query('QUERY_ELEMENT');
+          element.attr('data-time', Date.now());
+          element.text(`Query Element ${Date.now()}`);
+          element.style({
+            // 随机背景
+            background: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`,
+          });
+        }}
+      >
+        query and update
+      </button>
+      <div min:query="QUERY_ELEMENT">Query Element {Date.now()}</div>
+    </div>
+  );
+  return root;
+};
+
+const QueryListTest = () => {
+  const list = [
+    {
+      name: 'Vite',
+      version: '2.9.1',
+      content: `content ${Date.now()}`,
+    },
+    {
+      name: 'TypeScript',
+      version: '4.6.2',
+      content: `content ${Date.now()}`,
+    },
+  ];
+
+  const root = (
+    <div>
+      <button
+        onclick={() => {
+          const queries = root.queryAll('QUERY_LIST_ITEM');
+          queries.attr(index => {
+            return {
+              'data-index': index,
+              style: {
+                backgroundColor: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`,
+              },
+            };
+          });
+          const contents = root.queryAll('QUERY_LIST_CONTENT');
+          contents.text(index => {
+            return `index: ${index}, content ${Date.now()}`;
+          });
+          contents.style(() => {
+            return {
+              color: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`,
+            };
+          });
+        }}
+      >
+        query list and update
+      </button>
+      <ul>
+        {list.map(item => (
+          <li min:query="QUERY_LIST_ITEM">
+            <span>{item.name} </span>
+            <span>{item.version}</span>
+            <br />
+            <span min:query="QUERY_LIST_CONTENT">{item.content}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
+  return root;
+};
+
 export const App = () => (
   <>
     <Logo href="https://vitejs.dev/" />
@@ -84,6 +161,11 @@ export const App = () => (
         </li>
       ))}
     </p>
+    <br />
+    <QueryTest />
+    <br />
+    <QueryListTest />
+    <br />
     <MemoryLeak />
   </>
 );

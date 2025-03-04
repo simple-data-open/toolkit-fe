@@ -4,6 +4,7 @@ export namespace JSX {
     ElementChildrenAttribute & {
       class?: string;
       style?: Partial<CSSStyleDeclaration>;
+      'min:query'?: string;
     };
   // HTML 的属性支持（继承 TypeScript 内置的类型）
   interface IntrinsicHTMLElements {
@@ -192,10 +193,32 @@ export namespace JSX {
 
   interface IntrinsicElement<K extends keyof DomElement> {
     element: K extends keyof IntrinsicSVGElements ? SVGElement : HTMLElement;
-    attr<T extends keyof DomElement[K]>(
-      attr: T,
-      value?: DomElement[K][T],
-    ): string | null | void;
+    query(selector: string): {
+      element: HTMLElement | SVGElement | null;
+      attr(key: string, value?: any): any | void;
+      text(text?: string): string | null | void;
+      style(style: Partial<CSSStyleDeclaration>): void;
+    };
+    queryAll(selector: string): {
+      elements: (HTMLElement | SVGElement)[];
+      attr(
+        cb: (
+          index: number,
+          scopeElement: HTMLElement | SVGElement,
+        ) => Record<string, any>,
+      ): void;
+      text(
+        cb: (index: number, scopeElement: HTMLElement | SVGElement) => string,
+      ): void;
+      style(
+        cb: (
+          index: number,
+          scopeElement: HTMLElement | SVGElement,
+        ) => Partial<CSSStyleDeclaration>,
+      ): void;
+    };
+    text(text?: string): string | null;
+    attr(attr: string, value?: any): void;
     remove(): void;
     on<K extends keyof HTMLElementEventMap>(
       type: K,

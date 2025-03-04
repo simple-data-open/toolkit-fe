@@ -38,9 +38,7 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
   }
 
   let element: HTMLElement | SVGElement;
-  // if (tag === 'Fragment') {
-  //   element = document.createDocumentFragment();
-  // } else
+
   if (svgTags.has(tag as string)) {
     element = document.createElementNS(
       'http://www.w3.org/2000/svg',
@@ -55,36 +53,16 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
     for (const key in props) {
       if (key === 'children') continue;
 
-      if (key.startsWith('on') && typeof props[key] === 'function') {
+      if (key.startsWith('min:')) {
+        setupMinKey(element, key.slice(4), props[key]);
+      } else if (key.startsWith('on') && typeof props[key] === 'function') {
         // 事件绑定
         element.addEventListener(
           transformListener(key),
           props[key] as EventListener,
         );
-      } else if (key in element) {
-        if (key === 'style') {
-          // 处理 style 属性
-          if (typeof props[key] !== 'string') {
-            for (const styleKey in props[key]) {
-              (element.style as any)[styleKey] = props[key][styleKey];
-            }
-            continue;
-          }
-          element.style.cssText = props[key] as string;
-          continue;
-        }
-        if (typeof props[key] === 'undefined') {
-          delete props[key];
-          continue;
-        }
-        // 普通属性
-        (element as any)[key] = props[key];
       } else {
-        if (typeof props[key] === 'undefined') {
-          element.removeAttribute(key);
-        }
-        // 自定义属性
-        element.setAttribute(key, props[key] as string);
+        setupAtttrbiutes(element, key, props[key]);
       }
     }
   }
@@ -114,11 +92,83 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
     element: element as K extends keyof JSX.IntrinsicSVGElements
       ? SVGElement
       : HTMLElement,
-    attr(attr, value) {
-      if (typeof value === 'undefined')
-        return element.getAttribute(attr as string);
-      element.setAttribute(attr as string, value as string);
-      return value as string;
+    query(selector: string) {
+      const scopeElement = element.querySelector<HTMLElement | SVGElement>(
+        `[data-min-query="${selector}"]`,
+      );
+      return {
+        element: scopeElement,
+        attr(key, value) {
+          if (!scopeElement) {
+            console.error(`query ${selector} not found`);
+            return;
+          }
+          setupAtttrbiutes(scopeElement, key, value);
+        },
+        text(text?: string) {
+          if (!scopeElement) {
+            console.error(`query ${selector} not found`);
+            return;
+          }
+          return setupText(scopeElement, text);
+        },
+        style(style: Partial<CSSStyleDeclaration>) {
+          if (!scopeElement) {
+            console.error(`query ${selector} not found`);
+            return;
+          }
+          Object.assign(scopeElement.style, style);
+        },
+      };
+    },
+    queryAll(selector: string) {
+      const scopeElements = Array.from(
+        element.querySelectorAll<HTMLElement | SVGElement>(
+          `[data-min-query="${selector}"]`,
+        ),
+      );
+      return {
+        elements: scopeElements,
+        attr(
+          cb: (
+            index: number,
+            scopeElement: HTMLElement | SVGElement,
+          ) => Record<string, any>,
+        ) {
+          scopeElements.forEach((scopeElement, index) => {
+            Object.entries(cb(index, scopeElement)).forEach(([key, value]) => {
+              setupAtttrbiutes(scopeElement, key, value);
+            });
+          });
+        },
+        text(
+          cb: (index: number, scopeElement: HTMLElement | SVGElement) => string,
+        ) {
+          scopeElements.forEach((scopeElement, index) => {
+            setupText(scopeElement, cb(index, scopeElement));
+          });
+        },
+        style(
+          cb: (
+            index: number,
+            scopeElement: HTMLElement | SVGElement,
+          ) => Partial<CSSStyleDeclaration>,
+        ) {
+          scopeElements.forEach((scopeElement, index) => {
+            Object.assign(scopeElement.style, cb(index, scopeElement));
+          });
+        },
+      };
+    },
+    text(text?: string) {
+      if (typeof text === 'undefined') return element.textContent;
+
+      element.textContent = text;
+
+      return text;
+    },
+    attr(key: string, value: any) {
+      setupAtttrbiutes(element, key, value);
     },
     on: element.addEventListener.bind(element),
     off: element.removeEventListener.bind(element),
@@ -155,4 +205,56 @@ function toNode(child: any): Node {
     return document.createTextNode(String(child));
 
   return document.createTextNode(String(child));
+}
+
+// min:<key> 属性处理
+function setupMinKey(
+  element: HTMLElement | SVGElement,
+  key: string,
+  value: string,
+): void {
+  if (key === 'query') {
+    element.setAttribute('data-min-query', value);
+  }
+}
+
+function setupAtttrbiutes(
+  element: HTMLElement | SVGElement,
+  key: string,
+  value: any,
+): void {
+  if (key in element) {
+    // 标准属性
+    if (key === 'style') {
+      // style 属性
+      if (typeof value !== 'string') {
+        Object.assign(element.style, value);
+        return;
+      }
+      element.style.cssText = value as string;
+      return;
+    }
+    if (typeof value === 'undefined') {
+      // 删除属性
+      delete element[key];
+      return;
+    }
+    // 标准属性
+    element[key] = value;
+  } else {
+    // 自定义属性
+    if (typeof value === 'undefined') {
+      element.removeAttribute(key);
+    }
+    // 自定义属性
+    element.setAttribute(key, value as string);
+  }
+}
+
+function setupText(element: HTMLElement | SVGElement, text?: string) {
+  if (typeof text === 'undefined') return element.textContent;
+
+  element.textContent = text;
+
+  return text;
 }
