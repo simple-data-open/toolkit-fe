@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/min-dom",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "A library for lightweight operation of DOM",
   "repository": {
     "type": "git",

@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.23
+
+### Patch Changes
+
+- 修复 query 泛型
+
 ## 0.0.22
 
 ### Patch Changes

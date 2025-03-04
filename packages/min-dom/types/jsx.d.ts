@@ -1,4 +1,6 @@
 // 声明 JSX 的命名空间
+export type DOMElement = Element;
+
 export namespace JSX {
   type MinPartial<T> = Partial<Omit<T, 'children' | 'class' | 'style'>> &
     ElementChildrenAttribute & {
@@ -193,28 +195,22 @@ export namespace JSX {
 
   interface IntrinsicElement<K extends keyof DomElement> {
     element: K extends keyof IntrinsicSVGElements ? SVGElement : HTMLElement;
-    query(selector: string): {
-      element: HTMLElement | SVGElement | null;
+    query<T extends DOMElement = HTMLElement | SVGElement>(
+      selector: string,
+    ): {
+      element: T | null;
       attr(key: string, value?: any): any | void;
       text(text?: string): string | null | void;
       style(style: Partial<CSSStyleDeclaration>): void;
     };
-    queryAll(selector: string): {
-      elements: (HTMLElement | SVGElement)[];
-      attr(
-        cb: (
-          index: number,
-          scopeElement: HTMLElement | SVGElement,
-        ) => Record<string, any>,
-      ): void;
-      text(
-        cb: (index: number, scopeElement: HTMLElement | SVGElement) => string,
-      ): void;
+    queryAll<T extends DOMElement = HTMLElement | SVGElement>(
+      selector: string,
+    ): {
+      elements: T[];
+      attr(cb: (index: number, scopeElement: T) => Record<string, any>): void;
+      text(cb: (index: number, scopeElement: T) => string): void;
       style(
-        cb: (
-          index: number,
-          scopeElement: HTMLElement | SVGElement,
-        ) => Partial<CSSStyleDeclaration>,
+        cb: (index: number, scopeElement: T) => Partial<CSSStyleDeclaration>,
       ): void;
     };
     text(text?: string): string | null;
