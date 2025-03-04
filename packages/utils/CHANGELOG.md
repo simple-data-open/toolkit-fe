@@ -1,5 +1,11 @@
 # @simple-data-open/utils
 
+## 0.0.15
+
+### Patch Changes
+
+- 修复 dep url 获取
+
 ## 0.0.14
 
 ### Patch Changes

@@ -44,7 +44,7 @@ export const transformManifest = async (
   const manifestOriginal =
     pkg.simpleManifest as SimpleExtSpace.ManifestOriginal;
 
-  const baseUrl = execSync('simple-cli info -k baseUrl').toString();
+  const baseUrl = execSync('simple-cli info -k dep').toString();
 
   const dependencies = await getDepsRegistrationList({
     // TODO: 需要修改为变量

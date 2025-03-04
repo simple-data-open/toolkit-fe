@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/simple-pack",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "",
   "keywords": [],
   "repository": {
@@ -30,7 +30,7 @@
     "@babel/core": "^7.26.0",
     "@babel/plugin-transform-json-strings": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
-    "@simple-data-open/utils": "0.0.14",
+    "@simple-data-open/utils": "0.0.15",
     "babel-loader": "^9.2.1",
     "commander": "^12.1.0",
     "compression-webpack-plugin": "^11.1.0",
