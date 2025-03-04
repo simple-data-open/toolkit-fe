@@ -92,8 +92,8 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
     element: element as K extends keyof JSX.IntrinsicSVGElements
       ? SVGElement
       : HTMLElement,
-    query(selector: string) {
-      const scopeElement = element.querySelector<HTMLElement | SVGElement>(
+    query<T extends Element = HTMLElement | SVGElement>(selector: string) {
+      const scopeElement = element.querySelector<T>(
         `[data-min-query="${selector}"]`,
       );
       return {
@@ -117,45 +117,43 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
             console.error(`query ${selector} not found`);
             return;
           }
-          Object.assign(scopeElement.style, style);
+          if (
+            scopeElement instanceof HTMLElement ||
+            scopeElement instanceof SVGElement
+          ) {
+            Object.assign(scopeElement.style, style);
+          }
         },
       };
     },
-    queryAll(selector: string) {
+    queryAll<T extends Element = HTMLElement | SVGElement>(selector: string) {
       const scopeElements = Array.from(
-        element.querySelectorAll<HTMLElement | SVGElement>(
-          `[data-min-query="${selector}"]`,
-        ),
+        element.querySelectorAll<T>(`[data-min-query="${selector}"]`),
       );
       return {
         elements: scopeElements,
-        attr(
-          cb: (
-            index: number,
-            scopeElement: HTMLElement | SVGElement,
-          ) => Record<string, any>,
-        ) {
+        attr(cb: (index: number, scopeElement: T) => Record<string, any>) {
           scopeElements.forEach((scopeElement, index) => {
             Object.entries(cb(index, scopeElement)).forEach(([key, value]) => {
               setupAtttrbiutes(scopeElement, key, value);
             });
           });
         },
-        text(
-          cb: (index: number, scopeElement: HTMLElement | SVGElement) => string,
-        ) {
+        text(cb: (index: number, scopeElement: T) => string) {
           scopeElements.forEach((scopeElement, index) => {
             setupText(scopeElement, cb(index, scopeElement));
           });
         },
         style(
-          cb: (
-            index: number,
-            scopeElement: HTMLElement | SVGElement,
-          ) => Partial<CSSStyleDeclaration>,
+          cb: (index: number, scopeElement: T) => Partial<CSSStyleDeclaration>,
         ) {
           scopeElements.forEach((scopeElement, index) => {
-            Object.assign(scopeElement.style, cb(index, scopeElement));
+            if (
+              scopeElement instanceof HTMLElement ||
+              scopeElement instanceof SVGElement
+            ) {
+              Object.assign(scopeElement.style, cb(index, scopeElement));
+            }
           });
         },
       };
@@ -218,14 +216,13 @@ function setupMinKey(
   }
 }
 
-function setupAtttrbiutes(
-  element: HTMLElement | SVGElement,
-  key: string,
-  value: any,
-): void {
+function setupAtttrbiutes(element: Element, key: string, value: any): void {
   if (key in element) {
     // 标准属性
-    if (key === 'style') {
+    if (
+      key === 'style' &&
+      (element instanceof HTMLElement || element instanceof SVGElement)
+    ) {
       // style 属性
       if (typeof value !== 'string') {
         Object.assign(element.style, value);
@@ -251,7 +248,7 @@ function setupAtttrbiutes(
   }
 }
 
-function setupText(element: HTMLElement | SVGElement, text?: string) {
+function setupText(element: Element, text?: string) {
   if (typeof text === 'undefined') return element.textContent;
 
   element.textContent = text;
