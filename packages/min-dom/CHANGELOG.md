@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.26
+
+### Patch Changes
+
+- error 打印修改为 warn
+
 ## 0.0.25
 
 ### Patch Changes

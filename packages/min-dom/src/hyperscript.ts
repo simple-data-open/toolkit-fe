@@ -100,21 +100,21 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
         element: scopeElement,
         attr(key, value) {
           if (!scopeElement) {
-            console.error(`query ${selector} not found`);
+            console.warn(`query ${selector} not found`);
             return;
           }
           setupAtttrbiutes(scopeElement, key, value);
         },
         text(text?: string) {
           if (!scopeElement) {
-            console.error(`query ${selector} not found`);
+            console.warn(`query ${selector} not found`);
             return;
           }
           return setupText(scopeElement, text);
         },
         style(style: Partial<CSSStyleDeclaration>) {
           if (!scopeElement) {
-            console.error(`query ${selector} not found`);
+            console.warn(`query ${selector} not found`);
             return;
           }
           if (
