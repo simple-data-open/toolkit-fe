@@ -190,7 +190,7 @@ export interface PropertyRendererOptions extends PropertyRendererModel {
   update: (
     chain: SimpleModifier.ChainType,
     value: PropertyValueType,
-  ) => boolean;
+  ) => Promise<boolean>;
 }
 
 /**
@@ -217,7 +217,7 @@ export class PropertyRenderer<T = any, O = any> {
   public update: (
     chain: SimpleModifier.ChainType,
     value: PropertyValueType,
-  ) => boolean;
+  ) => Promise<boolean>;
 
   /**
    * 构造函数，初始化属性渲染器
