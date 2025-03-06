@@ -11,6 +11,8 @@ declare global {
   }
   /** editor/reader common sdk */
   interface SimpleSDK {
+    /** 当前版本 */
+    version: string;
     /** 进入开发模式 */
     openDebug: (ws: string) => void;
     /** 退出开发模式 */

@@ -1,5 +1,13 @@
 # @simple-data-open/simple-cli
 
+## 0.0.17
+
+### Patch Changes
+
+- 类型修复
+- Updated dependencies
+  - @simple-data-open/utils@0.0.17
+
 ## 0.0.16
 
 ### Patch Changes
