@@ -98,12 +98,14 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
       );
       return {
         element: scopeElement,
-        attr(key, value) {
+        attr(attrs: Record<string, any>) {
           if (!scopeElement) {
             console.warn(`query ${selector} not found`);
             return;
           }
-          setupAtttrbiutes(scopeElement, key, value);
+          Object.entries(attrs).forEach(([key, value]) => {
+            setupAtttrbiutes(scopeElement, key, value);
+          });
         },
         text(text?: string) {
           if (!scopeElement) {
@@ -165,8 +167,10 @@ export function hyperscript<K extends keyof JSX.IntrinsicElements>(
 
       return text;
     },
-    attr(key: string, value: any) {
-      setupAtttrbiutes(element, key, value);
+    attr(attrs: Record<string, any>) {
+      Object.entries(attrs).forEach(([key, value]) => {
+        setupAtttrbiutes(element, key, value);
+      });
     },
     on: element.addEventListener.bind(element),
     off: element.removeEventListener.bind(element),

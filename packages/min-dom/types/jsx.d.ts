@@ -199,7 +199,7 @@ export namespace JSX {
       selector: string,
     ): {
       element: T | null;
-      attr(key: string, value?: any): any | void;
+      attr(attrs: Record<string, any>): any | void;
       text(text?: string): string | null | void;
       style(style: Partial<CSSStyleDeclaration>): void;
     };
@@ -214,7 +214,7 @@ export namespace JSX {
       ): void;
     };
     text(text?: string): string | null;
-    attr(attr: string, value?: any): void;
+    attr(attrs: Record<string, any>): void;
     remove(): void;
     on<K extends keyof HTMLElementEventMap>(
       type: K,

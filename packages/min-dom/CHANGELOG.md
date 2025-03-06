@@ -1,5 +1,11 @@
 # @simple-data-open/min-dom
 
+## 0.0.27
+
+### Patch Changes
+
+- 优化 attr 方法
+
 ## 0.0.26
 
 ### Patch Changes
