@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.49
+
+### Patch Changes
+
+- 修复 logger 类型报错
+
 ## 0.0.48
 
 ### Patch Changes

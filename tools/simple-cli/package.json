@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/simple-cli",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Command line tools for simple-data extensions development.",
   "keywords": [],
   "repository": {
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@simple-data-open/easy-tsc": "0.0.24",
-    "@simple-data-open/types": "0.0.27",
+    "@simple-data-open/types": "0.0.28",
     "@types/archiver": "^6.0.3",
     "@types/node-fetch": "^2.6.12",
     "@types/semver": "^7.5.8",

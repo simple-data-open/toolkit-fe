@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/types",
-  "version": "0.0.27",
+  "version": "0.0.29",
   "description": "index.d.ts",
   "repository": {
     "type": "git",
@@ -35,6 +35,12 @@
     "lint": "npm run check && npm run lint:fix",
     "lint:fix": "eslint --config ../../eslint.config.mjs . --cache --quiet --fix",
     "lint:force": "npm run check && npx eslint --config ../../eslint.config.mjs . --fix"
+  },
+  "dependencies": {
+    "@simple-data-open/logger": "^0.0.2"
+  },
+  "devDependencies": {
+    "tslib": "2.8.1"
   },
   "publishConfig": {
     "access": "public"

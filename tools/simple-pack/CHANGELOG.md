@@ -1,5 +1,13 @@
 # @simple-data-open/simple-pack
 
+## 0.0.25
+
+### Patch Changes
+
+- 修复 logger 类型报错
+- Updated dependencies
+  - @simple-data-open/utils@0.0.16
+
 ## 0.0.24
 
 ### Patch Changes

@@ -1,5 +1,19 @@
 # @simple-data-open/types
 
+## 0.0.29
+
+### Patch Changes
+
+- 修复 logger 类型报错
+- Updated dependencies
+  - @simple-data-open/logger@0.0.2
+
+## 0.0.28
+
+### Patch Changes
+
+- 添加全局 sdk
+
 ## 0.0.27
 
 ### Patch Changes

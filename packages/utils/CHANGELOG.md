@@ -1,5 +1,11 @@
 # @simple-data-open/utils
 
+## 0.0.16
+
+### Patch Changes
+
+- 修复 logger 类型报错
+
 ## 0.0.15
 
 ### Patch Changes
