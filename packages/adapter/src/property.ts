@@ -121,6 +121,12 @@ interface InherentRenderNumber {
 interface InherentRenderOpacity {
   name: 'opacity';
 }
+interface InherentRenderRotation {
+  name: 'rotation';
+}
+interface InherentRenderCornerRadius {
+  name: 'corner-radius';
+}
 interface InherentRenderBorder {
   name: 'border';
 }
@@ -144,6 +150,8 @@ type InherentRender =
   | InherentRenderText
   | InherentRenderNumber
   | InherentRenderOpacity
+  | InherentRenderRotation
+  | InherentRenderCornerRadius
   | InherentRenderBorder
   | InherentRenderData
   | InherentRenderSelect;

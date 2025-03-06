@@ -1,5 +1,11 @@
 # @simple-data-open/adapter
 
+## 0.0.51
+
+### Patch Changes
+
+- 添加 property renderer
+
 ## 0.0.50
 
 ### Patch Changes
