@@ -6,8 +6,11 @@ export type ToastOptions = {
 };
 
 declare global {
+  interface Window {
+    SimpleSDK: SimpleSDK;
+  }
   /** editor/reader common sdk */
-  interface simpleSDK {
+  interface SimpleSDK {
     /** 进入开发模式 */
     openDebug: (ws: string) => void;
     /** 退出开发模式 */

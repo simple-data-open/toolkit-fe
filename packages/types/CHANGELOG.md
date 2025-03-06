@@ -1,5 +1,11 @@
 # @simple-data-open/types
 
+## 0.0.30
+
+### Patch Changes
+
+- 类型修复
+
 ## 0.0.29
 
 ### Patch Changes
