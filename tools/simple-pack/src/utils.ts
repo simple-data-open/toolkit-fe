@@ -9,6 +9,7 @@ import {
   BUNDLE_MANIFEST_NAME,
   CUSTOM_WEBPACK_CONFIG,
   ENTRY_DRAW_EDITOR,
+  ENTRY_DRAW_READER,
 } from './constants.js';
 
 let manifest: SimpleExtSpace.Manifest | null = null;
@@ -51,7 +52,7 @@ export const getEntries = async (): Promise<Record<string, string>> => {
     Object.assign(entries, { editor: resolve(ENTRY_DRAW_EDITOR) });
   }
   if (docks.reader) {
-    Object.assign(entries, { reader: resolve(ENTRY_DRAW_EDITOR) });
+    Object.assign(entries, { reader: resolve(ENTRY_DRAW_READER) });
   }
   return entries;
 };

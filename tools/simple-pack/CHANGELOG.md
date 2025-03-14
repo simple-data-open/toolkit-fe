@@ -1,5 +1,11 @@
 # @simple-data-open/simple-pack
 
+## 0.0.27
+
+### Patch Changes
+
+- 修复 reader 入口文件获取
+
 ## 0.0.26
 
 ### Patch Changes
