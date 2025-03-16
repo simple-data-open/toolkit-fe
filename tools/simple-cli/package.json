@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/simple-cli",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Command line tools for simple-data extensions development.",
   "keywords": [],
   "repository": {
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@fastify/cors": "^10.0.2",
-    "@simple-data-open/utils": "0.0.17",
+    "@simple-data-open/utils": "0.0.18",
     "@types/node": "^22.10.7",
     "archiver": "^7.0.1",
     "commander": "^12.1.0",

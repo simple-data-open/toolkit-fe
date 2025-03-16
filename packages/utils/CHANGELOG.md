@@ -1,5 +1,11 @@
 # @simple-data-open/utils
 
+## 0.0.18
+
+### Patch Changes
+
+- process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 ## 0.0.17
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @simple-data-open/simple-cli
 
+## 0.0.18
+
+### Patch Changes
+
+- Updated dependencies
+  - @simple-data-open/utils@0.0.18
+
 ## 0.0.17
 
 ### Patch Changes
