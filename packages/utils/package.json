@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/utils",
-  "version": "0.0.18",
+  "version": "0.0.20",
   "description": "> TODO: description",
   "repository": {
     "type": "git",
@@ -14,13 +14,17 @@
       "import": "./lib/index.js",
       "types": "./lib/index.d.ts"
     },
-    "./deps-register": {
-      "import": "./lib/deps-register.js",
-      "types": "./lib/deps-register.d.ts"
+    "./client-deps-register": {
+      "import": "./lib/client-deps-register.js",
+      "types": "./lib/client-deps-register.d.ts"
     },
-    "./extension": {
-      "import": "./lib/extension.js",
-      "types": "./lib/extension.d.ts"
+    "./node-deps-register": {
+      "import": "./lib/node-deps-register.js",
+      "types": "./lib/node-deps-register.d.ts"
+    },
+    "./node-extension": {
+      "import": "./lib/node-extension.js",
+      "types": "./lib/node-extension.d.ts"
     }
   },
   "module": "lib/index.js",
@@ -42,7 +46,8 @@
     "lint:force": "npm run check && npx eslint --config ../../eslint.config.mjs ./src --fix"
   },
   "dependencies": {
-    "@types/node": "^22.13.8"
+    "@types/node": "^22.13.8",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@simple-data-open/easy-tsc": "0.0.24",

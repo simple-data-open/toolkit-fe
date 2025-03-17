@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { validateName } from '@simple-data-open/utils/extension';
+import { validateName } from '@simple-data-open/utils/node-extension';
 
 import { program } from 'commander';
 import inquirer from 'inquirer';

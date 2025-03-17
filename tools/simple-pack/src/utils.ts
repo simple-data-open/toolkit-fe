@@ -1,4 +1,4 @@
-import { transformManifest } from '@simple-data-open/utils';
+import { transformManifest } from '@simple-data-open/utils/node-extension';
 
 import fs, { existsSync, writeFileSync } from 'fs';
 import path, { resolve } from 'path';

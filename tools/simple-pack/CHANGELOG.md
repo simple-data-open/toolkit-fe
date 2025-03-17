@@ -1,5 +1,19 @@
 # @simple-data-open/simple-pack
 
+## 0.0.30
+
+### Patch Changes
+
+- Updated dependencies
+  - @simple-data-open/utils@0.0.20
+
+## 0.0.29
+
+### Patch Changes
+
+- Updated dependencies
+  - @simple-data-open/utils@0.0.19
+
 ## 0.0.28
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 import { execSync } from 'node:child_process';
 
-import { getDepsRegistrationList } from './deps-register.js';
+import { getDepsRegistrationList } from './node-deps-register.js';
 
 /** 校验名称是否符合规则 */
 export const validateName = (

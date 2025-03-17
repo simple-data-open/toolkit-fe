@@ -1,4 +1,5 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+import https from 'https';
+import fetch from 'node-fetch';
 
 const formatDepManifestUrl = ({
   baseUrl,
@@ -54,12 +55,16 @@ export async function getDepsRegistrationList({
     return registry; // 如果没有新依赖，直接返回已有注册列表
   }
 
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  });
   // 遍历注册列表并获取依赖数据
   const results = await Promise.allSettled(
     registryList.map(async ([name, version]) => {
       try {
         const response = await fetch(
           formatDepManifestUrl({ baseUrl, name, version }),
+          { agent },
         );
         if (!response.ok) {
           console.error(`Fetch error: ${response.status} - ${response.url}`);

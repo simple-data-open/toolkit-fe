@@ -1,5 +1,17 @@
 # @simple-data-open/utils
 
+## 0.0.20
+
+### Patch Changes
+
+- 修复 package.json
+
+## 0.0.19
+
+### Patch Changes
+
+- node/client 调用区分, https 报错解决
+
 ## 0.0.18
 
 ### Patch Changes
