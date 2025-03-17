@@ -1,6 +1,6 @@
 {
   "name": "@simple-data-open/utils",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "> TODO: description",
   "repository": {
     "type": "git",
@@ -10,10 +10,6 @@
   "author": "xiaoYown <qzy09101018@sina.com>",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./lib/index.js",
-      "types": "./lib/index.d.ts"
-    },
     "./client-deps-register": {
       "import": "./lib/client-deps-register.js",
       "types": "./lib/client-deps-register.d.ts"

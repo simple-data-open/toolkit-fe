@@ -1,5 +1,11 @@
 # @simple-data-open/utils
 
+## 0.0.21
+
+### Patch Changes
+
+- 修复 package.json
+
 ## 0.0.20
 
 ### Patch Changes
