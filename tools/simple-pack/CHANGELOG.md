@@ -1,5 +1,11 @@
 # @simple-data-open/simple-pack
 
+## 0.0.31
+
+### Patch Changes
+
+- 手动输出资源大小信息
+
 ## 0.0.30
 
 ### Patch Changes

@@ -220,6 +220,26 @@ async function execTask(options?: ConfigOptions): Promise<string> {
         reject(info.errors);
         return;
       }
+
+      console.log('\nResources size:');
+      console.log('------------------------------');
+
+      // 手动输出资源大小信息
+      const assetInfo = stats.toJson({ all: false, assets: true });
+
+      if (assetInfo.assets && assetInfo.assets.length > 0) {
+        assetInfo.assets
+          .sort((a, b) => b.size - a.size)
+          .forEach(asset => {
+            const sizeInKB = (asset.size / 1024).toFixed(2);
+            console.log(`${asset.name}: ${sizeInKB} KB`);
+          });
+      } else {
+        console.log('No resources found.');
+      }
+
+      console.log('------------------------------\n');
+
       // if (stats.hasWarnings()) {
       //   console.warn(info.warnings);
       // }
